@@ -12,13 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CaptureCat"></activity>
-        <activity android:name=".CameraActivity" />
+        <activity android:name=".CaptureCat" />
         <activity android:name=".Comunity_main" />
         <activity android:name=".personal_account" />
         <activity android:name=".nabi_information" />
         <activity android:name=".catlist" />
-        <activity android:name=".home">
+        <activity android:name=".home"></activity>
+        <activity android:name=".ResisterActivity"/>
+        <activity android:name=".LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
