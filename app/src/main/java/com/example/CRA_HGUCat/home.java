@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class home extends AppCompatActivity {
+public class home extends AppCompatActivity{
 
     private static final int RC_SIGN_IN = 1234;
     private FirebaseAuth nAuth;
@@ -42,11 +42,13 @@ public class home extends AppCompatActivity {
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
         nAuth = FirebaseAuth.getInstance();
+    }
 
+    public void signInAnonymously()
+    {
         nAuth.signInAnonymously()
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
