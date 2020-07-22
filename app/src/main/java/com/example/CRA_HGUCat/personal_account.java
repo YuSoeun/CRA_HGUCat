@@ -1,5 +1,6 @@
 package com.example.CRA_HGUCat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -9,6 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class personal_account extends AppCompatActivity {
 
@@ -44,6 +50,16 @@ public class personal_account extends AppCompatActivity {
                 // TODO : use item data.
             }
         }) ;*/
+    }
+
+    public void Logout(View v)
+    {
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(personal_account.this,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
