@@ -8,11 +8,11 @@
 
     <Button
         android:id="@+id/btn_account"
-        android:layout_width="57dp"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:onClick="Startaccount"
+        android:onClick="StartAccount"
         android:text="개인설정" />
 
     <LinearLayout

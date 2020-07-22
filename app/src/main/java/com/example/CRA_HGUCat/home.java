@@ -24,7 +24,7 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        List<AuthUI.IdpConfig> provider = Arrays.asList(
+        /*List<AuthUI.IdpConfig> provider = Arrays.asList(
                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.AnonymousBuilder().build()
         );
@@ -32,10 +32,10 @@ public class home extends AppCompatActivity {
         startActivityForResult(
                 AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(provider).build(),
                 RC_SIGN_IN
-        );
+        );*/
     }
 
-    @Override
+    /*@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
@@ -54,24 +54,24 @@ public class home extends AppCompatActivity {
                 response.getError().getErrorCode();
             }
         }
-    }
+    }*/
 
     public void StartList(View v)
     {
-        Intent cmr = new Intent(this, catlist.class);
-        startActivity(cmr);
+        Intent catlist = new Intent(this, catlist.class);
+        startActivity(catlist);
     }
 
-    public void Startaccount(View v)
+    public void StartAccount(View v)
     {
-        Intent cmr = new Intent(this, personal_account.class);
-        startActivity(cmr);
+        Intent acc = new Intent(this, personal_account.class);
+        startActivity(acc);
     }
 
     public void StartComu(View v)
     {
-        Intent cmr = new Intent(this, Comunity_main.class);
-        startActivity(cmr);
+        Intent comu = new Intent(this, Comunity_main.class);
+        startActivity(comu);
     }
 
     public void StartCamera(View v)

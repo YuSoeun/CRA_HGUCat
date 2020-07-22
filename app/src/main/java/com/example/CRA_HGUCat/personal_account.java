@@ -17,7 +17,7 @@ public class personal_account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_account);
 
-        ListView listview ;
+        /*ListView listview ;
         ListViewAdapter adapter;
 
         // Adapter 생성
@@ -43,7 +43,7 @@ public class personal_account extends AppCompatActivity {
 
                 // TODO : use item data.
             }
-        }) ;
+        }) ;*/
     }
 
 }

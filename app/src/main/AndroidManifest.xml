@@ -17,15 +17,16 @@
         <activity android:name=".personal_account" />
         <activity android:name=".nabi_information" />
         <activity android:name=".catlist" />
-        <activity android:name=".home"></activity>
-        <activity android:name=".ResisterActivity"/>
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ResisterActivity"/>
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>
