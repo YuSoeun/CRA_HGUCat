@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+// 구글 연결
 
 android {
     compileSdkVersion 30
@@ -6,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.CRA_HGUCat"
-        minSdkVersion 16
+        minSdkVersion 28
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -26,6 +28,14 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.firebase:firebase-firestore:21.5.0'
+    //  파이어베이스 무엇인가 연결
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    // 파이어 베이스 연결
+    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    // 파이어 베이스 저장소 연결
+    implementation 'com.google.firebase:firebase-auth:19.3.2'
+    // 파이어 베이스 권한 관리
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

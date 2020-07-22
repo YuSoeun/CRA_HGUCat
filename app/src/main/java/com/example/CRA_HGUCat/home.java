@@ -33,13 +33,13 @@ public class home extends AppCompatActivity {
         startActivity(cmr);
     }
 
-    /*
     public void StartCamera(View v)
     {
-        Intent cmr = new Intent(this,CameraActivity.class);
+        Intent cmr = new Intent(this,CaptureCat.class);
         startActivity(cmr);
     }
 
+    /*
     public void Startfavo(View v)
     {
         Intent cmr = new Intent(this, favorite.class);
