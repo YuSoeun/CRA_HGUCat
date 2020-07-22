@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CaptureCat"></activity>
-        <activity android:name=".CameraActivity" />
         <activity android:name=".Comunity_main" />
         <activity android:name=".personal_account" />
         <activity android:name=".nabi_information" />
