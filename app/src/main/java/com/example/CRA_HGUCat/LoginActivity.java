@@ -12,6 +12,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // 상황봐서 Maven도 추가
+
     }
 
     public void Goresister(View v)
