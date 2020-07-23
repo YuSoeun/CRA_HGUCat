@@ -23,9 +23,9 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(cmr);
     }
 
-    public void Gohome(View v)
+    /*public void Gohome(View v)
     {
         Intent cmr = new Intent(this, home.class);
         startActivity(cmr);
-    }
+    }*/
 }

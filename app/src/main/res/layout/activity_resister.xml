@@ -1,74 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_margin = "5dp"
     tools:context=".ResisterActivity">
 
     <EditText
-        android:id="@+id/et_id"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="아이디"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id = "@+id/loginId"
+        android:hint = "  아이디"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="5dp" />
 
     <EditText
-        android:id="@+id/et_pass"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="비밀번호"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+        android:id = "@+id/loginPassword"
+        android:hint = "  비밀번호"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginId"
+        android:layout_marginVertical="5dp" />
 
     <EditText
-        android:id="@+id/et_name"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_pass"
-        app:layout_constraintStart_toStartOf="@+id/et_pass"
-        app:layout_constraintTop_toBottomOf="@+id/et_pass" />
+        android:id = "@+id/name"
+        android:hint = "  이름"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/loginPassword"
+        android:layout_marginVertical="5dp" />
 
     <EditText
-        android:id="@+id/et_age"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id = "@+id/age"
+        android:hint = "  나이"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/name"
+        android:layout_marginVertical="5dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id = "@+id/studentId"
+        android:hint = "  학번"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/age"
+        android:layout_marginVertical="5dp" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/nickname"
+        android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다.)"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/studentId"
+        android:textSize = "13dp"
+        android:layout_marginVertical="5dp" />
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="나이"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_name"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:id="@+id/AuthHandong"
+        android:layout_below="@id/nickname"
+        android:layout_marginVertical="5dp" >
+
+        <EditText
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:hint=" 한동대학교 이메일을 입력해주세요"
+            android:id="@+id/HandongEmail"
+            android:textSize="15dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text = "인증번호 발송"
+            android:onClick="callEmail"
+            android:textSize="13dp"/>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/bt_resister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="회원가입"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_age"
-        app:layout_constraintStart_toStartOf="@+id/et_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_age" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:id="@+id/registerBtn"
+        android:text = "회원가입"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/AuthHandong"
+        android:textSize = "24dp"
+        android:layout_marginTop="20dp" />
+
+</RelativeLayout>

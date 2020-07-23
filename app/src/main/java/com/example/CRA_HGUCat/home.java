@@ -9,12 +9,9 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.firebase.ui.auth.util.ExtraConstants;
-import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -28,19 +25,8 @@ public class home extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        provider = Arrays.asList(
-                new AuthUI.IdpConfig.GoogleBuilder().build(),
-                new AuthUI.IdpConfig.AnonymousBuilder().build()
-        );
-
-        startActivityForResult(
-                AuthUI.getInstance().createSignInIntentBuilder()
-                        .setAvailableProviders(provider)
-                        .setLogo(R.drawable.baseline_pets_black_36dp)
-                        .build(),
-                RC_SIGN_IN
-        );
-
+        Intent Login = new Intent(this,LoginActivity.class);
+        startActivity(Login);
     }
 
     @Override
