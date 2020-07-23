@@ -1,6 +1,5 @@
 package com.example.CRA_HGUCat;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,9 +9,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.firebase.ui.auth.util.ExtraConstants;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -23,14 +21,14 @@ import java.util.List;
 public class home extends AppCompatActivity{
 
     private static final int RC_SIGN_IN = 1234;
-    private FirebaseAuth nAuth;
+    List<AuthUI.IdpConfig> provider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        List<AuthUI.IdpConfig> provider = Arrays.asList(
+        provider = Arrays.asList(
                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                 new AuthUI.IdpConfig.AnonymousBuilder().build()
         );
@@ -40,47 +38,6 @@ public class home extends AppCompatActivity{
                 RC_SIGN_IN
         );
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        nAuth = FirebaseAuth.getInstance();
-    }
-
-    public void signInAnonymously()
-    {
-        nAuth.signInAnonymously()
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful())
-                        {
-                            FirebaseUser currentUser = nAuth.getCurrentUser();
-                            updateUI(currentUser);
-                        }
-                        else
-                        {
-                            updateUI(null);
-                            Toast.makeText(home.this,"Authentication failed", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
-    String name = null;
-
-    private void updateUI(FirebaseUser user)
-    {
-        if(user != null)
-        {
-            name = user.getDisplayName();
-        }
-        else
-        {
-            finish();
-        }
-    }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -102,6 +59,50 @@ public class home extends AppCompatActivity{
             }
         }
     }
+
+    public void LoginSetting()
+    {
+        ActionCodeSettings actionCodeSettings = ActionCodeSettings
+                .newBuilder()
+                .setAndroidPackageName("com.example.CRA_HGUCat", true, null)
+                .setHandleCodeInApp(true)
+                .setUrl("www.google.com")
+                .build();
+
+        startActivityForResult(
+                AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(
+                        Arrays.asList(
+                                new AuthUI.IdpConfig.EmailBuilder().enableEmailLinkSignIn()
+                                .setActionCodeSettings(actionCodeSettings).build()
+                        )
+                ).build(), RC_SIGN_IN
+        );
+
+        if(AuthUI.canHandleIntent(getIntent()))
+        {
+            if(getIntent().getExtras() == null)
+            {
+                return;
+            }
+
+            String link = getIntent().getExtras().getString(ExtraConstants.EMAIL_LINK_SIGN_IN);
+
+            if(link != null)
+            {
+                startActivityForResult(
+                        AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setEmailLink(link)
+                        .setAvailableProviders(provider)
+                        .build()
+                        , RC_SIGN_IN
+                );
+            }
+        }
+    }
+
 
     public void StartList(View v)
     {
