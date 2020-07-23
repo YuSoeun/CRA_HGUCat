@@ -26,7 +26,7 @@ public class ResisterActivity extends AppCompatActivity {
 
     public void callEmail(View v)
     {
-        String HandongMail = profile[6].getText().toString();
+        String HandongMail = profile[6].getText().toString().replace(" ","").replace("\n","");
         if(!HandongMail.contains("@") && !HandongMail.contains("."))
         {
             Toast.makeText(this,"이메일의 형태로 입력해주세요!",Toast.LENGTH_SHORT).show();
@@ -36,9 +36,13 @@ public class ResisterActivity extends AppCompatActivity {
         {
             Toast.makeText(this,"오탈자가 있는지 확인해주세요!",Toast.LENGTH_SHORT).show();
         }
-        else if(HandongMail.substring(HandongMail.length() - "@handong.edu".length(),HandongMail.length()) != "@handong.edu")
+        else if(!HandongMail.substring(HandongMail.length() - "@handong.edu".length()).equals("@handong.edu"))
         {
             Toast.makeText(this,"한동대학교 이메일이 맞는지 확인해주세요!",Toast.LENGTH_SHORT).show();
+        }
+        else
+            {
+//                Toast.makeText(this,"인증 완료!",Toast.LENGTH_SHORT).show();
         }
 
     }
