@@ -34,7 +34,10 @@ public class home extends AppCompatActivity{
         );
 
         startActivityForResult(
-                AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(provider).build(),
+                AuthUI.getInstance().createSignInIntentBuilder()
+                        .setAvailableProviders(provider)
+                        .setLogo(R.drawable.baseline_pets_black_36dp)
+                        .build(),
                 RC_SIGN_IN
         );
     }
@@ -47,11 +50,12 @@ public class home extends AppCompatActivity{
         if(requestCode == RC_SIGN_IN)
         {
             IdpResponse response = IdpResponse.fromResultIntent(data);
+//            LoginSetting();
 
             if(resultCode == RESULT_OK)
             {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+                Toast.makeText(this,"Hello! " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
             }
             else
             {
