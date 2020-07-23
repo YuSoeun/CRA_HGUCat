@@ -40,6 +40,7 @@ public class home extends AppCompatActivity{
                         .build(),
                 RC_SIGN_IN
         );
+
     }
 
     @Override
@@ -50,7 +51,6 @@ public class home extends AppCompatActivity{
         if(requestCode == RC_SIGN_IN)
         {
             IdpResponse response = IdpResponse.fromResultIntent(data);
-//            LoginSetting();
 
             if(resultCode == RESULT_OK)
             {
@@ -63,50 +63,6 @@ public class home extends AppCompatActivity{
             }
         }
     }
-
-    public void LoginSetting()
-    {
-        ActionCodeSettings actionCodeSettings = ActionCodeSettings
-                .newBuilder()
-                .setAndroidPackageName("com.example.CRA_HGUCat", true, null)
-                .setHandleCodeInApp(true)
-                .setUrl("www.google.com")
-                .build();
-
-        startActivityForResult(
-                AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(
-                        Arrays.asList(
-                                new AuthUI.IdpConfig.EmailBuilder().enableEmailLinkSignIn()
-                                .setActionCodeSettings(actionCodeSettings).build()
-                        )
-                ).build(), RC_SIGN_IN
-        );
-
-        if(AuthUI.canHandleIntent(getIntent()))
-        {
-            if(getIntent().getExtras() == null)
-            {
-                return;
-            }
-
-            String link = getIntent().getExtras().getString(ExtraConstants.EMAIL_LINK_SIGN_IN);
-
-            if(link != null)
-            {
-                startActivityForResult(
-                        AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setEmailLink(link)
-                        .setAvailableProviders(provider)
-                        .build()
-                        , RC_SIGN_IN
-                );
-            }
-        }
-    }
-
 
     public void StartList(View v)
     {
