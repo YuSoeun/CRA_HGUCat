@@ -1,16 +1,24 @@
 package com.example.CRA_HGUCat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.ActionCodeSettings;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ResisterActivity extends AppCompatActivity {
 
-    EditText[] profile = new EditText[7];
-
+    TextInputEditText[] profile = new TextInputEditText[7];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +50,45 @@ public class ResisterActivity extends AppCompatActivity {
         }
         else
             {
-//                Toast.makeText(this,"인증 완료!",Toast.LENGTH_SHORT).show();
-        }
+                ActionCodeSettings actionCodeSettings =
+                        ActionCodeSettings.newBuilder()
+                        .setUrl("https://hgucat.page.link/HguC")
+                        .setHandleCodeInApp(true)
+                        .setAndroidPackageName(
+                                "com.example.android",
+                                true,
+                                "28"
+                        )
+                        .build();
 
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.sendSignInLinkToEmail(HandongMail,actionCodeSettings)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful())
+                                {
+                                    Toast.makeText(ResisterActivity.this,"인증번호를 전송헀습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                /*Intent intent = getIntent();
+                String emailLink = intent.getData().toString();
+                if(auth.isSignInWithEmailLink(emailLink))
+                {
+                    auth.signInWithEmailLink(HandongMail, emailLink)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        AuthResult result = task    .getResult();
+                                    }
+                                }
+                            });
+                }*/
+
+            }
     }
 }

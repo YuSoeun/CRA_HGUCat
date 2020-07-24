@@ -4,63 +4,124 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:layout_margin = "5dp"
     tools:context=".ResisterActivity">
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/loginId"
-        android:hint = "  아이디"
-        android:layout_centerHorizontal="true"
-        android:layout_marginVertical="5dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/loginPassword"
-        android:hint = "  비밀번호"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/loginId"
-        android:layout_marginVertical="5dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin = "5dp" >
 
-    <EditText
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/name"
-        android:hint = "  이름"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/loginPassword"
-        android:layout_marginVertical="5dp" />
+        android:id = "@+id/loginIdLayout"
+        android:layout_marginVertical="5dp" >
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/age"
-        android:hint = "  나이"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/name"
-        android:layout_marginVertical="5dp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/loginId"
+            android:hint = "  아이디"
+            app:errorEnabled="true" />
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/studentId"
-        android:hint = "  학번"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/age"
-        android:layout_marginVertical="5dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:layout_width="250dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nickname"
-        android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다.)"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/studentId"
-        android:textSize = "13dp"
-        android:layout_marginVertical="5dp" />
+        android:id = "@+id/loginPasswordLayout"
+        android:layout_below="@id/loginIdLayout"
+        app:endIconMode="password_toggle"
+        android:layout_marginVertical="5dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/loginPassword"
+            android:hint = "  비밀번호"
+            app:errorEnabled="true"
+            android:inputType="textPassword"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id = "@+id/nameLayout"
+                android:layout_below="@id/loginPasswordLayout"
+                android:layout_marginVertical="5dp" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/name"
+                    android:hint = "  이름"
+                    app:errorEnabled="true"
+                    android:inputType="textPersonName"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id = "@+id/ageLayout"
+        android:layout_below="@id/nameLayout"
+        android:layout_marginVertical="5dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/age"
+            android:hint = "  나이"
+            app:errorEnabled="true"
+            android:inputType="number"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id = "@+id/studentIdLayout"
+        android:layout_below="@id/ageLayout"
+        android:layout_marginVertical="5dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/studentId"
+            android:hint = "  학번"
+            app:errorEnabled="true"
+            android:inputType="number"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id = "@+id/nicknameLayout"
+        android:layout_below="@id/studentIdLayout"
+        android:layout_marginVertical="5dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/nickname"
+            android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다.)"
+            android:textSize = "13dp"
+            app:errorEnabled="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -68,15 +129,23 @@
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
         android:id="@+id/AuthHandong"
-        android:layout_below="@id/nickname"
+        android:layout_below="@id/nicknameLayout"
         android:layout_marginVertical="5dp" >
 
-        <EditText
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:hint=" 한동대학교 이메일을 입력해주세요"
-            android:id="@+id/HandongEmail"
-            android:textSize="15dp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:hint = "  한동대학교 이메일을 입력해주세요"
+                android:id="@+id/HandongEmail"
+                app:errorEnabled="true"
+                android:inputType="textEmailAddress"
+                android:textSize="15dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="wrap_content"
@@ -95,6 +164,10 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/AuthHandong"
         android:textSize = "24dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginVertical="20dp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
