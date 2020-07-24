@@ -1,4 +1,4 @@
-/*
+
 package com.example.CRA_HGUCat;
 
 import java.io.BufferedInputStream;
@@ -25,14 +25,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class NewClient extends Activity {
+public class server_client extends Activity {
     private String html = "";
     private Handler mHandler;
     private Socket socket;
     private String name;
     private BufferedReader networkReader;
     private BufferedWriter networkWriter;
-    private String ip = "49.143.70.46"; // SERVER IP를 잡습니다.
+    private String ip = "49.143.43.77"; // SERVER IP를 잡습니다.
     private int port = 777; // PORT를 설정합니다.
 
     @Override
@@ -93,33 +93,37 @@ public class NewClient extends Activity {
 
             } catch (Exception e) {
 
+            }
         }
+
     };
 
-    private Runnable showUpdate = new Runnable() {
-        public void run() {
-            Toast.makeText(NewClient.this, "Coming word: " + html,
-                    Toast.LENGTH_SHORT).show();
-        }
-    };
+        private Runnable showUpdate = new Runnable() {
+            public void run() {
+                Toast.makeText(server_client.this, "Coming word: " + html,
+                        Toast.LENGTH_SHORT).show();
+            }
+        };
 
-    public void setSocket(String ip, int port) throws IOException {
-        try {
-            socket = new Socket(ip, port);
-            networkWriter =
-                    new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            networkReader =
-                    new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        public void setSocket(String ip, int port) throws IOException {
+            try {
+                socket = new Socket(ip, port);
+                networkWriter =
+                        new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                networkReader =
+                        new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        } catch (IOException e) {
-            System.out.println(e);
-            e.printStackTrace();
+            } catch (IOException e) {
+                System.out.println(e);
+                e.printStackTrace();
+            }
+            ;
         }
-    }
-});
+
+        ;
+
+}
 
 
 
 //출처: https://webprogrammer.tistory.com/1817 [개발자(開發者) a developer]
-
- */

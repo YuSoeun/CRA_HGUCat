@@ -12,8 +12,8 @@ import java.net.Socket;
 
 public class contect_server implements Runnable {
 
-    public static final int ServerPort = 9999; //소켓포트설정
-    public static final String ServerIP = "xxx.xxx.xxx.xxxx"; //연결될 서버IP
+    public static final int ServerPort = 777; //소켓포트설정
+    public static final String ServerIP = "49.143.43.77"; //연결될 서버IP
 
     @Override
     public void run() {

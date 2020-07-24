@@ -2,17 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.CRA_HGUCat">
 
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/baseline_pets_black_36dp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".PopupActivity"></activity>
+        <activity android:name=".server_client"/>
         <activity android:name=".CaptureCat" />
         <activity android:name=".Community_main" />
         <activity android:name=".community_add" />
@@ -29,5 +28,5 @@
             </intent-filter>
         </activity>
     </application>
-
+<uses-permission android:name="android.permission.INTERNET" />
 </manifest>
