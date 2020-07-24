@@ -12,18 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+        <activity android:name=".PopupActivity"></activity>
         <activity android:name=".CaptureCat" />
-=======
-        <activity android:name=".CaptureCat"></activity>
->>>>>>> f935dfea34d9cbfab00eed9f67de66584b9c54e1
-        <activity android:name=".Comunity_main" />
+        <activity android:name=".Community_main" />
+        <activity android:name=".community_add" />
         <activity android:name=".personal_account" />
         <activity android:name=".nabi_information" />
         <activity android:name=".catlist" />
-        <activity android:name=".home"></activity>
-        <activity android:name=".ResisterActivity"/>
-        <activity android:name=".LoginActivity" >
+        <activity android:name=".home" />
+        <activity android:name=".ResisterActivity" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

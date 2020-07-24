@@ -29,7 +29,7 @@ public class home extends AppCompatActivity {
 
     public void StartComu(View v)
     {
-        Intent cmr = new Intent(this, Comunity_main.class);
+        Intent cmr = new Intent(this, Community_main.class);
         startActivity(cmr);
     }
 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <!-- 타이틀바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:text="Where post"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <!-- //end 타이틀바 -->
+
+    <!-- Notice -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F1EFEF"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="고양이 사진" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="고양이 글" />
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="새로운 고양이 찾았다" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="수정해주세요" />
+    </LinearLayout>
+    <!-- Notice -->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#66bdbdbd" />
+
+    <!-- 선택 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_choose"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:onClick="OnClick"
+            android:padding="16dp"
+            android:text="선택"
+            android:textColor="#000000"
+            android:textSize="15sp" />
+    </LinearLayout>
+    <!--// 닫기 버튼 -->
+</LinearLayout>
