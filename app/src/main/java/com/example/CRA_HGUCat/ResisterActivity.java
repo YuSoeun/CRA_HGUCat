@@ -50,9 +50,9 @@ public class ResisterActivity extends AppCompatActivity {
         }
         else
             {
-                ActionCodeSettings actionCodeSettings =
+                /*ActionCodeSettings actionCodeSettings =
                         ActionCodeSettings.newBuilder()
-                        .setUrl("https://hgucat.page.link/HguC")
+                        .setUrl(FirebaseD)
                         .setHandleCodeInApp(true)
                         .setAndroidPackageName(
                                 "com.example.android",
@@ -60,6 +60,7 @@ public class ResisterActivity extends AppCompatActivity {
                                 "28"
                         )
                         .build();
+
 
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 auth.sendSignInLinkToEmail(HandongMail,actionCodeSettings)
@@ -71,7 +72,7 @@ public class ResisterActivity extends AppCompatActivity {
                                     Toast.makeText(ResisterActivity.this,"인증번호를 전송헀습니다.", Toast.LENGTH_SHORT).show();
                                 }
                             }
-                        });
+                        });*/
 
                 /*Intent intent = getIntent();
                 String emailLink = intent.getData().toString();
@@ -88,6 +89,31 @@ public class ResisterActivity extends AppCompatActivity {
                                 }
                             });
                 }*/
+
+                final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.createUserWithEmailAndPassword(HandongMail,"q1!w2@e3#r4$t5%")
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful())
+                                {
+                                    firebaseAuth.getCurrentUser().sendEmailVerification()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Toast.makeText(ResisterActivity.this,"문자를 이메일로 전송했습니다.", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                }
+                                else
+                                {
+                                    if(firebaseAuth.getCurrentUser().isEmailVerified())
+                                        Toast.makeText(ResisterActivity.this,"이미 가입된 학번입니다.", Toast.LENGTH_SHORT).show();
+                                    else
+                                        Toast.makeText(ResisterActivity.this,"가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
 
             }
     }
