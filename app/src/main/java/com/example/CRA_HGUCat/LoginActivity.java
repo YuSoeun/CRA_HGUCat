@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         Id = findViewById(R.id.et_id);
         Password = findViewById(R.id.et_pass);
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.signInWithEmailAndPassword(Id.getText().toString(), Password.getText().toString())
+        firebaseAuth.signInWithEmailAndPassword(Id.getText().toString() + "@handong.edu", Password.getText().toString())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {

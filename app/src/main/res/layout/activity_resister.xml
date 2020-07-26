@@ -8,29 +8,46 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:gravity="center"
             android:layout_margin = "5dp" >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id = "@+id/loginIdLayout"
-        android:layout_marginVertical="5dp" >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:id = "@+id/loginIdLayout"
+                android:layout_marginVertical="5dp" >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:id = "@+id/loginId"
-            android:hint = "  아이디"
-            app:errorEnabled="true" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
 
-    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:hint = "  한동대학교 이메일을 입력해주세요"
+                        android:id="@+id/HandongEmail"
+                        app:errorEnabled="true"
+                        android:inputType="textEmailAddress"
+                        android:textSize="15dp"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text = "인증번호 발송"
+                    android:onClick="callEmail"
+                    android:textSize="13dp"/>
+
+            </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
@@ -42,7 +59,7 @@
         android:layout_marginVertical="5dp" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="250dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:id = "@+id/loginPassword"
             android:hint = "  비밀번호"
@@ -55,17 +72,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:id = "@+id/nameLayout"
+                android:id = "@+id/loginRePasswordLayout"
                 android:layout_below="@id/loginPasswordLayout"
                 android:layout_marginVertical="5dp" >
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="250dp"
+                    android:layout_width="320dp"
                     android:layout_height="wrap_content"
-                    android:id = "@+id/name"
-                    android:hint = "  이름"
+                    android:id = "@+id/loginRePassword"
+                    android:hint = "  비밀번호 재입력"
                     app:errorEnabled="true"
-                    android:inputType="textPersonName"/>
+                    android:inputType="textPassword"/>
+<!--                이후 비밀번호가 같으면 오른쪽에 확인 상태 출력 -->
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -73,88 +91,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:id = "@+id/ageLayout"
-        android:layout_below="@id/nameLayout"
-        android:layout_marginVertical="5dp" >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:id = "@+id/age"
-            android:hint = "  나이"
-            app:errorEnabled="true"
-            android:inputType="number"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id = "@+id/studentIdLayout"
-        android:layout_below="@id/ageLayout"
-        android:layout_marginVertical="5dp" >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:id = "@+id/studentId"
-            android:hint = "  학번"
-            app:errorEnabled="true"
-            android:inputType="number"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:id = "@+id/nicknameLayout"
-        android:layout_below="@id/studentIdLayout"
+        android:layout_below="@id/loginRePasswordLayout"
         android:layout_marginVertical="5dp" >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="250dp"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:id = "@+id/nickname"
-            android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다.)"
-            android:textSize = "13dp"
+            android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다)"
+            android:textSize = "18sp"
             app:errorEnabled="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal"
-        android:id="@+id/AuthHandong"
-        android:layout_below="@id/nicknameLayout"
-        android:layout_marginVertical="5dp" >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:hint = "  한동대학교 이메일을 입력해주세요"
-                android:id="@+id/HandongEmail"
-                app:errorEnabled="true"
-                android:inputType="textEmailAddress"
-                android:textSize="15dp"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text = "인증번호 발송"
-            android:onClick="callEmail"
-            android:textSize="13dp"/>
-
-    </LinearLayout>
 
     <Button
         android:layout_width="150dp"
@@ -162,7 +111,7 @@
         android:id="@+id/registerBtn"
         android:text = "회원가입"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/AuthHandong"
+        android:layout_below="@+id/nicknameLayout"
         android:textSize = "24dp"
         android:layout_marginVertical="20dp" />
 
