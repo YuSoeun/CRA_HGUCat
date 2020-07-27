@@ -10,6 +10,7 @@ public class community_add extends AppCompatActivity {
 
     TextView editText1;
     TextView text_wheretopost;
+    TextView text_addfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +19,8 @@ public class community_add extends AppCompatActivity {
 
         editText1 = (TextView)findViewById(R.id.editText1);
         text_wheretopost = (TextView)findViewById(R.id.Text_wheretopost);
+        text_addfile = (TextView)findViewById(R.id.Text_addfile);
+
         Intent intent = new Intent(this, PopupActivity.class);
         intent.putExtra("data", "Test Popup");
         startActivityForResult(intent, 1);
@@ -32,7 +35,8 @@ public class community_add extends AppCompatActivity {
     }
 
     public void Fileuplode(View v){
-        
+        Intent intent3 = new Intent(this, getfile.class);
+        startActivity(intent3);
     }
 
     @Override
@@ -43,6 +47,9 @@ public class community_add extends AppCompatActivity {
                 //데이터 받기
                 String result = data.getStringExtra("checked");
                 text_wheretopost.setText(result);
+
+                String result2 = data.getStringExtra("imageok");
+                text_addfile.setText(result2);
             }
         }
     }

@@ -25,7 +25,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class server_client extends Activity {
+public class server_client extends Activity {/*
     private String html = "";
     private Handler mHandler;
     private Socket socket;
@@ -120,9 +120,10 @@ public class server_client extends Activity {
             ;
         }
 
-        ;
-
+        ; */
 }
+
+
 
 
 

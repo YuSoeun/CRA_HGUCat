@@ -1,4 +1,6 @@
+
 package com.example.CRA_HGUCat;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -51,7 +53,6 @@ public class contect_server implements Runnable {
         Thread desktopServerThread = new Thread(new contect_server());
         desktopServerThread.start();
     }
-
 }
 
 
