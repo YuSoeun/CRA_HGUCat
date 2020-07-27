@@ -12,7 +12,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class FileUploadUtils {
+
     public static void send2Server(File file) {
+        /*
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("files", file.getName(), RequestBody.create(MultipartBody.FORM, file))
@@ -33,9 +35,13 @@ public class FileUploadUtils {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d("TEST : ", response.body().string());
             }
-        });
+        });*/
     }
+
+
 }
+
+
 
 
 //출처: https://derveljunit.tistory.com/302 [Derveljun's Programming Log]

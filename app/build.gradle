@@ -26,10 +26,12 @@ android {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/io.netty.versions.properties'
         exclude 'META-INF/INDEX.LIST'
+        exclude module
+
     }
 
     configurations {
-        all*.exclude module: 'asm-3.1'
+        all*.exclude module: 'org_ow2_asm_asm'
         // This removes all other versions of `support-v4` if gets duplicated from all the artifacts.
     }
 }
@@ -50,7 +52,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.squareup.okhttp3:benchmarks:3.4.2'
     // 파이어 베이스 권한 관리
 
     testImplementation 'junit:junit:4.12'

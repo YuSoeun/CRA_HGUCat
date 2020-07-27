@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.CRA_HGUCat">
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/baseline_pets_black_36dp"
@@ -12,7 +11,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".getfile"/>
+        <activity android:name=".getfile"></activity>
         <activity android:name=".PopupActivity" />
         <activity android:name=".server_client" />
         <activity android:name=".CaptureCat" />
@@ -22,7 +21,7 @@
         <activity android:name=".nabi_information" />
         <activity android:name=".catlist" />
         <activity android:name=".home" />
-        <activity android:name=".ResisterActivity"></activity>
+        <activity android:name=".ResisterActivity"/>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +31,7 @@
         </activity>
     </application>
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" android:required="true"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="true"/>
 
