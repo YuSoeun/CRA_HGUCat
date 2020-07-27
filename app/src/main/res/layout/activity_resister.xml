@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResisterActivity">
+    tools:context=".ResisterActivity" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,7 +23,8 @@
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal"
                 android:id = "@+id/loginIdLayout"
-                android:layout_marginVertical="5dp" >
+                android:layout_marginTop = "?actionBarSize"
+                android:layout_marginBottom="5dp" >
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="wrap_content"
@@ -43,7 +44,8 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text = "인증번호 발송"
+                    android:id="@+id/HandongAuthBtn"
+                    android:text = "중복확인"
                     android:onClick="callEmail"
                     android:textSize="13dp"/>
 
@@ -56,7 +58,11 @@
         android:id = "@+id/loginPasswordLayout"
         android:layout_below="@id/loginIdLayout"
         app:endIconMode="password_toggle"
-        android:layout_marginVertical="5dp" >
+        android:layout_marginVertical="5dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/erroricon"
+        app:helperTextEnabled="true"
+        app:helperText = "숫자와 알파벳을 사용하여 6~15자를 만들어주세요.">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="320dp"
@@ -64,7 +70,7 @@
             android:id = "@+id/loginPassword"
             android:hint = "  비밀번호"
             app:errorEnabled="true"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +80,10 @@
                 android:layout_centerHorizontal="true"
                 android:id = "@+id/loginRePasswordLayout"
                 android:layout_below="@id/loginPasswordLayout"
-                android:layout_marginVertical="5dp" >
+                android:layout_marginVertical="5dp"
+                app:endIconMode="custom"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/erroricon" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="320dp"
@@ -93,7 +102,11 @@
         android:layout_centerHorizontal="true"
         android:id = "@+id/nicknameLayout"
         android:layout_below="@id/loginRePasswordLayout"
-        android:layout_marginVertical="5dp" >
+        android:layout_marginVertical="5dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/erroricon"
+        app:counterEnabled="true"
+        app:counterMaxLength="8">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="320dp"
@@ -113,7 +126,9 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/nicknameLayout"
         android:textSize = "24dp"
-        android:layout_marginVertical="20dp" />
+        android:layout_marginVertical="20dp"
+        android:onClick = "AskRegister"
+        android:enabled="true" />
 
         </RelativeLayout>
 

@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -48,7 +50,10 @@ public class LoginActivity extends AppCompatActivity {
                             {
                                 if(firebaseAuth.getCurrentUser().isEmailVerified())
                                 {
-                                    Toast.makeText(LoginActivity.this, "안녕하세요! " + "" + "님!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(LoginActivity.this, "안녕하세요! " +
+                                            FirebaseFirestore.getInstance().collection("UserProfile").document("Nickname")
+                                            .get().getResult().getData()
+                                            + "님!", Toast.LENGTH_LONG).show();
                                     finish();
                                 }
                             }
