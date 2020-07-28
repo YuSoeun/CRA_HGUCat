@@ -1,6 +1,8 @@
 package com.example.CRA_HGUCat;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -94,11 +96,11 @@ public class Getfile extends AppCompatActivity {
     public void goClick(View v){
 
         String imageOk = "파일이 저장되었습니다";
-        Intent intent2 = new Intent(getApplicationContext(), Community_add.class);
-        intent2.putExtra("imageOk", imageOk);
-        setResult(RESULT_OK, intent2);
+        Intent file = new Intent(getApplicationContext(), Community_add.class);
+        file.putExtra("imageOk", imageOk);
+        setResult(RESULT_OK, file);
 
-        Intent intent = new Intent(this, Community_add.class);
+        finish();
     }
 
 }
