@@ -37,7 +37,7 @@
                         android:id="@+id/HandongEmail"
                         app:errorEnabled="true"
                         android:inputType="textEmailAddress"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,7 +70,8 @@
             android:id = "@+id/loginPassword"
             android:hint = "  비밀번호"
             app:errorEnabled="true"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:enabled="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +92,8 @@
                     android:id = "@+id/loginRePassword"
                     android:hint = "  비밀번호 재입력"
                     app:errorEnabled="true"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:enabled="false" />
 <!--                이후 비밀번호가 같으면 오른쪽에 확인 상태 출력 -->
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -114,7 +116,8 @@
             android:id = "@+id/nickname"
             android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다)"
             android:textSize = "18sp"
-            app:errorEnabled="true" />
+            app:errorEnabled="true"
+            android:enabled="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,7 +131,7 @@
         android:textSize = "24dp"
         android:layout_marginVertical="20dp"
         android:onClick = "AskRegister"
-        android:enabled="true" />
+        android:enabled="false" />
 
         </RelativeLayout>
 

@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class personal_account extends AppCompatActivity {
 
@@ -54,13 +55,11 @@ public class personal_account extends AppCompatActivity {
 
     public void Logout(View v)
     {
-        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(personal_account.this,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(personal_account.this,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
+        Intent Login = new Intent(this, LoginActivity.class);
+        startActivity(Login);
+        finish();
     }
 
 }

@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -17,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.Map;
 
@@ -43,9 +41,10 @@ public class LoginActivity extends AppCompatActivity {
 
     public void GoLogin(View v)
     {
-        Id = findViewById(R.id.et_id);
-        Password = findViewById(R.id.et_pass);
+        Id = findViewById(R.id.SignInID);
+        Password = findViewById(R.id.SignInPassword);
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        Toast.makeText(LoginActivity.this, "접속 중...", Toast.LENGTH_SHORT).show();
         final String EmailID = Id.getText().toString() + "@handong.edu";
         firebaseAuth.signInWithEmailAndPassword(EmailID, Password.getText().toString())
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -57,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                         if (task.isSuccessful()) {
-                                            Toast.makeText(LoginActivity.this, "접속 중...", Toast.LENGTH_SHORT).show();
                                             Map<String, Object> mail2name = task.getResult().getData();
                                             for (Map.Entry<String, Object> i : mail2name.entrySet()) {
                                                 if (i.getKey().equals(EmailID)) {

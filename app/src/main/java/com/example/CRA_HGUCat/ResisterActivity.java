@@ -1,7 +1,6 @@
 package com.example.CRA_HGUCat;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -22,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,15 +81,18 @@ public class ResisterActivity extends AppCompatActivity {
                 if(!onNumber || !onAlpha)
                 {
                     passwordLayout.setError("반드시 알파벳(a ~ z)과 숫자(0 ~ 9)를 사용해주세요!");
+                    profile[2].setEnabled(false);
                 }
                 else if(password.length() > 15 || password.length() < 6)
                 {
                     passwordLayout.setError("비밀번호의 길이가 6 ~ 15자이어야 합니다!");
+                    profile[2].setEnabled(false);
                 }
                 else
                 {
                     passwordLayout.setErrorEnabled(false);
                     passwordLayout.setHelperTextEnabled(false);
+                    profile[2].setEnabled(true);
                 }
             }
         });
@@ -115,15 +116,12 @@ public class ResisterActivity extends AppCompatActivity {
                 if(password.equals(repassword))
                 {
                     rePasswordLayout.setErrorEnabled(false);
-                    if (!findViewById(R.id.HandongAuthBtn).isEnabled() && ableNickname)
-                    {
-                        Button btn = findViewById(R.id.registerBtn);
-                        btn.setEnabled(true);
-                    }
+                    profile[3].setEnabled(true);
                 }
                 else
                 {
                     rePasswordLayout.setError("다시 입력한 비밀번호가 비밀번호와 다릅니다!");
+                    profile[3].setEnabled(false);
                 }
             }
         });
@@ -163,10 +161,14 @@ public class ResisterActivity extends AppCompatActivity {
                 }
 
                 if(ableNickname &&
-                        profile[2].getText().toString().equals(profile[3].getText().toString()) &&
+                        profile[1].getText().toString().equals(profile[2].getText().toString()) &&
                         !findViewById(R.id.HandongAuthBtn).isEnabled())
                 {
                     findViewById(R.id.registerBtn).setEnabled(true);
+                }
+                else
+                {
+                    findViewById(R.id.registerBtn).setEnabled(false);
                 }
             }
         });
@@ -196,6 +198,7 @@ public class ResisterActivity extends AppCompatActivity {
                         {
                             HandongEmail = HandongMail;
                             findViewById(R.id.HandongAuthBtn).setEnabled(false);
+                            profile[1].setEnabled(true);
                             Toast.makeText(ResisterActivity.this, "중복되지 않은 학번입니다.", Toast.LENGTH_SHORT).show();
                         }
                     }
