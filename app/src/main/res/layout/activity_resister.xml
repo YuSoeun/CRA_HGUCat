@@ -1,74 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResisterActivity">
+    tools:context=".ResisterActivity" >
 
-    <EditText
-        android:id="@+id/et_id"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin = "5dp" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:id = "@+id/loginIdLayout"
+                android:layout_marginTop = "?actionBarSize"
+                android:layout_marginBottom="5dp" >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:hint = "  한동대학교 이메일을 입력해주세요"
+                        android:id="@+id/HandongEmail"
+                        app:errorEnabled="true"
+                        android:inputType="textEmailAddress"
+                        android:textSize="15dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/HandongAuthBtn"
+                    android:text = "중복확인"
+                    android:onClick="callEmail"
+                    android:textSize="13dp"/>
+
+            </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:hint="아이디"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:id = "@+id/loginPasswordLayout"
+        android:layout_below="@id/loginIdLayout"
+        app:endIconMode="password_toggle"
+        android:layout_marginVertical="5dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/erroricon"
+        app:helperTextEnabled="true"
+        app:helperText = "숫자와 알파벳을 사용하여 6~15자를 만들어주세요.">
 
-    <EditText
-        android:id="@+id/et_pass"
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/loginPassword"
+            android:hint = "  비밀번호"
+            app:errorEnabled="true"
+            android:inputType="textPassword"
+            android:enabled="false" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id = "@+id/loginRePasswordLayout"
+                android:layout_below="@id/loginPasswordLayout"
+                android:layout_marginVertical="5dp"
+                app:endIconMode="custom"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/erroricon" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/loginRePassword"
+                    android:hint = "  비밀번호 재입력"
+                    app:errorEnabled="true"
+                    android:inputType="textPassword"
+                    android:enabled="false" />
+<!--                이후 비밀번호가 같으면 오른쪽에 확인 상태 출력 -->
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="비밀번호"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+        android:layout_centerHorizontal="true"
+        android:id = "@+id/nicknameLayout"
+        android:layout_below="@id/loginRePasswordLayout"
+        android:layout_marginVertical="5dp"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/erroricon"
+        app:counterEnabled="true"
+        app:counterMaxLength="8">
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_pass"
-        app:layout_constraintStart_toStartOf="@+id/et_pass"
-        app:layout_constraintTop_toBottomOf="@+id/et_pass" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/nickname"
+            android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다)"
+            android:textSize = "18sp"
+            app:errorEnabled="true"
+            android:enabled="false" />
 
-    <EditText
-        android:id="@+id/et_age"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="나이"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_name"
-        app:layout_constraintStart_toStartOf="@+id/et_name"
-        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/bt_resister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="회원가입"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_age"
-        app:layout_constraintStart_toStartOf="@+id/et_age"
-        app:layout_constraintTop_toBottomOf="@+id/et_age" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:id="@+id/registerBtn"
+        android:text = "회원가입"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/nicknameLayout"
+        android:textSize = "24dp"
+        android:layout_marginVertical="20dp"
+        android:onClick = "AskRegister"
+        android:enabled="false" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

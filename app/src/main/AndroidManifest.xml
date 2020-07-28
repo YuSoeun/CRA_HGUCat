@@ -2,37 +2,37 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.CRA_HGUCat">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" android:required="true"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="true"/>
+
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/baseline_pets_black_36dp"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-
-        <activity android:name=".getfile"></activity>
-        <activity android:name=".PopupActivity" />
-        <activity android:name=".server_client" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".PopupActivity"></activity>
+        <activity android:name=".Getfile" />
+        <activity android:name=".Community_add" />
         <activity android:name=".CaptureCat" />
         <activity android:name=".Community_main" />
-        <activity android:name=".community_add" />
         <activity android:name=".personal_account" />
         <activity android:name=".nabi_information" />
         <activity android:name=".catlist" />
-        <activity android:name=".home" />
-        <activity android:name=".ResisterActivity"/>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ResisterActivity"
+            android:theme="@style/RegisterTheme" />
+        <activity android:name=".LoginActivity" />
     </application>
-
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" android:required="true"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="true"/>
 
 </manifest>

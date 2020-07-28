@@ -23,7 +23,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class getfile extends AppCompatActivity {
+public class Getfile extends AppCompatActivity {
 
     ImageView imgVwSelected;
     Button btnImageSend, btnImageSelection;
@@ -94,11 +94,11 @@ public class getfile extends AppCompatActivity {
     public void goClick(View v){
 
         String imageOk = "파일이 저장되었습니다";
-        Intent intent2 = new Intent(getApplicationContext(), community_add.class);
+        Intent intent2 = new Intent(getApplicationContext(), Community_add.class);
         intent2.putExtra("imageOk", imageOk);
         setResult(RESULT_OK, intent2);
 
-        Intent intent = new Intent(this, community_add.class);
+        Intent intent = new Intent(this, Community_add.class);
     }
 
 }

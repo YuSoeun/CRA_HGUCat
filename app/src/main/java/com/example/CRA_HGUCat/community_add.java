@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class community_add extends AppCompatActivity {
+public class Community_add extends AppCompatActivity {
 
     TextView editText1;
     TextView text_wheretopost;
@@ -35,7 +35,7 @@ public class community_add extends AppCompatActivity {
     }
 
     public void Fileuplode(View v){
-        Intent intent3 = new Intent(this, getfile.class);
+        Intent intent3 = new Intent(this, Getfile.class);
         startActivity(intent3);
     }
 

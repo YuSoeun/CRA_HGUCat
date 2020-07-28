@@ -1,74 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".personal_account">
+    tools:context=".personal_account"
+    android:layout_margin="5dp">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/MainAccount">
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="147dp"
-            android:layout_height="139dp"
-            android:layout_weight="1"
-            android:src="@drawable/baseline_pets_black_36dp" />
+            android:id="@+id/CatImage"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/baseline_pets_black_36dp"
+            android:layout_marginLeft="0dp"/>
 
         <TextView
             android:id="@+id/Textview"
             android:layout_width="match_parent"
-            android:layout_height="139dp"
-            android:layout_weight="10"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:text="정보"
             android:textColor="#000000"
-            android:textSize="16dp" />
+            android:textSize="50dp" />
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listview2"
+
+    <ScrollView
+        android:id="@+id/ScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_weight="10000000000000" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/MainAccount"
+        android:layout_above="@id/alarmSetting"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:orientation="horizontal">
+
+            <ListView
+                android:id="@+id/CatList"
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp">
+        android:layout_height="wrap_content"
+        android:gravity = "center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/alarmSetting"
+        android:layout_above="@id/LogoutBtn" >
 
         <TextView
-            android:id="@+id/Text_text"
-            android:layout_width="253dp"
+            android:id="@+id/alarmText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="알람 설정"
             android:textColor="#000000"
-            android:textSize="16dp" />
+            android:textSize="20dp"
+            android:layout_marginRight="50dp"/>
 
         <Switch
-            android:id="@+id/swich"
+            android:id="@+id/alarmSwitch"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginRight="50dp"
-            />
-
+            android:layout_marginLeft="50dp"/>
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/LogoutBtn"
+        android:text="Logout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="30dp"
+        android:onClick="Logout"/>
 
-
-
-</LinearLayout>
+</RelativeLayout>

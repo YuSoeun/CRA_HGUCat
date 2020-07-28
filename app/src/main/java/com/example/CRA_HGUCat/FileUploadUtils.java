@@ -14,7 +14,7 @@ import okhttp3.Response;
 public class FileUploadUtils {
 
     public static void send2Server(File file) {
-        /*
+
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("files", file.getName(), RequestBody.create(MultipartBody.FORM, file))
@@ -35,7 +35,7 @@ public class FileUploadUtils {
             public void onResponse(Call call, Response response) throws IOException {
                 Log.d("TEST : ", response.body().string());
             }
-        });*/
+        });
     }
 
 

@@ -1,5 +1,6 @@
 package com.example.CRA_HGUCat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -9,6 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class personal_account extends AppCompatActivity {
 
@@ -17,7 +24,7 @@ public class personal_account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_account);
 
-        ListView listview ;
+        /*ListView listview ;
         ListViewAdapter adapter;
 
         // Adapter 생성
@@ -43,7 +50,16 @@ public class personal_account extends AppCompatActivity {
 
                 // TODO : use item data.
             }
-        }) ;
+        }) ;*/
+    }
+
+    public void Logout(View v)
+    {
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(personal_account.this,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
+        Intent Login = new Intent(this, LoginActivity.class);
+        startActivity(Login);
+        finish();
     }
 
 }
