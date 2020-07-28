@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -21,6 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -207,7 +209,7 @@ public class ResisterActivity extends AppCompatActivity {
         }
     }
 
-    public void AskRegister(View v) {
+    public void AskResister(View v) {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.createUserWithEmailAndPassword(HandongEmail, profile[1].getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -218,14 +220,23 @@ public class ResisterActivity extends AppCompatActivity {
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(ResisterActivity.this, "문자를 이메일로 전송했습니다.", Toast.LENGTH_SHORT).show();
                                             docRef = FirebaseFirestore.getInstance().collection("UserProfile").document("Nickname");
                                             Map<String, Object> SaveData = new HashMap<>();
                                             SaveData.put(HandongEmail, profile[3].getText().toString());
-                                            docRef.set(SaveData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            docRef.set(SaveData, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
                                                 public void onSuccess(Void aVoid) {
-                                                    finish();
+                                                    final Snackbar snackbar = Snackbar.make(findViewById(R.id.ResisterActivityLayout),
+                                                            "한동대 이메일에서 링크를 클릭하여 인증\n해주셔야 로그인이 가능합니다.",
+                                                            Snackbar.LENGTH_INDEFINITE);
+                                                    snackbar.setAction("확인", new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View view) {
+                                                            snackbar.dismiss();
+                                                            finish();
+                                                        }
+                                                    });
+                                                    snackbar.show();
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
@@ -240,5 +251,10 @@ public class ResisterActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void ReturnLogin(View v)
+    {
+        finish();
     }
 }

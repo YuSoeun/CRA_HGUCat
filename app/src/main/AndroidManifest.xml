@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PasswordFinderActivity"></activity>
         <activity android:name=".CaptureCat" />
         <activity android:name=".Comunity_main" />
         <activity android:name=".personal_account" />
@@ -24,9 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ResisterActivity"
-            android:theme="@style/RegisterTheme"/>
+        <activity
+            android:name=".ResisterActivity"
+            android:theme="@style/RegisterTheme" />
         <activity android:name=".LoginActivity" />
     </application>
 

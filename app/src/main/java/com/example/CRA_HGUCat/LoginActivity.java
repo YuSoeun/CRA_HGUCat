@@ -52,20 +52,26 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
                                 DocumentReference docRef = FirebaseFirestore.getInstance().collection("UserProfile").document("Nickname");
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            Map<String, Object> mail2name = task.getResult().getData();
-                                            for (Map.Entry<String, Object> i : mail2name.entrySet()) {
-                                                if (i.getKey().equals(EmailID)) {
-                                                    Toast.makeText(LoginActivity.this, "안녕하세요! " + i.getValue() + "님!", Toast.LENGTH_LONG).show();
-                                                    finish();
+                                if(firebaseAuth.getCurrentUser().isEmailVerified()) {
+                                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                Map<String, Object> mail2name = task.getResult().getData();
+                                                for (Map.Entry<String, Object> i : mail2name.entrySet()) {
+                                                    if (i.getKey().equals(EmailID)) {
+                                                        Toast.makeText(LoginActivity.this, "안녕하세요! " + i.getValue() + "님!", Toast.LENGTH_LONG).show();
+                                                        finish();
+                                                    }
                                                 }
                                             }
                                         }
-                                    }
-                                });
+                                    });
+                                }
+                                else
+                                {
+                                    Toast.makeText(LoginActivity.this,"인증되지 않은 학번입니다.\n한동대 이메일에서 승인해주세요!",Toast.LENGTH_LONG).show();
+                                }
                             }
                             else
                             {
@@ -99,5 +105,17 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     });
+    }
+
+    public void GoPasswordFinder(View v)
+    {
+        Intent passwordfinder = new Intent(this,PasswordFinderActivity.class);
+        startActivity(passwordfinder);
+    }
+
+    public void GoGuestLogin(View v)
+    {
+        Toast.makeText(this,"안녕하세요! 익명2346 님!", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

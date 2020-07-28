@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/ResisterActivityLayout"
     tools:context=".ResisterActivity" >
 
     <ScrollView
@@ -51,29 +52,29 @@
 
             </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id = "@+id/loginPasswordLayout"
-        android:layout_below="@id/loginIdLayout"
-        app:endIconMode="password_toggle"
-        android:layout_marginVertical="5dp"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/erroricon"
-        app:helperTextEnabled="true"
-        app:helperText = "숫자와 알파벳을 사용하여 6~15자를 만들어주세요.">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id = "@+id/loginPasswordLayout"
+                android:layout_below="@id/loginIdLayout"
+                app:endIconMode="password_toggle"
+                android:layout_marginVertical="5dp"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/erroricon"
+                app:helperTextEnabled="true"
+                app:helperText = "숫자와 알파벳을 사용하여 6~15자를 만들어주세요.">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:id = "@+id/loginPassword"
-            android:hint = "  비밀번호"
-            app:errorEnabled="true"
-            android:inputType="textPassword"
-            android:enabled="false" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/loginPassword"
+                    android:hint = "  비밀번호"
+                    app:errorEnabled="true"
+                    android:inputType="textPassword"
+                    android:enabled="false" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
@@ -98,43 +99,55 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:id = "@+id/nicknameLayout"
-        android:layout_below="@id/loginRePasswordLayout"
-        android:layout_marginVertical="5dp"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@drawable/erroricon"
-        app:counterEnabled="true"
-        app:counterMaxLength="8">
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:id = "@+id/nicknameLayout"
+                android:layout_below="@id/loginRePasswordLayout"
+                android:layout_marginVertical="5dp"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/erroricon"
+                app:counterEnabled="true"
+                app:counterMaxLength="8">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:id = "@+id/nickname"
-            android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다)"
-            android:textSize = "18sp"
-            app:errorEnabled="true"
-            android:enabled="false" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="320dp"
+                    android:layout_height="wrap_content"
+                    android:id = "@+id/nickname"
+                    android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다)"
+                    android:textSize = "18sp"
+                    app:errorEnabled="true"
+                    android:enabled="false" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:id="@+id/registerBtn"
-        android:text = "회원가입"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/nicknameLayout"
-        android:textSize = "24dp"
-        android:layout_marginVertical="20dp"
-        android:onClick = "AskRegister"
-        android:enabled="false" />
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:id="@+id/registerBtn"
+                android:text = "회원가입"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/nicknameLayout"
+                android:textSize = "24dp"
+                android:layout_marginVertical="20dp"
+                android:onClick = "AskResister"
+                android:enabled="false" />
 
         </RelativeLayout>
 
     </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인 화면으로 돌아가기 ▶"
+        android:onClick="ReturnLogin"
+        android:textColor="#0000A0"
+        android:textSize="13dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp" />
 
 </RelativeLayout>
