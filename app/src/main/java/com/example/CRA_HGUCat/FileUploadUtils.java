@@ -3,6 +3,7 @@ package com.example.CRA_HGUCat;
 import android.util.Log;
 import java.io.File;
 import java.io.IOException;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MultipartBody;
@@ -13,14 +14,14 @@ import okhttp3.Response;
 
 public class FileUploadUtils {
 
-    public static void send2Server(File file) {
+    public static void goSend(File file) {
 
         RequestBody requestBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("files", file.getName(), RequestBody.create(MultipartBody.FORM, file))
                 .build();
         Request request = new Request.Builder()
-                .url("http://cat@49.143.69.123/upload")
+                .url("http://49.143.69.123/upload/users/100")
                 // Server URL 은 본인 IP를 입력
                 .post(requestBody).build();
         OkHttpClient client = new OkHttpClient();
@@ -37,11 +38,6 @@ public class FileUploadUtils {
             }
         });
     }
-
-
 }
-
-
-
 
 //출처: https://derveljunit.tistory.com/302 [Derveljun's Programming Log]

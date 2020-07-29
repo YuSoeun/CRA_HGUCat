@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Community_add">
+    tools:context=".community_add">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,9 +74,20 @@
 
         </LinearLayout>
         <Button
+            android:id="@+id/btn_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="게시하기" />
+            android:text="게시하기"
+            android:onClick="onClickPost"/>
+
+        <TextView android:id="@+id/TextView01"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"/>
+
+        <TextView android:id="@+id/chatting"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"/>
+
     </LinearLayout>
 </RelativeLayout>
