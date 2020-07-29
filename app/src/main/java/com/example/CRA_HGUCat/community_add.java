@@ -36,7 +36,8 @@ public class Community_add extends AppCompatActivity {
 
     public void Fileuplode(View v){
         Intent intent3 = new Intent(this, Getfile.class);
-        startActivity(intent3);
+        intent3.putExtra("data", "Test Popup");
+        startActivityForResult(intent3, 0);
     }
 
     @Override
@@ -47,8 +48,13 @@ public class Community_add extends AppCompatActivity {
                 //데이터 받기
                 String result = data.getStringExtra("checked");
                 text_wheretopost.setText(result);
+            }
+        }
 
-                String result2 = data.getStringExtra("imageok");
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
+                //데이터 받기
+                String result2 = data.getStringExtra("imageOk");
                 text_addfile.setText(result2);
             }
         }
