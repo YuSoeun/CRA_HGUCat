@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class Getfile extends AppCompatActivity {
 
     ImageView imgVwSelected;
@@ -32,26 +33,33 @@ public class Getfile extends AppCompatActivity {
     File tempSelectFile;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_getfile);
 
         btnImageSend = findViewById(R.id.btnImageSend);
         btnImageSend.setEnabled(false);
-        btnImageSend.setOnClickListener(new View.OnClickListener(){
+        btnImageSend.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                FileUploadUtils.send2Server(tempSelectFile);
+            public void onClick(View view) {
+                FileUploadUtils.goSend(tempSelectFile);
+                String imageOk = "파일이 저장되었습니다";
+
+                Intent file = new Intent(getApplicationContext(), Community_add.class);
+                file.putExtra("imageOk", imageOk);
+                setResult(RESULT_OK, file);
+
+                finish();
             }
         });
 
         btnImageSelection = findViewById(R.id.btnImageSelection);
-        btnImageSelection.setOnClickListener(new View.OnClickListener(){
+        btnImageSelection.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 // Intent를 통해 이미지를 선택
                 Intent intent = new Intent();
-                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                // intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, 1);
@@ -61,47 +69,34 @@ public class Getfile extends AppCompatActivity {
         imgVwSelected = findViewById(R.id.imgVwSelected);
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode != 1 || resultCode != RESULT_OK) {
-            return;
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode != 1 || resultCode != RESULT_OK) {
+                return;
+            }
+
+            Uri dataUri = data.getData();
+            imgVwSelected.setImageURI(dataUri);
+
+            try {
+                // ImageView 에 이미지 출력
+                InputStream in = getContentResolver().openInputStream(dataUri);
+                Bitmap image = BitmapFactory.decodeStream(in);
+                imgVwSelected.setImageBitmap(image);
+                in.close();
+
+                // 선택한 이미지 임시 저장
+                String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
+                tempSelectFile = new File(Environment.getExternalStorageDirectory() + "/Pictures/Test/", "temp_" + date + ".jpeg");
+                OutputStream out = new FileOutputStream(tempSelectFile);
+                image.compress(Bitmap.CompressFormat.JPEG, 100, out);
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+
+
+            btnImageSend.setEnabled(true);
         }
-
-        Uri dataUri = data.getData();
-        imgVwSelected.setImageURI(dataUri);
-
-        try {
-            // ImageView 에 이미지 출력
-            InputStream in = getContentResolver().openInputStream(dataUri);
-            Bitmap image = BitmapFactory.decodeStream(in);
-            imgVwSelected.setImageBitmap(image);
-            in.close();
-
-            // 선택한 이미지 임시 저장
-            String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-            tempSelectFile = new File(Environment.getExternalStorageDirectory() + "/Pictures/Test/", "temp_" + date + ".jpeg");
-            OutputStream out = new FileOutputStream(tempSelectFile);
-            image.compress(Bitmap.CompressFormat.JPEG, 100, out);
-
-
-        }
-        catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        btnImageSend.setEnabled(true);
-    }
-
-    public void goClick(View v){
-
-        String imageOk = "파일이 저장되었습니다";
-        Intent file = new Intent(getApplicationContext(), Community_add.class);
-        file.putExtra("imageOk", imageOk);
-        setResult(RESULT_OK, file);
-
-        finish();
-    }
-
 }
 //출처: https://derveljunit.tistory.com/302 [Derveljun's Programming Log]
