@@ -20,6 +20,7 @@ public class home extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 /*
         Intent Login = new Intent(this, LoginActivity.class);
         startActivity(Login);
@@ -62,7 +63,9 @@ public class home extends AppCompatActivity{
 
     public void StartComu(View v)
     {
+
         Intent comu = new Intent(this, Community_main.class);
+
         startActivity(comu);
     }
 

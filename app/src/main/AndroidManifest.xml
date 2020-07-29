@@ -14,11 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".PopupActivity"></activity>
         <activity android:name=".Getfile" />
         <activity android:name=".Community_add" />
         <activity android:name=".CaptureCat" />
         <activity android:name=".Community_main" />
+        <activity android:name=".PasswordFinderActivity"></activity>
         <activity android:name=".personal_account" />
         <activity android:name=".nabi_information" />
         <activity android:name=".catlist" />
