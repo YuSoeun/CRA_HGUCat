@@ -1,20 +1,17 @@
 package com.example.CRA_HGUCat;
 
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
-
 import java.net.Socket;
-
 
 public class contect_server implements Runnable {
 
     public static final int ServerPort = 20; //소켓포트설정
-    public static final String ServerIP = "49.143.69.123"; //연결될 서버IP
+    public static final String ServerIP = "cat@49.143.69.123"; //연결될 서버IP
 
     @Override
     public void run() {

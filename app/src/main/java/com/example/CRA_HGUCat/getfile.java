@@ -44,6 +44,7 @@ public class Getfile extends AppCompatActivity {
             public void onClick(View view) {
                 FileUploadUtils.goSend(tempSelectFile);
                 String imageOk = "파일이 저장되었습니다";
+
                 Intent file = new Intent(getApplicationContext(), Community_add.class);
                 file.putExtra("imageOk", imageOk);
                 setResult(RESULT_OK, file);
@@ -62,8 +63,6 @@ public class Getfile extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(intent, 1);
-
-
             }
         });
 

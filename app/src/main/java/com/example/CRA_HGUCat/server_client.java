@@ -14,6 +14,7 @@ import java.net.URLConnection;
 
 //import org.apache.http.util.ByteArrayBuffer;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -31,8 +32,9 @@ public class server_client extends Activity {
     private String name;
     private BufferedReader networkReader;
     private BufferedWriter networkWriter;
-    private String ip = "49.143.43.77"; // SERVER IP를 잡습니다.
+    private String ip = "cat@49.143.69.123"; // SERVER IP를 잡습니다.
     private int port = 20; // PORT를 설정합니다.
+
     @Override
     protected void onStop() {
         // TODO Auto-generated method stub
@@ -44,6 +46,7 @@ public class server_client extends Activity {
             e.printStackTrace();
         }
     }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server_client);
@@ -55,19 +58,17 @@ public class server_client extends Activity {
             e1.printStackTrace();
         }
         checkUpdate.start();
-        final EditText et = (EditText) findViewById(R.id.EditText01);
-        Button btn = (Button) findViewById(R.id.Button01);
-        final TextView tv = (TextView) findViewById(R.id.TextView01);
-        btn.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                if (!et.getText().toString().equals("")) {
-                    PrintWriter out = new PrintWriter(networkWriter, true);
-                    String return_msg = et.getText().toString();
-                    out.println(return_msg);
-                }
-            }
-        });
-    }
+
+        Intent i = getIntent();
+        String text = i.getStringExtra("Textbox");
+        assert text != null;
+
+        if (text.equals("")) {
+            PrintWriter out = new PrintWriter(networkWriter, true);
+            out.println(text);
+        }
+    };
+
     private Thread checkUpdate = new Thread() {
         public void run() {
             try {
@@ -89,6 +90,7 @@ public class server_client extends Activity {
                         Toast.LENGTH_SHORT).show();
             }
         };
+
         public void setSocket(String ip, int port) throws IOException {
             try {
                 socket = new Socket(ip, port);
@@ -99,10 +101,8 @@ public class server_client extends Activity {
             } catch (IOException e) {
                 System.out.println(e);
                 e.printStackTrace();
-            }
-            ;
-        }
-        ;
+            };
+        };
 }
 
 
