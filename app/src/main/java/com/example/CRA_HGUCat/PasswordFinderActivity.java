@@ -36,14 +36,18 @@ public class PasswordFinderActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful())
                 {
-                    if(task.getResult().getData().containsKey(resettingPassword.getText().toString()))
+                    if(task.getResult().getData().containsKey(resettingPassword.getText().toString()+"@handong.edu"))
                     {
 
                     }
                     else
                     {
-                        Snackbar.make(findViewById(R.id.PasswordFinderLayout),"등록되지 않은 학번입니다.\n 다시 확인해주세요.",Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(findViewById(R.id.PasswordFinderLayout),"등록되지 않은 학번입니다.\n다시 확인해주세요.",Snackbar.LENGTH_LONG).show();
                     }
+                }
+                else
+                {
+                    Snackbar.make(findViewById(R.id.PasswordFinderLayout),"오류가 발생헀습니다.\n다시 확인해주세요.",Snackbar.LENGTH_LONG).show();
                 }
             }
         });

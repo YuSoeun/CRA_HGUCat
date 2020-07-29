@@ -21,8 +21,17 @@ public class home extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Intent Login = new Intent(this, LoginActivity.class);
-        startActivity(Login);
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null) {
+            Intent Login = new Intent(this, LoginActivity.class);
+            startActivity(Login);
+        }
     }
 
     @Override

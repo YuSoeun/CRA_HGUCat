@@ -57,8 +57,6 @@ public class personal_account extends AppCompatActivity {
     {
         FirebaseAuth.getInstance().signOut();
         Toast.makeText(personal_account.this,"로그아웃 되었습니다.",Toast.LENGTH_SHORT).show();
-        Intent Login = new Intent(this, LoginActivity.class);
-        startActivity(Login);
         finish();
     }
 
