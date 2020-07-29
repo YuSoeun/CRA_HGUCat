@@ -82,11 +82,8 @@ public class home extends AppCompatActivity{
         startActivity(cmr);
     }
 
-    /*
     public void Startfavo(View v)
     {
-        Intent cmr = new Intent(this, favorite.class);
-        startActivity(cmr);
+        Toast.makeText(this,"개발 중인 항목입니다.",Toast.LENGTH_SHORT).show();
     }
-    */
 }

@@ -34,6 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/SignInPasswordLayout"
+        android:layout_below="@id/SignInIDlayout"
         android:gravity="center"
         app:endIconMode="password_toggle" >
 
@@ -83,6 +84,7 @@
         android:id="@+id/PasswordFinder"
         android:onClick="GoPasswordFinder" />
     </RelativeLayout>
+
     <TextView
         android:id="@+id/guestLogin"
         android:layout_width="wrap_content"
