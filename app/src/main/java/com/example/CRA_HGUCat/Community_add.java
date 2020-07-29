@@ -20,7 +20,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class community_add extends AppCompatActivity {
+public class Community_add extends AppCompatActivity {
 
     TextView editText1;
     TextView text_wheretopost, tv;
@@ -54,7 +54,7 @@ public class community_add extends AppCompatActivity {
     }
 
     public void Fileuplode(View v){
-        Intent file = new Intent(this, getfile.class);
+        Intent file = new Intent(this, Getfile.class);
         file.putExtra("data", "Test Popup");
         startActivityForResult(file, 1);
     }

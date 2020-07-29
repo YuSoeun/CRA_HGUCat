@@ -53,7 +53,7 @@ public class PopupActivity extends Activity {
                 if (checklist.size() == 1){
                     Toast.makeText(PopupActivity.this, "설정되었습니다.", Toast.LENGTH_SHORT).show();
                     String check = (String) checklist.get(0);
-                    Intent intent = new Intent(getApplicationContext(), community_add.class);
+                    Intent intent = new Intent(getApplicationContext(), Community_add.class);
                     intent.putExtra("checked", check);
                     setResult(RESULT_OK, intent);
 

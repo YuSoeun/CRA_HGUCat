@@ -20,10 +20,17 @@ public class home extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+    }
 
-/*
-        Intent Login = new Intent(this, LoginActivity.class);
-        startActivity(Login);
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent Login = new Intent(this, LoginActivity.class);
+            startActivity(Login);
+        }
     }
 
     @Override
@@ -44,7 +51,7 @@ public class home extends AppCompatActivity{
             {
                 response.getError().getErrorCode();
             }
-        }*/
+        }
     }
 
 
@@ -75,11 +82,8 @@ public class home extends AppCompatActivity{
         startActivity(cmr);
     }
 
-    /*
     public void Startfavo(View v)
     {
-        Intent cmr = new Intent(this, favorite.class);
-        startActivity(cmr);
+        Toast.makeText(this,"개발 중인 항목입니다.",Toast.LENGTH_SHORT).show();
     }
-    */
 }

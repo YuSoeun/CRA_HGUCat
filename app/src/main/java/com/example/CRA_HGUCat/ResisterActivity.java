@@ -211,7 +211,9 @@ public class ResisterActivity extends AppCompatActivity {
     }
 
     public void AskResister(View v) {
+        findViewById(R.id.registerBtn).setEnabled(false);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.setLanguageCode("ko");
         firebaseAuth.createUserWithEmailAndPassword(HandongEmail, profile[1].getText().toString())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -242,13 +244,14 @@ public class ResisterActivity extends AppCompatActivity {
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
-
+                                                    findViewById(R.id.registerBtn).setEnabled(true);
                                                 }
                                             });
                                         }
                                     });
                         } else {
                             Toast.makeText(ResisterActivity.this, "가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                            findViewById(R.id.registerBtn).setEnabled(true);
                         }
                     }
                 });
@@ -258,4 +261,5 @@ public class ResisterActivity extends AppCompatActivity {
     {
         finish();
     }
+
 }

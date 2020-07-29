@@ -26,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class getfile extends AppCompatActivity {
+public class Getfile extends AppCompatActivity {
 
     ImageView imgVwSelected;
     Button btnImageSend, btnImageSelection;
@@ -45,7 +45,7 @@ public class getfile extends AppCompatActivity {
                 FileUploadUtils.goSend(tempSelectFile);
                 String imageOk = "파일이 저장되었습니다";
 
-                Intent file = new Intent(getApplicationContext(), community_add.class);
+                Intent file = new Intent(getApplicationContext(), Community_add.class);
                 file.putExtra("imageOk", imageOk);
                 setResult(RESULT_OK, file);
 
