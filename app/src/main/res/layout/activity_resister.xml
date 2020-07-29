@@ -73,7 +73,6 @@
                     app:errorEnabled="true"
                     android:inputType="textPassword"
                     android:enabled="false" />
-
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

@@ -20,7 +20,6 @@ public class home extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
     }
 
     @Override
@@ -28,7 +27,7 @@ public class home extends AppCompatActivity{
 
         super.onResume();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user == null) {
+        if (user == null) {
             Intent Login = new Intent(this, LoginActivity.class);
             startActivity(Login);
         }
@@ -55,6 +54,8 @@ public class home extends AppCompatActivity{
         }
     }
 
+
+
     public void StartList(View v)
     {
         Intent catlist = new Intent(this, catlist.class);
@@ -69,7 +70,9 @@ public class home extends AppCompatActivity{
 
     public void StartComu(View v)
     {
-        Intent comu = new Intent(this, Comunity_main.class);
+
+        Intent comu = new Intent(this, Community_main.class);
+
         startActivity(comu);
     }
 

@@ -7,12 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true">
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,8 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/SignInPasswordLayout"
-        android:layout_below="@id/SignInIDlayout"
-        android:layout_centerHorizontal="true"
         android:gravity="center"
         app:endIconMode="password_toggle" >
 
