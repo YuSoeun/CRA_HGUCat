@@ -47,6 +47,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.4.2'
     //팝업창 관련
 
+    implementation "com.jcraft:jsch:0.1.55"
+    // 리눅스 연결
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class home extends AppCompatActivity{
@@ -20,9 +21,10 @@ public class home extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        FirebaseFirestore.getInstance().disableNetwork();
     }
 
-    @Override
+    /*@Override
     protected void onResume() {
 
         super.onResume();
@@ -31,7 +33,7 @@ public class home extends AppCompatActivity{
             Intent Login = new Intent(this, LoginActivity.class);
             startActivity(Login);
         }
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
