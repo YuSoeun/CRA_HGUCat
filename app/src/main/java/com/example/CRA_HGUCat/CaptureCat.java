@@ -30,7 +30,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -120,7 +125,7 @@ public class CaptureCat extends AppCompatActivity {
 
     public void onClick(View v)
     {
-        UploadPicture();
+        UploadPicture2Server();
     }
 
     void UploadPicture()
@@ -153,6 +158,47 @@ public class CaptureCat extends AppCompatActivity {
                 Toast.makeText(CaptureCat.this,"Uploaded",Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    void UploadPicture2Server()
+    {
+        final String Username = "cat";
+        final String UploadUri = "49.143.69.123";
+        final int port = 22;
+        new Thread() {
+            public void run(){
+                try
+                {
+                    JSch jsch = new JSch();
+                    Session session = jsch.getSession(Username,UploadUri,port);
+                    session.setPassword("hgucat");
+                    java.util.Properties config = new java.util.Properties();
+                    config.put("StrictHostKeyChecking", "no");
+                    session.setConfig(config);
+                    session.connect();
+
+                    Channel channel = session.openChannel("sftp");
+                    channel.connect();
+                    ChannelSftp channelSftp = (ChannelSftp) channel;
+
+                    Matrix rotation = new Matrix();
+                    rotation.postRotate(90);
+                    Bitmap bitmap = cameraView.getBitmap();
+                    bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),rotation,false);
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG,95,baos);
+
+                    byte[] data = baos.toByteArray();
+                    ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
+                    channelSftp.put(inputStream,"/home/cat/Hello/TestFile.png");
+                    session.disconnect();
+                }
+                catch(Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }.start();
     }
 
     void cameraPreview()

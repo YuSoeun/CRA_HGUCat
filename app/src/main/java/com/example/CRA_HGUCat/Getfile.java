@@ -2,27 +2,30 @@ package com.example.CRA_HGUCat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
+import android.graphics.drawable.BitmapDrawable;
+import android.icu.util.Output;
 import android.os.Bundle;
 import android.view.View;
 
-import android.widget.TextView;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
-import java.io.File;
-import java.io.FileOutputStream;
+
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -30,7 +33,6 @@ public class Getfile extends AppCompatActivity {
 
     ImageView imgVwSelected;
     Button btnImageSend, btnImageSelection;
-    File tempSelectFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +44,23 @@ public class Getfile extends AppCompatActivity {
         btnImageSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FileUploadUtils.goSend(tempSelectFile);
+
+                ImageView img = findViewById(R.id.imgVwSelected);
+                Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG,90,outputStream);
+
+                byte[] data = outputStream.toByteArray();
+
                 String imageOk = "파일이 저장되었습니다";
 
-                Intent file = new Intent(getApplicationContext(), Community_add.class);
-                file.putExtra("imageOk", imageOk);
-                setResult(RESULT_OK, file);
+                Intent addimage = new Intent(getApplicationContext(), Community_add.class);
+                addimage.putExtra("imageOk", imageOk);
+                addimage.putExtra("data_byte", data);
+                setResult(RESULT_OK, addimage);
 
                 finish();
+                //bitmap byte로 바꾼 것 community_Add class로 전송
             }
         });
 
@@ -86,17 +97,13 @@ public class Getfile extends AppCompatActivity {
                 imgVwSelected.setImageBitmap(image);
                 in.close();
 
-                // 선택한 이미지 임시 저장
-                String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-                tempSelectFile = new File(Environment.getExternalStorageDirectory() + "/Pictures/Test/", "temp_" + date + ".jpeg");
-                OutputStream out = new FileOutputStream(tempSelectFile);
-                image.compress(Bitmap.CompressFormat.JPEG, 100, out);
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
 
-
             btnImageSend.setEnabled(true);
         }
+
+
 }
 //출처: https://derveljunit.tistory.com/302 [Derveljun's Programming Log]

@@ -3,6 +3,7 @@
     package="com.example.CRA_HGUCat">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission
         android:name="android.permission.INTERNET"
         android:required="true" />
@@ -22,7 +23,7 @@
         <activity android:name=".PopupActivity"></activity>
         <activity android:name=".Getfile" />
         <activity android:name=".Community_add" />
-        <activity android:name=".CaptureCat" />
+        <activity android:name=".CaptureCat" android:screenOrientation="portrait"/>
         <activity android:name=".Community_main" />
         <activity android:name=".PasswordFinderActivity"></activity>
         <activity android:name=".personal_account" />
