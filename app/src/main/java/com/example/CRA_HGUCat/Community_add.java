@@ -68,7 +68,7 @@ public class Community_add extends AppCompatActivity {
 
     public void Fileuplode(View v){
         Intent file = new Intent(this, Getfile.class);
-        file.putExtra("data", "Test Popup");
+        file.putExtra("data_file", "data");
         startActivityForResult(file, 1);
     }
 
@@ -101,8 +101,6 @@ public class Community_add extends AppCompatActivity {
                     byte[] data = text_addfile.getText().toString().getBytes();
                     System.out.println(Arrays.toString(data));
 
-
-
                     ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
 
                     String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
@@ -124,21 +122,21 @@ public class Community_add extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK) {
-            if (requestCode == 0) {
+        if (requestCode == 0) {
+            if (resultCode == RESULT_OK) {
                 //데이터 받기
                 String result = data.getStringExtra("checked");
                 text_wheretopost.setText(result);
             }
+        }
 
-            if (requestCode == 1) {
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
                 //데이터 받기
-                String result2 = data.getStringExtra("imageOk");
-                text_addfile.setText(result2);
+                String data_conveyed = data.getStringExtra("data_file");
+                text_addfile.setText(data_conveyed);
+                System.out.println(data_conveyed);
             }
         }
-        String data_conveyed = data.getStringExtra("data_byte");
-        text_addfile.setText(data_conveyed);
-        System.out.println(data_conveyed);
     }
 }

@@ -45,12 +45,6 @@ public class Getfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String imageOk = "파일이 저장되었습니다";
-
-                Intent file = new Intent(getApplicationContext(), Community_add.class);
-                file.putExtra("imageOk", imageOk);
-                setResult(RESULT_OK, file);
-
                 ImageView img = findViewById(R.id.imgVwSelected);
                 Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -60,12 +54,11 @@ public class Getfile extends AppCompatActivity {
                 byte[] data = outputStream.toByteArray();
                 System.out.println(Arrays.toString(data));
 
-
                 Intent addimage = new Intent(getApplicationContext(), Community_add.class);
-                addimage.putExtra("data_byte", data);
-                startActivity(addimage);
-
+                addimage.putExtra("data_file", data);
+                setResult(RESULT_OK, addimage);
                 finish();
+                //bitmap byte로 바꾼 것 community_Add class로 전송
             }
         });
 
