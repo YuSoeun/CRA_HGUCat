@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -101,8 +102,6 @@ public class Community_add extends AppCompatActivity {
                     byte[] data = text_addfile.getText().toString().getBytes();
                     System.out.println(Arrays.toString(data));
 
-
-
                     ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
 
                     String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
@@ -135,10 +134,15 @@ public class Community_add extends AppCompatActivity {
                 //데이터 받기
                 String result2 = data.getStringExtra("imageOk");
                 text_addfile.setText(result2);
+                byte[] dataBytes = data.getByteArrayExtra("data_byte");
+                ByteArrayInputStream inputStream = new ByteArrayInputStream(dataBytes);
+                ImageView SampleImg = findViewById(R.id.SampleImage);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                SampleImg.setImageBitmap(bitmap);
             }
         }
-        String data_conveyed = data.getStringExtra("data_byte");
-        text_addfile.setText(data_conveyed);
-        System.out.println(data_conveyed);
+//        String data_conveyed = data.getStringExtra("data_byte");
+//        text_addfile.setText(data_conveyed);
+//        System.out.println(data_conveyed);
     }
 }

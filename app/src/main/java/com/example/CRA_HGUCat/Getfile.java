@@ -45,25 +45,19 @@ public class Getfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String imageOk = "파일이 저장되었습니다";
-
-                Intent file = new Intent(getApplicationContext(), Community_add.class);
-                file.putExtra("imageOk", imageOk);
-                setResult(RESULT_OK, file);
-
                 ImageView img = findViewById(R.id.imgVwSelected);
                 Bitmap bitmap = ((BitmapDrawable)img.getDrawable()).getBitmap();
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG,90,outputStream);
-                // 이미지를 받아와서 비트맵으로 전환
 
                 byte[] data = outputStream.toByteArray();
-                System.out.println(Arrays.toString(data));
 
+                String imageOk = "파일이 저장되었습니다";
 
                 Intent addimage = new Intent(getApplicationContext(), Community_add.class);
+                addimage.putExtra("imageOk", imageOk);
                 addimage.putExtra("data_byte", data);
-                startActivity(addimage);
+                setResult(RESULT_OK, addimage);
 
                 finish();
             }

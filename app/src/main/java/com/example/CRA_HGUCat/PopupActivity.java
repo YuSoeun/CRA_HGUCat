@@ -32,9 +32,9 @@ public class PopupActivity extends Activity {
 
         //UI 객체생성
         checkbox1 = (CheckBox) findViewById(R.id.checkBox1);
-        checkbox2 = (CheckBox)findViewById(R.id.checkBox2);
-        checkbox3 = (CheckBox)findViewById(R.id.checkBox3);
-        checkbox4 = (CheckBox)findViewById(R.id.checkBox4);
+        checkbox2 = (CheckBox) findViewById(R.id.checkBox2);
+        checkbox3 = (CheckBox) findViewById(R.id.checkBox3);
+        checkbox4 = (CheckBox) findViewById(R.id.checkBox4);
 
         Button btn_choose = (Button)findViewById(R.id.btn_choose);
         final TextView tv = (TextView)findViewById(R.id.textView2);
