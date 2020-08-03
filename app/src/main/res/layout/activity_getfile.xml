@@ -34,8 +34,7 @@
         <Button android:id="@+id/btnImageSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="보내기"
-            android:onClick="goClick" />
+            android:text="보내기" />
 
     </LinearLayout>
 </RelativeLayout>

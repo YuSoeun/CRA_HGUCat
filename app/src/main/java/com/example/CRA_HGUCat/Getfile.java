@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
+import android.icu.util.Output;
 import android.os.Bundle;
 import android.view.View;
 
@@ -53,7 +54,7 @@ public class Getfile extends AppCompatActivity {
         btnImageSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FileUploadUtils.goSend(tempSelectFile);
+                goClick();
                 String imageOk = "파일이 저장되었습니다";
 
                 Intent file = new Intent(getApplicationContext(), Community_add.class);
@@ -111,7 +112,7 @@ public class Getfile extends AppCompatActivity {
             btnImageSend.setEnabled(true);
         }
 
-    public void goClick(View v)
+    public void goClick()
     {
         new Thread() {
             public void run(){
