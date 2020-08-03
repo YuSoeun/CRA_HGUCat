@@ -60,6 +60,7 @@ public class Getfile extends AppCompatActivity {
                 setResult(RESULT_OK, addimage);
 
                 finish();
+                //bitmap byte로 바꾼 것 community_Add class로 전송
             }
         });
 
