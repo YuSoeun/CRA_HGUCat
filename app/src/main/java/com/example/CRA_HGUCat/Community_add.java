@@ -41,7 +41,7 @@ public class Community_add extends AppCompatActivity {
 
         Intent pop = new Intent(this, PopupActivity.class);
         pop.putExtra("data", "Test Popup");
-        startActivityForResult(pop, 1);
+        startActivityForResult(pop, 0);
 
     }
 
