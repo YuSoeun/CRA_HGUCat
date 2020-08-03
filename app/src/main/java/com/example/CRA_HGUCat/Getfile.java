@@ -2,38 +2,27 @@ package com.example.CRA_HGUCat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.graphics.drawable.BitmapDrawable;
-import android.icu.util.Output;
 import android.os.Bundle;
 import android.view.View;
 
-import android.widget.TextView;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.jcraft.jsch.Channel;
-import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -42,7 +31,6 @@ public class Getfile extends AppCompatActivity {
 
     ImageView imgVwSelected;
     Button btnImageSend, btnImageSelection;
-    File tempSelectFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,7 +126,6 @@ public class Getfile extends AppCompatActivity {
                     byte[] data = outputStream.toByteArray();
                     ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
                     String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-                    channelSftp.put(new ByteArrayInputStream("".getBytes()),"/home/cat/Hello/" + date + ".png");
                     channelSftp.put(inputStream,"/home/cat/Hello/" + date + ".png");
                     // 현재 시간으로 파일명을 지정하여 새 파일 생성 후 저장
                     session.disconnect();
