@@ -33,7 +33,7 @@ public class server_client extends Activity {
     private BufferedReader networkReader;
     private BufferedWriter networkWriter;
     private String ip = "cat@49.143.69.123"; // SERVER IP를 잡습니다.
-    private int port = 20; // PORT를 설정합니다.
+    private int port = 22; // PORT를 설정합니다.
 
     @Override
     protected void onStop() {
