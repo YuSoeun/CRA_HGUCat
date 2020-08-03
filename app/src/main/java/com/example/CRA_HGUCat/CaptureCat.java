@@ -194,14 +194,11 @@ public class CaptureCat extends AppCompatActivity {
 
                     byte[] data = baos.toByteArray();
                     ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
-                    channelSftp.put(new ByteArrayInputStream("".getBytes()),"/home/cat/Hello/TestFile.png");
                     channelSftp.put(inputStream,"/home/cat/Hello/TestFile.png");
                     session.disconnect();
-//                    Toast.makeText(CaptureCat.this,"Uploaded" ,Toast.LENGTH_SHORT).show();
                 }
                 catch(Exception e)
                 {
-//                    Toast.makeText(CaptureCat.this,"Upload failed by "+e ,Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
             }
