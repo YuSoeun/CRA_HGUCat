@@ -62,7 +62,7 @@ public class PopupActivity extends Activity {
                 }
 
                 else{
-                    Toast.makeText(PopupActivity.this, "하나만 체크", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PopupActivity.this, "하나만 체크해주세요", Toast.LENGTH_SHORT).show();
                 }
             } // end onClick
         }); // end setOnClickListener

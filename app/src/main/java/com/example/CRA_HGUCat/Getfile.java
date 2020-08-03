@@ -102,6 +102,7 @@ public class Getfile extends AppCompatActivity {
                 tempSelectFile = new File(Environment.getExternalStorageDirectory() + "/Pictures/Test/", "temp_" + date + ".jpeg");
                 OutputStream out = new FileOutputStream(tempSelectFile);
                 image.compress(Bitmap.CompressFormat.JPEG, 100, out);
+
             } catch (IOException ioe) {
                 ioe.printStackTrace();
             }

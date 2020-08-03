@@ -21,7 +21,7 @@ public class FileUploadUtils {
                 .addFormDataPart("files", file.getName(), RequestBody.create(MultipartBody.FORM, file))
                 .build();
         Request request = new Request.Builder()
-                .url("http://49.143.69.123/upload/users/100")
+                .url("http://49.143.69.123/users/100")
                 // Server URL 은 본인 IP를 입력
                 .post(requestBody).build();
         OkHttpClient client = new OkHttpClient();
