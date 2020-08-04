@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class home extends AppCompatActivity{
+public class Home extends AppCompatActivity{
 
     private static final int RC_SIGN_IN = 1234;
 
@@ -36,21 +36,15 @@ public class home extends AppCompatActivity{
     }*/
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == RC_SIGN_IN)
-        {
+        if(requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
-
-            if(resultCode == RESULT_OK)
-            {
+            if(resultCode == RESULT_OK) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this,"Hello! " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
             }
-            else
-            {
+            else {
                 response.getError().getErrorCode();
             }
         }
@@ -58,34 +52,27 @@ public class home extends AppCompatActivity{
 
 
 
-    public void StartList(View v)
-    {
-        Intent catlist = new Intent(this, catlist.class);
-        startActivity(catlist);
+    public void StartList(View v) {
+        Intent catList = new Intent(this, CatList.class);
+        startActivity(catList);
     }
 
-    public void StartAccount(View v)
-    {
-        Intent acc = new Intent(this, personal_account.class);
-        startActivity(acc);
+    public void StartAccount(View v) {
+        Intent personalAccount = new Intent(this, PersonalAccount.class);
+        startActivity(personalAccount);
     }
 
-    public void StartComu(View v)
-    {
-
-        Intent comu = new Intent(this, Community_main.class);
-
-        startActivity(comu);
+    public void StartCommunity(View v) {
+        Intent mainCommunity = new Intent(this, CommunityMain.class);
+        startActivity(mainCommunity);
     }
 
-    public void StartCamera(View v)
-    {
-        Intent cmr = new Intent(this,CaptureCat.class);
-        startActivity(cmr);
+    public void StartCamera(View v) {
+        Intent captureMode = new Intent(this,CaptureCat.class);
+        startActivity(captureMode);
     }
 
-    public void Startfavo(View v)
-    {
+    public void StartFavoriteCat(View v) {
         Toast.makeText(this,"개발 중인 항목입니다.",Toast.LENGTH_SHORT).show();
     }
 }

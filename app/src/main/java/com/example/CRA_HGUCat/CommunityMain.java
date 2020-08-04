@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class Community_main extends AppCompatActivity {
+public class CommunityMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,8 +14,8 @@ public class Community_main extends AppCompatActivity {
         setContentView(R.layout.activity_community_main);
     }
 
-    public void AddComu(View v) {
-        Intent intent = new Intent(this, Community_add.class);
+    public void AddCommunity(View v) {
+        Intent intent = new Intent(this, CommunityAdd.class);
         startActivity(intent);
     }
 }

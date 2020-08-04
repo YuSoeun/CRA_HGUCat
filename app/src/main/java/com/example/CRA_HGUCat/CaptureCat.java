@@ -109,13 +109,16 @@ public class CaptureCat extends AppCompatActivity {
             if ((orientation < 35 || orientation > 325) && rotation != 0) {
                 rotation = 0;
                 cameraView.setRotation(90f);
-            } else if (orientation > 145 && orientation < 215 && rotation != 2) {
+            }
+            else if (orientation > 145 && orientation < 215 && rotation != 2) {
                 rotation = 2;
                 cameraView.setRotation(90f);
-            } else if (orientation > 55 && orientation < 125 && rotation != 3) {
+            }
+            else if (orientation > 55 && orientation < 125 && rotation != 3) {
                 rotation = 3;
                 cameraView.setRotation(180f);
-            } else if (orientation > 235 && orientation < 305 && rotation != 1) {
+            }
+            else if (orientation > 235 && orientation < 305 && rotation != 1) {
                 rotation = 1;
                 cameraView.setRotation(180f);
             }
@@ -138,7 +141,8 @@ public class CaptureCat extends AppCompatActivity {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
 
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://handong-cat-test1.appspot.com");
+        StorageReference storageRef = storage.getReferenceFromUrl("");
+        // TODO URL추가 - 1
 
         StorageReference catRef = storageRef.child(new SimpleDateFormat("yyyyMMddhhmmss").format(new Date())+".png");
 
@@ -150,61 +154,60 @@ public class CaptureCat extends AppCompatActivity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CaptureCat.this,"Upload failed by "+e ,Toast.LENGTH_SHORT).show();
+            Toast.makeText(CaptureCat.this,"Upload failed by "+e ,Toast.LENGTH_SHORT).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(CaptureCat.this,"Uploaded",Toast.LENGTH_SHORT).show();
+            Toast.makeText(CaptureCat.this,"Uploaded",Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     void UploadPicture2Server()
     {
-        final String Username = "cat";
-        final String UploadUri = "49.143.69.123";
-        final int port = 22;
+        final String Username = "";
+        final String UploadUri = "";
+        final int port = 0;
+        //TODO 유저이름, URI, PORT 추가하기 - 2
         new Thread() {
             public void run(){
-                try
-                {
-                    JSch jsch = new JSch();
-                    Session session = jsch.getSession(Username,UploadUri,port);
-                    session.setPassword("hgucat");
-                    java.util.Properties config = new java.util.Properties();
-                    config.put("StrictHostKeyChecking", "no");
-                    session.setConfig(config);
-                    session.connect();
+            try {
+                JSch jsch = new JSch();
+                Session session = jsch.getSession(Username,UploadUri,port);
+                session.setPassword("");
+                //TODO 비밀번호 추가하기 - 3
+                java.util.Properties config = new java.util.Properties();
+                config.put("StrictHostKeyChecking", "no");
+                session.setConfig(config);
+                session.connect();
 
-                    Channel channel = session.openChannel("sftp");
-                    channel.connect();
-                    ChannelSftp channelSftp = (ChannelSftp) channel;
+                Channel channel = session.openChannel("sftp");
+                channel.connect();
+                ChannelSftp channelSftp = (ChannelSftp) channel;
 
-                    Matrix rotation = new Matrix();
-                    rotation.postRotate(90);
-                    Bitmap bitmap = cameraView.getBitmap();
-                    bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),rotation,false);
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG,95,baos);
+                Matrix rotation = new Matrix();
+                rotation.postRotate(90);
+                Bitmap bitmap = cameraView.getBitmap();
+                bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),rotation,false);
+                ByteArrayOutputStream BitmapOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG,95,BitmapOutputStream);
 
-                    byte[] data = baos.toByteArray();
-                    ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
-                    channelSftp.put(inputStream,"/home/cat/Hello/TestFile.png");
-                    session.disconnect();
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
+                byte[] data = BitmapOutputStream.toByteArray();
+                ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
+                channelSftp.put(inputStream,"/home/cat/Hello/TestFile.png");
+                session.disconnect();
+            }
+            catch(Exception e) {
+                e.printStackTrace();
+            }
             }
         }.start();
     }
 
     void cameraPreview()
     {
-        try
-        {
+        try {
             SurfaceTexture tx = cameraView.getSurfaceTexture();
             assert tx != null;
             tx.setDefaultBufferSize(imageDimension.getWidth(),imageDimension.getHeight());
@@ -226,34 +229,28 @@ public class CaptureCat extends AppCompatActivity {
                 }
             },null);
         }
-        catch (CameraAccessException e)
-        {
+        catch (CameraAccessException e) {
             e.printStackTrace();
         }
     }
 
-    private void updatePreview()
-    {
+    private void updatePreview() {
         if(cameradevice == null) Toast.makeText(this,"Error",Toast.LENGTH_SHORT).show();
         builder.set(CaptureRequest.CONTROL_MODE,CaptureRequest.CONTROL_MODE_AUTO);
-        try
-        {
+        try {
             session.setRepeatingRequest(builder.build(),null, null);
         }
-        catch (CameraAccessException e)
-        {
+        catch (CameraAccessException e) {
             e.printStackTrace();
         }
     }
 
     static final int PERMISSION_CODE = 1000;
 
-    void openCamera()
-    {
+    void openCamera() {
         CameraManager cameraManager = (CameraManager) getSystemService(CAMERA_SERVICE);
         //카메라 기능 사용
-        try
-        {
+        try {
             String cameraId = cameraManager.getCameraIdList()[0];
             //사용 가능한 카메라 중 첫번째 카메라 id
             CameraCharacteristics cameraChars = cameraManager.getCameraCharacteristics(cameraId);
@@ -266,14 +263,12 @@ public class CaptureCat extends AppCompatActivity {
             imageDimension = map.getOutputSizes(SurfaceTexture.class)[0];
 
             if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                    != PackageManager.PERMISSION_GRANTED)
-            {
+                    != PackageManager.PERMISSION_GRANTED) {
                 String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 requestPermissions(permission,PERMISSION_CODE);
                 return ;
             }
             cameraManager.openCamera(cameraId, Callback, null);
-
         }
         catch (CameraAccessException e) {
             e.printStackTrace();
@@ -302,20 +297,15 @@ public class CaptureCat extends AppCompatActivity {
     };
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permission, @NonNull int[] grantResults)
-    {
-        if(requestCode == PERMISSION_CODE)
-        {
-            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permission, @NonNull int[] grantResults) {
+        if(requestCode == PERMISSION_CODE) {
+            if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera();
             }
-            else
-            {
+            else {
                 Toast.makeText(this,"Permission failed", Toast.LENGTH_SHORT).show();
                 finish();
             }
         }
     }
-
 }

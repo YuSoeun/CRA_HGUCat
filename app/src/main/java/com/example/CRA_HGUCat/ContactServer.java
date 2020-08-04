@@ -8,14 +8,14 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class contect_server implements Runnable {
+public class ContactServer implements Runnable {
 
-    public static final int ServerPort = 22; //소켓포트설정
-    public static final String ServerIP = "cat@49.143.69.123"; //연결될 서버IP
+    public static final int ServerPort = 0; //소켓포트설정
+    public static final String ServerIP = ""; //연결될 서버IP
+    // TODO IP연결 - 4
 
     @Override
     public void run() {
-        // TODO Auto-generated method stub
         try {
             System.out.println("S: Connecting...");
             ServerSocket serverSocket = new ServerSocket(ServerPort);
@@ -45,8 +45,7 @@ public class contect_server implements Runnable {
     }
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        Thread desktopServerThread = new Thread(new contect_server());
+        Thread desktopServerThread = new Thread(new ContactServer());
         desktopServerThread.start();
     }
 }

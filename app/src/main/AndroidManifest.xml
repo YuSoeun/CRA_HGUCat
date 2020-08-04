@@ -20,16 +20,17 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".PopupActivity"></activity>
-        <activity android:name=".Getfile" />
-        <activity android:name=".Community_add" />
-        <activity android:name=".CaptureCat" android:screenOrientation="portrait"/>
-        <activity android:name=".Community_main" />
-        <activity android:name=".PasswordFinderActivity"></activity>
-        <activity android:name=".personal_account" />
-        <activity android:name=".nabi_information" />
-        <activity android:name=".catlist" />
-        <activity android:name=".home">
+        <activity android:name=".PopupActivity" />
+        <activity android:name=".GetFile" />
+        <activity android:name=".CommunityAdd" />
+        <activity android:name=".CaptureCat"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CommunityMain" />
+        <activity android:name=".PasswordFinderActivity" />
+        <activity android:name=".PersonalAccount" />
+        <activity android:name=".CatInformation" />
+        <activity android:name=".CatList" />
+        <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

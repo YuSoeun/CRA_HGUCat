@@ -2,23 +2,16 @@ package com.example.CRA_HGUCat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
-public class personal_account extends AppCompatActivity {
+public class PersonalAccount extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,33 +41,27 @@ public class personal_account extends AppCompatActivity {
                 String titleStr = item.getTitle() ;
                 String descStr = item.getDesc() ;
                 Drawable iconDrawable = item.getIcon() ;
-
-                // TODO : use item data.
             }
         }) ;*/
     }
 
-    public void Logout(View v)
-    {
+    public void Logout(View v) {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser().isAnonymous())
-        {
+        if(firebaseAuth.getCurrentUser().isAnonymous()) {
             firebaseAuth.getCurrentUser().delete()
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful())
-                            {
-                                Toast.makeText(personal_account.this, "익명 계정에서 로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
+                        if(task.isSuccessful()) {
+                            Toast.makeText(PersonalAccount.this, "익명 계정에서 로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
                         }
                     });
         }
-        else
-        {
+        else {
             firebaseAuth.signOut();
-            Toast.makeText(personal_account.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PersonalAccount.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
         }
     }

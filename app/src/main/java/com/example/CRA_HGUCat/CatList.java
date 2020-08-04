@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-public class catlist extends AppCompatActivity {
+public class CatList extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.catlist);
+        setContentView(R.layout.activity_cat_list);
 
         ListView listview ;
         com.example.CRA_HGUCat.ListViewAdapter adapter;
@@ -35,24 +35,19 @@ public class catlist extends AppCompatActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                // get item
-                com.example.CRA_HGUCat.ListViewItem item = (com.example.CRA_HGUCat.ListViewItem) parent.getItemAtPosition(position) ;
+            // get item
+            com.example.CRA_HGUCat.ListViewItem item = (com.example.CRA_HGUCat.ListViewItem) parent.getItemAtPosition(position) ;
 
-                String titleStr = item.getTitle() ;
-                String descStr = item.getDesc() ;
-                Drawable iconDrawable = item.getIcon() ;
+            String titleStr = item.getTitle() ;
+            String descStr = item.getDesc() ;
+            Drawable iconDrawable = item.getIcon() ;
 
-                if(titleStr == "Nabi"){
-                    //LayoutInflater.from(catlist.this).inflate(Integer.parseInt(".nabi_information"), null);
-                    Intent intent  = new Intent(catlist.this, com.example.CRA_HGUCat.nabi_information.class);
-                    startActivity(intent);
-                }
-
-
-
-                // TODO : use item data.
+            if(titleStr == "Nabi") {
+                //LayoutInflater.from(activity_cat_list.this).inflate(Integer.parseInt(".nabi_information"), null);
+                Intent intent  = new Intent(CatList.this, CatInformation.class);
+                startActivity(intent);
+            }
             }
         }) ;
-
     }
 }
