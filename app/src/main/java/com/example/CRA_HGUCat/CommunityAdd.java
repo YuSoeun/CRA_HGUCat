@@ -24,9 +24,8 @@ import java.util.Date;
 
 public class CommunityAdd extends AppCompatActivity {
 
-    TextView editText1;
-    TextView text_wheretopost, tv;
-    TextView text_addfile;
+    TextView BulletinText, PostSelectText, AddFileText;
+    String AddBulletinDirectory;
     Button btn_post;
 
     @Override
@@ -35,16 +34,14 @@ public class CommunityAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_add);
 
-        editText1 = (TextView)findViewById(R.id.editText1);
-        tv = (TextView) findViewById(R.id.TextView01);
-        text_wheretopost = (TextView)findViewById(R.id.Text_wheretopost);
-        text_addfile = (TextView)findViewById(R.id.Text_addfile);
-        btn_post = (Button) findViewById(R.id.btn_post);
+        BulletinText = (TextView)findViewById(R.id.BulletinText);
+        PostSelectText = (TextView)findViewById(R.id.Text_wheretopost);
+        AddFileText = (TextView)findViewById(R.id.Text_addfile);
+        btn_post = (Button)findViewById(R.id.btn_post);
 
         Intent pop = new Intent(this, PopupActivity.class);
         pop.putExtra("data", "Test Popup");
         startActivityForResult(pop, 0);
-
     }
 
     //버튼
@@ -71,6 +68,7 @@ public class CommunityAdd extends AppCompatActivity {
             try {
                 JSch jsch = new JSch();
                 Session session = jsch.getSession("", "", 0);
+                // TODO - 2
                 session.setPassword("");
                 java.util.Properties config = new java.util.Properties();
                 config.put("StrictHostKeyChecking", "no");
@@ -81,21 +79,21 @@ public class CommunityAdd extends AppCompatActivity {
                 channel.connect();
                 ChannelSftp channelSftp = (ChannelSftp) channel;
 
-                byte[] data = editText1.getText().toString().getBytes();
+                byte[] data = BulletinText.getText().toString().getBytes();
                 ByteArrayInputStream inputTextStream = new ByteArrayInputStream(data);
 
                 String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-                channelSftp.put(inputTextStream,"/home/cat/Hello/" + date + "_asdf" +  ".txt");
+                channelSftp.put(inputTextStream,"/home/cat/"+ AddBulletinDirectory +"/" + date + "_asdf" +  ".txt");
                 ByteArrayInputStream inputImgStream = null;
 
                 ImageView sampleImg = findViewById(R.id.SampleImage);
                 if(sampleImg.getDrawable() != null) {
-                    Bitmap bitmap = ((BitmapDrawable) sampleImg.getDrawable()).getBitmap();
+                    Bitmap bitmap = ((BitmapDrawable)sampleImg.getDrawable()).getBitmap();
                     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.PNG,95,outputStream);
                     data = outputStream.toByteArray();
                     inputImgStream = new ByteArrayInputStream(data);
-                    channelSftp.put(inputImgStream,"/home/cat/Hello/"+date+"_adsf"+".png");
+                    channelSftp.put(inputImgStream,"/home/cat/"+ AddBulletinDirectory +"/"+date+"_adsf"+".png");
                 }
                 session.disconnect();
             }
@@ -114,17 +112,16 @@ public class CommunityAdd extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
             if (resultCode == RESULT_OK) {
-                //데이터 받기
                 String result = data.getStringExtra("checked");
-                text_wheretopost.setText(result);
+                PostSelectText.setText(result);
+                AddBulletinDirectory = result.equals("새로운 고양이를 찾았다")?"NewCat":result.equals("수정해주세요")?"RequestFix":"CatCommunity";
             }
         }
 
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                //데이터 받기
                 String result2 = data.getStringExtra("imageOk");
-                text_addfile.setText(result2);
+                AddFileText.setText(result2);
                 byte[] dataBytes = data.getByteArrayExtra("data_byte");
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(dataBytes);
                 ImageView SampleImg = findViewById(R.id.SampleImage);

@@ -72,8 +72,6 @@ public class GetFile extends AppCompatActivity {
         imgViewSelected.setImageURI(dataUri);
 
         try {
-            // ImageView 에 이미지 출력
-            //TODO Refactor
             InputStream GalleryImgInputStream = getContentResolver().openInputStream(dataUri);
             Bitmap image = BitmapFactory.decodeStream(GalleryImgInputStream);
             imgViewSelected.setImageBitmap(image);

@@ -195,7 +195,7 @@ public class CaptureCat extends AppCompatActivity {
 
                 byte[] data = BitmapOutputStream.toByteArray();
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
-                channelSftp.put(inputStream,"/home/cat/Hello/TestFile.png");
+                channelSftp.put(inputStream,"/home/cat/CaptureCat2Analyze/CatPicture.png");
                 session.disconnect();
             }
             catch(Exception e) {
@@ -266,7 +266,7 @@ public class CaptureCat extends AppCompatActivity {
                     != PackageManager.PERMISSION_GRANTED) {
                 String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
                 requestPermissions(permission,PERMISSION_CODE);
-                return ;
+                return;
             }
             cameraManager.openCamera(cameraId, Callback, null);
         }

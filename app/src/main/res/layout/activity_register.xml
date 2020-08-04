@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/ResisterActivityLayout"
-    tools:context=".ResisterActivity" >
+    android:id="@+id/RegisterActivityLayout"
+    tools:context=".RegisterActivity" >
 
     <ScrollView
         android:layout_width="match_parent"

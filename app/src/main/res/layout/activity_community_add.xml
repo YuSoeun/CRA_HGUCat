@@ -34,7 +34,7 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/BulletinText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="게시글을 입력하시오."
@@ -88,7 +88,7 @@
             android:layout_alignParentBottom="true"
             android:onClick="onClickPost" />
 
-        <TextView android:id="@+id/TextView01"
+        <TextView android:id="@+id/TempTextView"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"/>
 

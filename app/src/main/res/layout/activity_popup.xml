@@ -17,9 +17,10 @@
             android:layout_height="53dp"
             android:background="#000000"
             android:gravity="center"
-            android:text="Where post"
+            android:text="Select Where to Post"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
+
     </LinearLayout>
     <!-- //end 타이틀바 -->
 
@@ -47,13 +48,14 @@
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="새로운 고양이 찾았다" />
+            android:text="새로운 고양이를 찾았다" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="수정해주세요" />
+
     </LinearLayout>
     <!-- Notice -->
 

@@ -9,6 +9,6 @@ public class CatInformation extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nabi_information);
+        setContentView(R.layout.activity_cat_information);
     }
 }

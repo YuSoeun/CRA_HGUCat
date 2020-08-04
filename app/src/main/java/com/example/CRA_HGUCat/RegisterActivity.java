@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ResisterActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     TextInputEditText[] profile = new TextInputEditText[4];
     FirebaseAuth firebaseAuth;
@@ -39,7 +39,7 @@ public class ResisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resister);
+        setContentView(R.layout.activity_register);
 
         profile[0] = findViewById(R.id.HandongEmail);
         profile[1] = findViewById(R.id.loginPassword);
@@ -180,13 +180,13 @@ public class ResisterActivity extends AppCompatActivity {
                 if(task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if(document.exists() && document.getData().containsKey(HandongMail))
-                        Toast.makeText(ResisterActivity.this, "이미 가입된 학번입니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "이미 가입된 학번입니다.", Toast.LENGTH_SHORT).show();
                     else
                     {
                         HandongEmail = HandongMail;
                         findViewById(R.id.HandongAuthBtn).setEnabled(false);
                         profile[1].setEnabled(true);
-                        Toast.makeText(ResisterActivity.this, "중복되지 않은 학번입니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "중복되지 않은 학번입니다.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 }
@@ -194,7 +194,7 @@ public class ResisterActivity extends AppCompatActivity {
         }
     }
 
-    public void AskResister(View v) {
+    public void AskRegister(View v) {
         findViewById(R.id.registerBtn).setEnabled(false);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.setLanguageCode("ko");
@@ -213,7 +213,7 @@ public class ResisterActivity extends AppCompatActivity {
                                         docRef.set(SaveData, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                            final Snackbar snackbar = Snackbar.make(findViewById(R.id.ResisterActivityLayout),
+                                            final Snackbar snackbar = Snackbar.make(findViewById(R.id.RegisterActivityLayout),
                                                     "한동대 이메일에서 링크를 클릭하여 인증\n해주셔야 로그인이 가능합니다.",
                                                     Snackbar.LENGTH_INDEFINITE);
                                             snackbar.setAction("확인", new View.OnClickListener() {
@@ -235,7 +235,7 @@ public class ResisterActivity extends AppCompatActivity {
                                 });
                     }
                     else {
-                        Toast.makeText(ResisterActivity.this, "가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "가입에 실패했습니다.", Toast.LENGTH_SHORT).show();
                         findViewById(R.id.registerBtn).setEnabled(true);
                     }
                     }

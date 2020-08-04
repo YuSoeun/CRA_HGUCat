@@ -38,39 +38,39 @@ public class PopupActivity extends Activity {
             @Override
             public void onClick(View v) {
             checklist.clear();
-            if(checkbox1.isChecked() == true) checklist.add(checkbox1.getText().toString());
-            if(checkbox2.isChecked() == true) checklist.add(checkbox2.getText().toString());
-            if(checkbox3.isChecked() == true) checklist.add(checkbox3.getText().toString());
-            if(checkbox4.isChecked() == true) checklist.add(checkbox4.getText().toString());
-            if (checklist.size() == 1){
+            if(checkbox1.isChecked()) checklist.add(checkbox1.getText().toString());
+            if(checkbox2.isChecked()) checklist.add(checkbox2.getText().toString());
+            if(checkbox3.isChecked()) checklist.add(checkbox3.getText().toString());
+            if(checkbox4.isChecked()) checklist.add(checkbox4.getText().toString());
+
+            if(checklist.size() == 1){
                 Toast.makeText(PopupActivity.this, "설정되었습니다.", Toast.LENGTH_SHORT).show();
-                String check = (String) checklist.get(0);
+                String check = (String)checklist.get(0);
                 Intent intent = new Intent(getApplicationContext(), CommunityAdd.class);
                 intent.putExtra("checked", check);
                 setResult(RESULT_OK, intent);
 
-                //액티비티(팝업) 닫기
                 finish();
             }
             else {
                 Toast.makeText(PopupActivity.this, "하나만 체크해주세요", Toast.LENGTH_SHORT).show();
             }
             } // end onClick
-        }); // end setOnClickListener
+        });
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //바깥레이어 클릭시 안닫히게
-        if(event.getAction()==MotionEvent.ACTION_OUTSIDE){
+        if(event.getAction() == MotionEvent.ACTION_OUTSIDE){
             return false;
         }
         return true;
+        //바깥레이어 클릭시에도 닫히지 않도록 설정
     }
 
     @Override
     public void onBackPressed() {
-        //안드로이드 백버튼 막기
         return;
+        //안드로이드 백버튼을 눌러도 액티비티에서 나가지 않도록 설정
     }
 }

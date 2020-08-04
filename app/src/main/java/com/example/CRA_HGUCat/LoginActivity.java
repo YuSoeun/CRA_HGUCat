@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goResisterActivity(View v) {
-        Intent goResister = new Intent(this, ResisterActivity.class);
+        Intent goResister = new Intent(this, RegisterActivity.class);
         startActivity(goResister);
     }
 

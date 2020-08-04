@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ResisterActivity"
+            android:name=".RegisterActivity"
             android:theme="@style/RegisterTheme" />
         <activity android:name=".LoginActivity" />
     </application>
