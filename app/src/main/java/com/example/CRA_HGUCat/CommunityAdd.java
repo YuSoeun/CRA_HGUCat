@@ -93,7 +93,7 @@ public class CommunityAdd extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.PNG,95,outputStream);
                     data = outputStream.toByteArray();
                     inputImgStream = new ByteArrayInputStream(data);
-                    channelSftp.put(inputImgStream,"/home/cat/"+ AddBulletinDirectory +"/"+date+"_adsf"+".png");
+                    channelSftp.put(inputImgStream,"/home/cat/"+ AddBulletinDirectory +"/"+date+"_asdf"+".png");
                 }
                 session.disconnect();
             }

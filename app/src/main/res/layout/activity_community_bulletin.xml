@@ -6,11 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".CommunityBulletinActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textviewBulletin"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor = "#000000"
+                android:textSize="17sp"
+                android:id="@+id/textviewBulletin"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true" />
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

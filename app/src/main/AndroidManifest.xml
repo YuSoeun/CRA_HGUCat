@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CommunityBulletinActivity"></activity>
+        <activity android:name=".CommunityBulletinActivity" />
         <activity android:name=".CommunityRead" />
         <activity android:name=".PopupActivity" />
         <activity android:name=".GetFile" />

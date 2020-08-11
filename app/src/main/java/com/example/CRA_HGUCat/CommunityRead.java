@@ -61,7 +61,10 @@ public class CommunityRead extends AppCompatActivity {
                     for(int fileIndex = 0; fileIndex < fileLsEntry.size(); fileIndex++) {
                         ChannelSftp.LsEntry lsEntry = fileLsEntry.get(fileIndex);
                         if(!lsEntry.getAttrs().isDir()) {
-                            BulletinAdapter.add(lsEntry.getFilename());
+                            String FileName = lsEntry.getFilename();
+                            if(FileName.substring(FileName.length()-4).equals(".txt")) {
+                                BulletinAdapter.add(FileName);
+                            }
                         }
                     }
 
@@ -69,8 +72,15 @@ public class CommunityRead extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent ReadBulletin = new Intent(CommunityRead.this,CommunityBulletinActivity.class);
-                        ReadBulletin.putExtra("FileName",fileLsEntry.get(i+1).getFilename());
-                        // 첫 인덱스는 ..으로 취급하므로 (인덱스 + 1)번째의 파일명을 전송한다.
+                        String FileName = Bulletin.get(i);
+                        ReadBulletin.putExtra("FileName", FileName);
+                        // .txt 파일만 전송하므로 서버 파일 인덱스 대신 ArrayList 인덱스로 대체한다.
+                        String FileNamePNGExtension = FileName.substring(0,FileName.length()-4) + ".png";
+                        for(int fileIndex = 0; fileIndex < fileLsEntry.size(); fileIndex++) {
+                            if(fileLsEntry.get(fileIndex).getFilename().equals(FileNamePNGExtension)) {
+                                ReadBulletin.putExtra("hasPNG", "yes");
+                            }
+                        }
                         startActivity(ReadBulletin);
                         }
                     });

@@ -1,7 +1,9 @@
 package com.example.CRA_HGUCat;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -17,11 +19,15 @@ import java.util.Properties;
 
 public class CommunityBulletinActivity extends AppCompatActivity {
 
+    String BulletinFileName;
+    Boolean BulletinHasPNG;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_bulletin);
-        final String BulletinFileName = getIntent().getStringExtra("FileName");
+        BulletinFileName = getIntent().getStringExtra("FileName");
+        BulletinHasPNG = getIntent().getStringExtra("hasPNG") != null;
         new Thread() {
             @Override
             public void run() {
@@ -45,12 +51,17 @@ public class CommunityBulletinActivity extends AppCompatActivity {
                 while((stringLine = Stream2Line.readLine()) != null) {
                     Line2String.append(stringLine);
                 }
+                InputStream getFileImgStream = BulletinHasPNG?channelSftp.get(BulletinFileName.substring(0,BulletinFileName.length()-3) + "png"):null;
+                final Drawable FileImg = Drawable.createFromStream(getFileImgStream,null);
 
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                    try {
+                        try {
                         TextView BulletinTextView = findViewById(R.id.textviewBulletin);
+                        if(BulletinHasPNG) {
+                            BulletinTextView.setCompoundDrawablesWithIntrinsicBounds(null,FileImg,null,null);
+                        }
                         BulletinTextView.setText(Line2String.toString());
                         // UI 스레드에는 UI 관련 코드만 넣도록 하자 (아마 이 부분이 메인스레드라 여기서 서버 연결하면 android.os.NetworkOnMainThreadException 오류가 발생)
                     }
@@ -60,6 +71,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
                     }
                 });
 
+                if(BulletinHasPNG) getFileImgStream.close();
                 Stream2Line.close();
                 getFileStream.close();
                 channel.disconnect();
