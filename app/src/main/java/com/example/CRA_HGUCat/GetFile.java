@@ -76,7 +76,6 @@ public class GetFile extends AppCompatActivity {
             Bitmap image = BitmapFactory.decodeStream(GalleryImgInputStream);
             imgViewSelected.setImageBitmap(image);
             GalleryImgInputStream.close();
-
         }
         catch (IOException ioe) {
             ioe.printStackTrace();

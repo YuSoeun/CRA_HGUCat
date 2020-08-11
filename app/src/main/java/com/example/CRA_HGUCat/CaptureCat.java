@@ -131,8 +131,7 @@ public class CaptureCat extends AppCompatActivity {
         UploadPicture2Server();
     }
 
-    void UploadPicture()
-    {
+    void UploadPicture() {
         Matrix rotation = new Matrix();
         rotation.postRotate(90);
 
@@ -164,8 +163,7 @@ public class CaptureCat extends AppCompatActivity {
         });
     }
 
-    void UploadPicture2Server()
-    {
+    void UploadPicture2Server() {
         final String Username = "";
         final String UploadUri = "";
         final int port = 0;
@@ -205,8 +203,7 @@ public class CaptureCat extends AppCompatActivity {
         }.start();
     }
 
-    void cameraPreview()
-    {
+    void cameraPreview() {
         try {
             SurfaceTexture tx = cameraView.getSurfaceTexture();
             assert tx != null;

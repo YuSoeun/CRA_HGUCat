@@ -48,11 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                     if(task.isSuccessful()) {
                         DocumentReference docRef = FirebaseFirestore.getInstance().collection("UserProfile").document("Nickname");
                         if(firebaseAuth.getCurrentUser().isEmailVerified()) {
-                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
-                            {
+                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
-                                public void onComplete(@NonNull Task<DocumentSnapshot> task)
-                                {
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                                 if (task.isSuccessful()) {
                                     Map<String, Object> mail2name = task.getResult().getData();
                                     for (Map.Entry<String, Object> i : mail2name.entrySet()) {

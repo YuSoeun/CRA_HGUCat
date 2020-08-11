@@ -15,7 +15,12 @@ public class CommunityMain extends AppCompatActivity {
     }
 
     public void AddCommunity(View v) {
-        Intent intent = new Intent(this, CommunityAdd.class);
-        startActivity(intent);
+        Intent postIntent = new Intent(this, CommunityAdd.class);
+        startActivity(postIntent);
+    }
+
+    public void VisitCommunity(View v) {
+        Intent getIntent = new Intent(this,CommunityRead.class);
+        startActivity(getIntent);
     }
 }

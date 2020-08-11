@@ -30,10 +30,12 @@ public class ContactServer implements Runnable {
                     PrintWriter out = new PrintWriter(new BufferedWriter(
                             new OutputStreamWriter(client.getOutputStream())),true);
                     out.println("Server Received " + str);
-                } catch (Exception e) {
+                }
+                catch (Exception e) {
                     System.out.println("S: Error");
                     e.printStackTrace();
-                } finally {
+                }
+                finally {
                     client.close();
                     System.out.println("S: Done.");
                 }

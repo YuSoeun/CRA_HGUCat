@@ -159,8 +159,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    public void callEmail(View v)
-    {
+    public void callEmail(View v) {
         final String HandongMail = profile[0].getText().toString().replace(" ", "").replace("\n", "");
         if (!HandongMail.contains("@") && !HandongMail.contains(".")) {
             Toast.makeText(this, "이메일의 형태로 입력해주세요!", Toast.LENGTH_SHORT).show();
@@ -181,8 +180,7 @@ public class RegisterActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if(document.exists() && document.getData().containsKey(HandongMail))
                         Toast.makeText(RegisterActivity.this, "이미 가입된 학번입니다.", Toast.LENGTH_SHORT).show();
-                    else
-                    {
+                    else {
                         HandongEmail = HandongMail;
                         findViewById(R.id.HandongAuthBtn).setEnabled(false);
                         profile[1].setEnabled(true);

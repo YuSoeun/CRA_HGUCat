@@ -43,7 +43,7 @@ public class PopupActivity extends Activity {
             if(checkbox3.isChecked()) checklist.add(checkbox3.getText().toString());
             if(checkbox4.isChecked()) checklist.add(checkbox4.getText().toString());
 
-            if(checklist.size() == 1){
+            if(checklist.size() == 1) {
                 Toast.makeText(PopupActivity.this, "설정되었습니다.", Toast.LENGTH_SHORT).show();
                 String check = (String)checklist.get(0);
                 Intent intent = new Intent(getApplicationContext(), CommunityAdd.class);
@@ -55,8 +55,8 @@ public class PopupActivity extends Activity {
             else {
                 Toast.makeText(PopupActivity.this, "하나만 체크해주세요", Toast.LENGTH_SHORT).show();
             }
-            } // end onClick
-        });
+        } // end onClick
+});
     }
 
     @Override
