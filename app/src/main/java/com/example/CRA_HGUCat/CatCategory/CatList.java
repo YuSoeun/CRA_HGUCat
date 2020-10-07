@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCategory;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.CRA_HGUCat.ListViewAdapter;
+import com.example.CRA_HGUCat.R;
 
 public class CatList extends AppCompatActivity {
 

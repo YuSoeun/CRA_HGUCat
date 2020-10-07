@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/RegisterActivityLayout"
-    tools:context=".RegisterActivity" >
+    tools:context=".AppLoginInterface.RegisterActivity" >
 
     <ScrollView
         android:layout_width="match_parent"

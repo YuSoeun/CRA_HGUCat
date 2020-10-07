@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCommunity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.CRA_HGUCat.R;
 
 import java.util.ArrayList;
 
@@ -49,7 +51,7 @@ public class PopupActivity extends Activity {
                 Intent intent = new Intent(getApplicationContext(), CommunityAdd.class);
                 intent.putExtra("checked", check);
                 setResult(RESULT_OK, intent);
-
+                // 체크된 항목이 1개인 경우 커뮤니티 인텐트에 해당 정보를 전송합니다
                 finish();
             }
             else {

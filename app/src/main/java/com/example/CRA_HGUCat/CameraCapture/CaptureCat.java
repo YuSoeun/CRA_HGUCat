@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CameraCapture;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +25,7 @@ import android.view.TextureView;
 import android.widget.Toast;
 import android.view.View;
 
+import com.example.CRA_HGUCat.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -63,6 +64,7 @@ public class CaptureCat extends AppCompatActivity {
             @Override
             public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surfaceTexture, int i, int i1) {
                 openCamera();
+                // 텍스쳐뷰가 사용가능하면 카메라를 실행
             }
 
             @Override
@@ -123,44 +125,12 @@ public class CaptureCat extends AppCompatActivity {
                 cameraView.setRotation(180f);
             }
         }
-
+        // 가로와 세로의 기울기에 따른 텍스쳐뷰 회전으로, 가로인 경우 더 넓은 화면을 지원
     }
 
     public void onClick(View v)
     {
         UploadPicture2Server();
-    }
-
-    void UploadPicture() {
-        Matrix rotation = new Matrix();
-        rotation.postRotate(90);
-
-        Bitmap bitmap = cameraView.getBitmap();
-        bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),rotation,false);
-
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-
-        StorageReference storageRef = storage.getReferenceFromUrl("");
-        // TODO URL추가 - 1
-
-        StorageReference catRef = storageRef.child(new SimpleDateFormat("yyyyMMddhhmmss").format(new Date())+".png");
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,95,baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = catRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-            Toast.makeText(CaptureCat.this,"Upload failed by "+e ,Toast.LENGTH_SHORT).show();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-            Toast.makeText(CaptureCat.this,"Uploaded",Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     void UploadPicture2Server() {
@@ -188,11 +158,14 @@ public class CaptureCat extends AppCompatActivity {
                 rotation.postRotate(90);
                 Bitmap bitmap = cameraView.getBitmap();
                 bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),rotation,false);
+                // 같은 크기의 90도 회전된 이미지로 수정
+                // 맥북 기준으로 캠이 가로형인 탓인지 세로로 촬영해도 가로로 출력되는 오류 발생
                 ByteArrayOutputStream BitmapOutputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG,95,BitmapOutputStream);
 
                 byte[] data = BitmapOutputStream.toByteArray();
                 ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
+                // 비트맵의 outputStream을 inputStream으로 전환
                 channelSftp.put(inputStream,"/home/cat/CaptureCat2Analyze/CatPicture.png");
                 session.disconnect();
             }
@@ -207,6 +180,7 @@ public class CaptureCat extends AppCompatActivity {
         try {
             SurfaceTexture tx = cameraView.getSurfaceTexture();
             assert tx != null;
+            // 텍스트뷰가 있는지 확인
             tx.setDefaultBufferSize(imageDimension.getWidth(),imageDimension.getHeight());
             Surface surface = new Surface(tx);
             builder = cameradevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
@@ -236,6 +210,7 @@ public class CaptureCat extends AppCompatActivity {
         builder.set(CaptureRequest.CONTROL_MODE,CaptureRequest.CONTROL_MODE_AUTO);
         try {
             session.setRepeatingRequest(builder.build(),null, null);
+            // 카메라 세션을 텍스트뷰에 출력
         }
         catch (CameraAccessException e) {
             e.printStackTrace();
@@ -266,6 +241,7 @@ public class CaptureCat extends AppCompatActivity {
                 return;
             }
             cameraManager.openCamera(cameraId, Callback, null);
+            // 사용 가능한 카메라에서 카메라를 실행 후 카메라가 실행되면 그 화면을 출력(cameraPreview())
         }
         catch (CameraAccessException e) {
             e.printStackTrace();
@@ -298,10 +274,12 @@ public class CaptureCat extends AppCompatActivity {
         if(requestCode == PERMISSION_CODE) {
             if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera();
+                // 권한을 받은 경우 카메라를 실행
             }
             else {
                 Toast.makeText(this,"Permission failed", Toast.LENGTH_SHORT).show();
                 finish();
+                // 카메라 기능과 내부 저장소 권한이 없는 경우 자동으로 창에서 나가짐
             }
         }
     }

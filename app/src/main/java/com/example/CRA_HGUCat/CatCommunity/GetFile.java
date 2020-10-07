@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCommunity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,9 @@ import android.net.Uri;
 
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.CRA_HGUCat.CatCommunity.CommunityAdd;
+import com.example.CRA_HGUCat.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

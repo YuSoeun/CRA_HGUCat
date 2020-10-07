@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.AccountSetting;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.CRA_HGUCat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,32 +18,6 @@ public class PersonalAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_account);
-
-        /*ListView listview;
-        ListViewAdapter adapter;
-
-        // Adapter 생성
-        adapter = new ListViewAdapter();
-
-        // 리스트뷰 참조 및 Adapter달기
-        listview = (ListView)findViewById(R.id.listview2);
-        listview.setAdapter(adapter);
-
-        // 첫 번째 아이템 추가.
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.baseline_pets_black_36dp), "Nabi", "Pet icon");
-
-        // 위에서 생성한 listview에 클릭 이벤트 핸들러 정의.
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id) {
-                // get item
-                ListViewItem item = (ListViewItem)parent.getItemAtPosition(position);
-
-                String titleStr = item.getTitle();
-                String descStr = item.getDesc();
-                Drawable iconDrawable = item.getIcon();
-            }
-        });*/
     }
 
     public void Logout(View v) {
@@ -55,6 +30,7 @@ public class PersonalAccount extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(PersonalAccount.this, "익명 계정에서 로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                             finish();
+                            // 익명 계정인 상태에서 로그아웃을 누르면 계정 탈퇴로 인정되어 계정이 자동 삭제됩니다
                         }
                         }
                     });
@@ -63,6 +39,7 @@ public class PersonalAccount extends AppCompatActivity {
             firebaseAuth.signOut();
             Toast.makeText(PersonalAccount.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
             finish();
+            // 익명 계정이 아닌 경우 로그아웃 기능만 수행합니다(로그인 하면 기존의 정보를 불러올 수 있습니다)
         }
     }
 

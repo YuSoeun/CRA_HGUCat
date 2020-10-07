@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCommunity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.CRA_HGUCat.R;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -19,7 +20,6 @@ import com.jcraft.jsch.Session;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 public class CommunityAdd extends AppCompatActivity {
@@ -59,9 +59,6 @@ public class CommunityAdd extends AppCompatActivity {
     }
 
     public void onClickPost(View v){
-        /*Intent post = new Intent ( this, server_client.class);
-        post.putExtra ( "Textbox", editText1.getText().toString());
-        startActivity(post);*/
 
         new Thread() {
             public void run(){
@@ -84,6 +81,7 @@ public class CommunityAdd extends AppCompatActivity {
 
                 String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
                 channelSftp.put(inputTextStream,"/home/cat/"+ AddBulletinDirectory +"/" + date + "_asdf" +  ".txt");
+                // 현재 날짜를 이름으로 저장
                 ByteArrayInputStream inputImgStream = null;
 
                 ImageView sampleImg = findViewById(R.id.SampleImage);
@@ -102,7 +100,7 @@ public class CommunityAdd extends AppCompatActivity {
             }
             }
         }.start();
-        // 새 스레드를 만들어주지 않으면 충돌 비스무리한게 일어남
+        // 새 스레드를 만들어주지 않으면 충돌 발생
 
         finish();
     }
@@ -129,9 +127,6 @@ public class CommunityAdd extends AppCompatActivity {
                 SampleImg.setImageBitmap(bitmap);
             }
         }
-//        String data_conveyed = data.getStringExtra("data_byte");
-//        text_addfile.setText(data_conveyed);
-//        System.out.println(data_conveyed);
 
     }
 }

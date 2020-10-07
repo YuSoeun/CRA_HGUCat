@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCommunity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.CRA_HGUCat.R;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -28,6 +29,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_community_bulletin);
         BulletinFileName = getIntent().getStringExtra("FileName");
         BulletinHasPNG = getIntent().getStringExtra("hasPNG") != null;
+        // txt파일명과 파일명이 같은 png 파일이 있는지에 대해 입력 받음
         new Thread() {
             @Override
             public void run() {
@@ -63,7 +65,8 @@ public class CommunityBulletinActivity extends AppCompatActivity {
                             BulletinTextView.setCompoundDrawablesWithIntrinsicBounds(null,FileImg,null,null);
                         }
                         BulletinTextView.setText(Line2String.toString());
-                        // UI 스레드에는 UI 관련 코드만 넣도록 하자 (아마 이 부분이 메인스레드라 여기서 서버 연결하면 android.os.NetworkOnMainThreadException 오류가 발생)
+                        // 가급적 UI 스레드에는 UI 관련 코드만 넣는 것을 추천
+                        // 이 부분이 메인스레드라 여기서 서버 연결하면 android.os.NetworkOnMainThreadException 오류가 발생
                     }
                     catch (Exception e) {
                         e.printStackTrace();

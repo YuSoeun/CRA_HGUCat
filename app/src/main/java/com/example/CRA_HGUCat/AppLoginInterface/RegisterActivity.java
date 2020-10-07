@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.AppLoginInterface;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.CRA_HGUCat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -164,15 +165,19 @@ public class RegisterActivity extends AppCompatActivity {
         if (!HandongMail.contains("@") && !HandongMail.contains(".")) {
             Toast.makeText(this, "이메일의 형태로 입력해주세요!", Toast.LENGTH_SHORT).show();
             profile[0].setText("");
+            // @나 .가 없는 경우 이메일의 형태를 띠도록 합니다
         }
         else if (HandongMail.length() != "00000000@handong.edu".length()) {
             Toast.makeText(this, "오탈자가 있는지 확인해주세요!", Toast.LENGTH_SHORT).show();
+            // 글자수가 적거나 많은 경우 글자를 재확인하도록 합니다
         }
         else if (!HandongMail.substring(HandongMail.length() - "@handong.edu".length()).equals("@handong.edu")) {
             Toast.makeText(this, "한동대학교 이메일이 맞는지 확인해주세요!", Toast.LENGTH_SHORT).show();
+            // 글자수가 맞고 이메일의 형태임에도 조건을 만족하지 못한 경우 한동대 이메일이 아님을 고려하도록 합니다
         }
         else {
             DocumentReference docRef = FirebaseFirestore.getInstance().collection("UserProfile").document("Nickname");
+            // UserProfile/Nickname/에서의 문서항목들을 불러옵니다(이떄, 이메일-별명 방식의 딕셔너리를 사용합니다)
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -180,11 +185,13 @@ public class RegisterActivity extends AppCompatActivity {
                     DocumentSnapshot document = task.getResult();
                     if(document.exists() && document.getData().containsKey(HandongMail))
                         Toast.makeText(RegisterActivity.this, "이미 가입된 학번입니다.", Toast.LENGTH_SHORT).show();
+                        // 딕셔너리의 키에 이미 해당 이메일이 있는 경우 이미 가입된 학번으로 간주합니다 (이후 비밀번호를 찾는 방식을 사용할 수 있습니다)
                     else {
                         HandongEmail = HandongMail;
                         findViewById(R.id.HandongAuthBtn).setEnabled(false);
                         profile[1].setEnabled(true);
                         Toast.makeText(RegisterActivity.this, "중복되지 않은 학번입니다.", Toast.LENGTH_SHORT).show();
+                        // 딕셔너리의 키에 해당 학번이 없는 경우 중복되지 않은 학번으로 취급하고 다음 회원가입을 진행할 수 있도록 합니다
                     }
                 }
                 }
@@ -206,11 +213,13 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         docRef = FirebaseFirestore.getInstance().collection("UserProfile").document("Nickname");
+                                        // UserProfile/Nickname/에서의 문서항목들을 불러옵니다(이떄, 이메일-별명 방식의 딕셔너리를 사용합니다)
                                         Map<String, Object> SaveData = new HashMap<>();
                                         SaveData.put(HandongEmail, profile[3].getText().toString());
                                         docRef.set(SaveData, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
+                                            // 이메일-별명 방식의 딕셔너리에 새로운 데이터를 추가합니다
                                             final Snackbar snackbar = Snackbar.make(findViewById(R.id.RegisterActivityLayout),
                                                     "한동대 이메일에서 링크를 클릭하여 인증\n해주셔야 로그인이 가능합니다.",
                                                     Snackbar.LENGTH_INDEFINITE);
@@ -222,6 +231,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 }
                                             });
                                             snackbar.show();
+                                            // 해당 메세지를 못 볼 것을 우려하여 토스트 대신 스낵바를 이용하였습니다
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override

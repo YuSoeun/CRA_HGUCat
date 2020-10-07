@@ -1,8 +1,10 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCategory;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.CRA_HGUCat.R;
 
 public class CatInformation extends AppCompatActivity {
 

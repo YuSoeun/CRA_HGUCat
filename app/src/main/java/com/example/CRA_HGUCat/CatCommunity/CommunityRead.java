@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.CatCommunity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.CRA_HGUCat.R;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -43,9 +44,12 @@ public class CommunityRead extends AppCompatActivity {
             try {
                 JSch jsch = new JSch();
                 Session session = jsch.getSession("", "", 0);
+                // 이름과 ip, port를 입력
                 session.setPassword("");
+                // 로그인을 위해 비밀번호를 입력
                 Properties config = new Properties();
                 config.put("StrictHostKeyChecking", "no");
+                // HostKeyChecking을 받지 않는 방식을 사용
                 session.setConfig(config);
                 session.connect();
                 //TODO Delete this.
@@ -64,6 +68,7 @@ public class CommunityRead extends AppCompatActivity {
                             String FileName = lsEntry.getFilename();
                             if(FileName.substring(FileName.length()-4).equals(".txt")) {
                                 BulletinAdapter.add(FileName);
+                                // 파일 인덱스에서 txt파일을 발견한 경우 리스트뷰에 추가
                             }
                         }
                     }
@@ -74,11 +79,12 @@ public class CommunityRead extends AppCompatActivity {
                         Intent ReadBulletin = new Intent(CommunityRead.this,CommunityBulletinActivity.class);
                         String FileName = Bulletin.get(i);
                         ReadBulletin.putExtra("FileName", FileName);
-                        // .txt 파일만 전송하므로 서버 파일 인덱스 대신 ArrayList 인덱스로 대체한다.
+                        // .txt 파일만 전송하므로 서버 파일 인덱스 대신 ArrayList 인덱스로 대체
                         String FileNamePNGExtension = FileName.substring(0,FileName.length()-4) + ".png";
                         for(int fileIndex = 0; fileIndex < fileLsEntry.size(); fileIndex++) {
                             if(fileLsEntry.get(fileIndex).getFilename().equals(FileNamePNGExtension)) {
                                 ReadBulletin.putExtra("hasPNG", "yes");
+                                // 파일 인덱스 중에서 같은 이름의 .png 파일이 있는 경우 png파일의 존재를 알리는 boolean함수 전송
                             }
                         }
                         startActivity(ReadBulletin);

@@ -1,4 +1,4 @@
-package com.example.CRA_HGUCat;
+package com.example.CRA_HGUCat.AppLoginInterface;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.CRA_HGUCat.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -57,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                                         if (i.getKey().equals(EmailID)) {
                                             Toast.makeText(LoginActivity.this, "안녕하세요! " + i.getValue() + "님!", Toast.LENGTH_LONG).show();
                                             finish();
+                                            // 회원가입 때에 (이메일-별명)의 딕셔너리 방식에서 이메일에 해당하는 별명을 가져와 출력합니다
                                         }
                                     }
                                 }
@@ -65,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(LoginActivity.this,"인증되지 않은 학번입니다.\n한동대 이메일에서 승인해주세요!",Toast.LENGTH_LONG).show();
+                            // 한동대 이메일에서 인증 URL을 누르지 않으면 로그인되지 않습니다
+                            // 이를 통해 타인의 학번을 도용하는 방식을 방지합니다
                         }
                     }
                     else {
@@ -76,15 +80,18 @@ public class LoginActivity extends AppCompatActivity {
                                 Map<String, Object> mail2name = task.getResult().getData();
                                 if(mail2name.containsKey(EmailID)) {
                                     Toast.makeText(LoginActivity.this, "비밀번호를 잘못 입력하였습니다.\n비밀번호를 다시 입력해주세요.", Toast.LENGTH_LONG).show();
+                                    // 이메일이 데이터베이스에 존재하지만 로그인할 수 없던 경우 비밀번호를 잘못 입력한 것으로 간주합니다
                                 }
                                 else {
                                     Toast.makeText(LoginActivity.this, "등록되지 않은 학번입니다.\n먼저 회원가입을 해주세요.", Toast.LENGTH_LONG).show();
                                     Id.setText("");
+                                    // 이메일이 데이터베이스에 없다면 회원가입되지 않은 것으로 간주합니다
                                 }
                             }
                             else {
                                 Toast.makeText(LoginActivity.this, "오류가 발생했습니다.\n다시 시도해주세요.", Toast.LENGTH_LONG).show();
                                 Id.setText("");
+                                // 그 외에는 오류로 간주합니다
                             }
                             Password.setText("");
                             }
