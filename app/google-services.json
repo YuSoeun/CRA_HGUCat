@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "42061610173",
-    "firebase_url": "https://handong-cat-test1.firebaseio.com",
-    "project_id": "handong-cat-test1",
-    "storage_bucket": "handong-cat-test1.appspot.com"
+    "project_number": "147243935340",
+    "firebase_url": "https://hannyanmanyo.firebaseio.com",
+    "project_id": "hannyanmanyo",
+    "storage_bucket": "hannyanmanyo.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:42061610173:android:002b00e15ef6cdad000bd4",
+        "mobilesdk_app_id": "1:147243935340:android:17f02fb502078a5cebda49",
         "android_client_info": {
           "package_name": "com.example.CRA_HGUCat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "42061610173-ai3hcfqp79jqfblpq1cioeof4d0i12p9c.apps.googleusercontent.com",
+          "client_id": "147243935340-ckrhttfr4rgr1vv8d92a6us442bg0ruc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDa0Ib9g0xOgi29f0BKpv3rBC9QZ8RHUtk"
+          "current_key": "AIzaSyCL7MSE1QVR74Z9DdY5D9jlnJqvE3hJHbU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "42061610173-i3hcfqp79jqfblpq1cioeof4d0ia12p9c.apps.googleusercontent.com",
+              "client_id": "147243935340-ckrhttfr4rgr1vv8d92a6us442bg0ruc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
