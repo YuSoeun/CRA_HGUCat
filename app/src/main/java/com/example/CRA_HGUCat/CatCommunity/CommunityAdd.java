@@ -24,7 +24,7 @@ import java.util.Date;
 
 public class CommunityAdd extends AppCompatActivity {
 
-    TextView BulletinText, PostSelectText, AddFileText;
+    TextView TitleText, BulletinText, PostSelectText, AddFileText;
     String AddBulletinDirectory;
     Button btn_post;
 
@@ -34,10 +34,12 @@ public class CommunityAdd extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_community_add);
 
+        TitleText = (TextView)findViewById(R.id.TitleText);
         BulletinText = (TextView)findViewById(R.id.BulletinText);
         PostSelectText = (TextView)findViewById(R.id.Text_wheretopost);
         AddFileText = (TextView)findViewById(R.id.Text_addfile);
         btn_post = (Button)findViewById(R.id.btn_post);
+
 
         Intent pop = new Intent(this, PopupActivity.class);
         pop.putExtra("data", "Test Popup");
@@ -63,24 +65,24 @@ public class CommunityAdd extends AppCompatActivity {
         new Thread() {
             public void run(){
             try {
+                //서버 연결
                 JSch jsch = new JSch();
                 Session session = jsch.getSession("", "", 0);
-                // TODO - 2
+                // TODO - 2(보안문제 해결)
                 session.setPassword("");
                 java.util.Properties config = new java.util.Properties();
                 config.put("StrictHostKeyChecking", "no");
                 session.setConfig(config);
                 session.connect();
 
-                Channel channel = session.openChannel("sftp");
+                Channel channel = session.openChannel("sftp");  //채널 접속
                 channel.connect();
-                ChannelSftp channelSftp = (ChannelSftp) channel;
+                ChannelSftp channelSftp = (ChannelSftp) channel;    //명령어 전송 채널 사용
 
                 byte[] data = BulletinText.getText().toString().getBytes();
                 ByteArrayInputStream inputTextStream = new ByteArrayInputStream(data);
 
-                String date = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
-                channelSftp.put(inputTextStream,"/home/cat/"+ AddBulletinDirectory +"/" + date + "_asdf" +  ".txt");
+                channelSftp.put(inputTextStream,"/home/cat/"+ AddBulletinDirectory +"/" + TitleText.getText().toString() +  ".txt");
                 // 현재 날짜를 이름으로 저장
                 ByteArrayInputStream inputImgStream = null;
 
@@ -88,10 +90,10 @@ public class CommunityAdd extends AppCompatActivity {
                 if(sampleImg.getDrawable() != null) {
                     Bitmap bitmap = ((BitmapDrawable)sampleImg.getDrawable()).getBitmap();
                     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG,95,outputStream);
+                    bitmap.compress(Bitmap.CompressFormat.PNG,50,outputStream);
                     data = outputStream.toByteArray();
                     inputImgStream = new ByteArrayInputStream(data);
-                    channelSftp.put(inputImgStream,"/home/cat/"+ AddBulletinDirectory +"/"+date+"_asdf"+".png");
+                    channelSftp.put(inputImgStream,"/home/cat/"+ AddBulletinDirectory +"/"+ TitleText.getText().toString() +".png");
                 }
                 session.disconnect();
             }
