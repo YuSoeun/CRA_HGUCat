@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CatCategory.CatInformation"
+    tools:context=".CatCategory.CatInformation3"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:layout_width="276dp"
             android:layout_height="242dp"
             android:layout_weight="1"
-            android:src="@drawable/cat1" />
+            android:src="@drawable/cat3" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:text="나비\n\n 한동냥 간판 담당\n\n8살, 수컷, 중성화 완료\n궁디팡팡 좋아함\n\n\n출처: 한동냥"
+        android:text="짬뽕이\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n중성화 수술 후 학교에 돌아오는 길에\n포획틀을 뛰쳐나가 도망\n\n\n출처: 한동냥"
         android:textColor="#000000"
         android:textSize="20dp"
         android:gravity="center"/>
