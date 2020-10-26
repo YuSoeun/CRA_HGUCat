@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.CRA_HGUCat.R;
 import com.jcraft.jsch.Channel;
@@ -19,8 +21,8 @@ import com.jcraft.jsch.Session;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.File;
+import java.io.FileInputStream;
 
 public class CommunityAdd extends AppCompatActivity {
 
@@ -40,6 +42,24 @@ public class CommunityAdd extends AppCompatActivity {
         AddFileText = (TextView)findViewById(R.id.Text_addfile);
         btn_post = (Button)findViewById(R.id.btn_post);
 
+        Intent Capture = getIntent();
+        // 새로운 창을 열거나 정보를 입력받아 가져올 떄는 new Intent지만, 기존의 activity에서 extras를 가져올 때는 getIntent이다.
+        String capturePath = Capture.getStringExtra("captureData");
+        if(capturePath != null) {
+            ImageView SampleImg = findViewById(R.id.SampleImage);
+            try {
+                File file = new File(capturePath);
+                FileInputStream inputStream = new FileInputStream(file);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                SampleImg.setImageBitmap(bitmap);
+                inputStream.close();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+                Toast.makeText(this, "오류가 발생하였습니다.\n다시 시도해 주세요.", Toast.LENGTH_SHORT);
+            }
+        }
 
         Intent pop = new Intent(this, PopupActivity.class);
         pop.putExtra("data", "Test Popup");
@@ -122,11 +142,22 @@ public class CommunityAdd extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String result2 = data.getStringExtra("imageOk");
                 AddFileText.setText(result2);
-                byte[] dataBytes = data.getByteArrayExtra("data_byte");
-                ByteArrayInputStream inputStream = new ByteArrayInputStream(dataBytes);
+                String imgDir = data.getStringExtra("imgPath");
+                if(imgDir.indexOf(':') != -1)
+                    imgDir = imgDir.substring(imgDir.indexOf(':')+1);
                 ImageView SampleImg = findViewById(R.id.SampleImage);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                SampleImg.setImageBitmap(bitmap);
+                try {
+                    File file = Environment.getExternalStoragePublicDirectory(imgDir);
+                    FileInputStream inputStream = new FileInputStream(file);
+                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                    SampleImg.setImageBitmap(bitmap);
+                    inputStream.close();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                    Toast.makeText(this, "오류가 발생하였습니다.\n다시 시도해 주세요.", Toast.LENGTH_SHORT);
+                }
             }
         }
 

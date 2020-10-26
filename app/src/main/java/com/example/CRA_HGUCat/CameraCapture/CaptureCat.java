@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -18,26 +19,25 @@ import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Size;
 import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.TextureView;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.view.View;
 
+import com.example.CRA_HGUCat.CatCommunity.CommunityAdd;
 import com.example.CRA_HGUCat.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -50,6 +50,7 @@ public class CaptureCat extends AppCompatActivity {
     CaptureRequest.Builder builder;
     OrientationListener oriListen;
     CameraDevice cameradevice;
+    File imgFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,10 +131,52 @@ public class CaptureCat extends AppCompatActivity {
 
     public void onClick(View v)
     {
-        UploadPicture2Server();
+        UploadPicture2Directory();
     }
 
-    void UploadPicture2Server() {
+    void UploadPicture2Directory() {
+        final File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS + "/Hannyangmanyo");
+        // 최초의 directory에서 documents의 Hannyangmanyo 폴더에 접근
+        if (!dir.exists())
+            dir.mkdir();
+        // 만약 Hannyangmanyo 폴더가 없는 경우 폴더를 추가한다
+
+        new Thread() {
+            @Override
+            public void run() {
+            Matrix rotation = new Matrix();
+            rotation.postRotate(90);
+            Bitmap bitmap = cameraView.getBitmap();
+            bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), rotation, false);
+
+            try {
+                imgFile = new File(dir, new SimpleDateFormat("yyyyMMdd_hhmmss").format(new Date()) + ".png");
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 95, outputStream);
+                byte[] data = outputStream.toByteArray();
+
+                FileOutputStream fos = new FileOutputStream(imgFile);
+                fos.write(data);
+                fos.flush();
+                fos.close();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
+        }.start();
+        // main Thread에서 모든 작업을 수행하면 폰이 버티지 못할 수 있으므로,
+        // textureView와 관련된 UI작업은 새로이 Thread를 만들어서 처리한다.
+
+        onPopup();
+    }
+
+    void onPopup() {
+        Intent popup = new Intent(this, SavePopup.class);
+        startActivityForResult(popup,1);
+    }
+
+    /*void UploadPicture2Server() {
         final String Username = "";
         final String UploadUri = "";
         final int port = 0;
@@ -174,7 +217,7 @@ public class CaptureCat extends AppCompatActivity {
             }
             }
         }.start();
-    }
+    }*/
 
     void cameraPreview() {
         try {
@@ -283,4 +326,22 @@ public class CaptureCat extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1) {
+            if(resultCode==RESULT_OK) {
+                String Result = data.getStringExtra("saveSelect");
+                Toast.makeText(this, Result,Toast.LENGTH_SHORT).show();
+                if(Result.equals("갤러리")) ;
+                else if(Result.equals("커뮤니티")) {
+                    Intent community = new Intent(getBaseContext(), CommunityAdd.class);
+                    community.putExtra("captureData", imgFile.getPath());
+                    startActivity(community);
+                }
+            }
+        }
+    }
+
 }

@@ -13,6 +13,7 @@ import android.net.Uri;
 
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.CRA_HGUCat.CatCommunity.CommunityAdd;
 import com.example.CRA_HGUCat.R;
@@ -26,6 +27,7 @@ public class GetFile extends AppCompatActivity {
 
     ImageView imgViewSelected;
     Button btnImageSend, btnImageSelection;
+    Uri imgFileUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +40,15 @@ public class GetFile extends AppCompatActivity {
         btnImageSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Bitmap bitmap = ((BitmapDrawable)imgViewSelected.getDrawable()).getBitmap();
+            /*Bitmap bitmap = ((BitmapDrawable)imgViewSelected.getDrawable()).getBitmap();
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG,90,outputStream);
+            bitmap.compress(Bitmap.CompressFormat.PNG,90,outputStream);*/
 
-            byte[] data = outputStream.toByteArray();
             String ImageOk = "파일이 저장되었습니다";
 
             Intent addImage2CommunityAdd = new Intent(getApplicationContext(), CommunityAdd.class);
             addImage2CommunityAdd.putExtra("imageOk", ImageOk);
-            addImage2CommunityAdd.putExtra("data_byte", data);
+            addImage2CommunityAdd.putExtra("imgPath", imgFileUri.getPath());
             setResult(RESULT_OK, addImage2CommunityAdd);
 
             finish();
@@ -71,11 +72,11 @@ public class GetFile extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode != 1 || resultCode != RESULT_OK) return;
 
-        Uri dataUri = data.getData();
-        imgViewSelected.setImageURI(dataUri);
+        imgFileUri = data.getData();
+        imgViewSelected.setImageURI(imgFileUri);
 
         try {
-            InputStream GalleryImgInputStream = getContentResolver().openInputStream(dataUri);
+            InputStream GalleryImgInputStream = getContentResolver().openInputStream(imgFileUri);
             Bitmap image = BitmapFactory.decodeStream(GalleryImgInputStream);
             imgViewSelected.setImageBitmap(image);
             GalleryImgInputStream.close();
