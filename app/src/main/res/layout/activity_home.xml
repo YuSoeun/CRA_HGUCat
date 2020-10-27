@@ -8,51 +8,57 @@
 
     <Button
         android:id="@+id/btn_account"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_design"
         android:onClick="StartAccount"
         android:text="개인설정" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         >
 
         <Button
             android:id="@+id/camera_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:onClick="StartCamera"
-            android:text="카메라" />
+            android:text="카메라"
+            android:background="@drawable/button_design" />
 
         <Button
             android:id="@+id/list_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@id/camera_btn"
             android:onClick="StartList"
-            android:text="리스트" />
+            android:text="리스트"
+            android:background="@drawable/button_design"
+            />
 
         <Button
             android:id="@+id/community_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@id/list_btn"
             android:onClick="StartCommunity"
-            android:text="커뮤니티" />
+            android:text="커뮤니티"
+            android:background="@drawable/button_design" />
 
         <Button
             android:id="@+id/favorite_btn"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_toRightOf="@id/community_btn"
             android:onClick="StartFavoriteCat"
-            android:text="최애" />
+            android:text="최애"
+            android:background="@drawable/button_design" />
 
     </LinearLayout>
 

@@ -19,7 +19,7 @@
             android:id="@+id/CatImage"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:src="@drawable/baseline_pets_black_36dp"
+            android:src="@drawable/ic_account_nabi_36dp"
             android:layout_marginLeft="0dp"/>
 
         <TextView
@@ -95,6 +95,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="30dp"
-        android:onClick="Logout"/>
+        android:onClick="Logout"
+        android:background="@drawable/button_design" />
 
 </RelativeLayout>

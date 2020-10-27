@@ -48,7 +48,8 @@
                     android:id="@+id/HandongAuthBtn"
                     android:text = "중복확인"
                     android:onClick="callEmail"
-                    android:textSize="13dp"/>
+                    android:textSize="13dp"
+                    android:background="@drawable/button_design" />
 
             </LinearLayout>
 
@@ -131,7 +132,8 @@
                 android:textSize = "24dp"
                 android:layout_marginVertical="20dp"
                 android:onClick = "AskRegister"
-                android:enabled="false" />
+                android:enabled="false"
+                android:background="@drawable/button_design" />
 
         </RelativeLayout>
 

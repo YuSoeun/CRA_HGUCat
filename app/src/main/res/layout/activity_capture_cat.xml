@@ -29,7 +29,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Capture"
-        android:textSize="20sp"
-        android:onClick="onClick"/>
+        android:textSize="17sp"
+        android:onClick="onClick"
+        android:background="@drawable/button_design" />
 
 </RelativeLayout>

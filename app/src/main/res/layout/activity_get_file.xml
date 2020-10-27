@@ -16,25 +16,29 @@
         tools:layout_editor_absoluteY="13dp"
         tools:srcCompat="@tools:sample/backgrounds/scenic"/>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         tools:context=".CatCommunity.GetFile"
         android:orientation="horizontal"
-        android:gravity="bottom"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_below="@id/imgViewSelected"
+        android:layout_centerHorizontal="true">
 
         <Button android:id="@+id/btnImageSelection"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="이미지 선택"
             android:layout_marginEnd="20dp"
-            />
+            android:background="@drawable/button_design"  />
 
         <Button android:id="@+id/btnImageSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="보내기" />
+            android:text="보내기"
+            android:background="@drawable/button_design"
+            android:layout_toRightOf="@id/btnImageSelection" />
 
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

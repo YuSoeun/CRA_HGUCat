@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
-    android:background="#eeeeee"
+    android:background="@drawable/button_design"
     android:layout_height="wrap_content"
     tools:context=".CameraCapture.SavePopup">
 

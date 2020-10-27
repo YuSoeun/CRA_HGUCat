@@ -29,7 +29,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="다시 설정하기"
-                android:onClick="mOnPopupClick"/>
+                android:onClick="mOnPopupClick"
+                android:background="@drawable/button_design" />
 
         </LinearLayout>
 
@@ -87,7 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="파일 추가하기"
-                android:onClick="Fileuplode"/>
+                android:onClick="Fileuplode"
+                android:background="@drawable/button_design" />
 
         </LinearLayout>
 
@@ -98,7 +100,8 @@
             android:layout_centerHorizontal="true"
             android:text="게시하기"
             android:layout_alignParentBottom="true"
-            android:onClick="onClickPost" />
+            android:onClick="onClickPost"
+            android:background="@drawable/button_design" />
 
         <TextView android:id="@+id/TempTextView"
             android:layout_height="wrap_content"
