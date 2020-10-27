@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/button_design"
     android:layout_gravity="center"
-    android:orientation="vertical"
     tools:context=".CatCommunity.PopupActivity">
 
     <!-- 타이틀바 -->

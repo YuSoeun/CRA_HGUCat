@@ -12,7 +12,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/imageView1"
@@ -24,25 +25,28 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="242dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btncom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="50dp"
                 android:layout_weight="1"
+                android:background="@drawable/button_design"
                 android:gravity="center"
                 android:text="커뮤니티"
-                android:background="@drawable/button_design"
                 android:textColor="#000000"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:onClick="StartCommunity"/>
 
             <Button
                 android:id="@+id/btninf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="정보수정"
@@ -58,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:text="나비\n\n 한동냥 간판 담당\n\n8살, 수컷, 중성화 완료\n궁디팡팡 좋아함\n\n\n출처: 한동냥"
+        android:text="\n나비\n\n 한동냥 간판 담당\n\n8살, 수컷, 중성화 완료\n궁디팡팡 좋아함\n\n\n출처: 한동냥"
         android:textColor="#000000"
         android:textSize="20dp"
         android:gravity="center"

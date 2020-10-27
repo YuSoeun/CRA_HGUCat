@@ -7,8 +7,10 @@
     tools:context=".CatCommunity.CommunityRead">
 
     <ListView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/CommunityBulletinBoard" />
+        android:id="@+id/CommunityBulletinBoard"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>

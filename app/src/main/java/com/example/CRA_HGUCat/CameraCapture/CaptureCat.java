@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -337,8 +336,8 @@ public class CaptureCat extends AppCompatActivity {
         if(requestCode == 1) {
             if(resultCode==RESULT_OK) {
                 String Result = data.getStringExtra("saveSelect");
-                if(Result.equals("갤러리")) ;
-                else if(Result.equals("커뮤니티")) {
+                if(Result.equals("아니요.")) ;
+                else if(Result.equals("네")) {
                     /*while(!imgFile.exists()) {
                         Snackbar loadingBar = Snackbar.make(findViewById(R.id.capture_cat_activity_layout),
                                 "사진을 저장하고 있습니다.", Snackbar.LENGTH_INDEFINITE);

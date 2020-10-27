@@ -99,6 +99,8 @@
         android:text="게스트 계정으로 로그인"
         android:textColor="#5555CC"
         android:textSize="13dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
         android:onClick="onGuestLogin" />
 
 </RelativeLayout>
