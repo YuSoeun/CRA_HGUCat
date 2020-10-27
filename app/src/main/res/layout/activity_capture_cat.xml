@@ -10,11 +10,12 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:id="@+id/cameraLayout"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@+id/capture_btn" >
+        android:layout_above="@+id/capture_btn"
+        android:layout_alignParentLeft="true">
 
         <TextureView
             android:id="@+id/cameraView"
@@ -32,7 +33,7 @@
         android:text="Capture"
         android:textSize="17sp"
         android:background="@drawable/button_design"
-        android:layout_marginBottom="20dp"
+        android:layout_margin ="20dp"
         android:fontFamily="@font/bmjua"
         android:onClick="onClick"/>
     
