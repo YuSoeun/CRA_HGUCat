@@ -32,7 +32,7 @@ public class PopupActivity extends Activity {
         checkbox1 = (CheckBox)findViewById(R.id.checkBox1);
         checkbox2 = (CheckBox)findViewById(R.id.checkBox2);
         checkbox3 = (CheckBox)findViewById(R.id.checkBox3);
-        checkbox4 = (CheckBox)findViewById(R.id.checkBox4);
+
         Button btn_choose = (Button)findViewById(R.id.btn_choose);
         final TextView tv = (TextView)findViewById(R.id.textView2);
 
@@ -43,7 +43,6 @@ public class PopupActivity extends Activity {
             if(checkbox1.isChecked()) checklist.add(checkbox1.getText().toString());
             if(checkbox2.isChecked()) checklist.add(checkbox2.getText().toString());
             if(checkbox3.isChecked()) checklist.add(checkbox3.getText().toString());
-            if(checkbox4.isChecked()) checklist.add(checkbox4.getText().toString());
 
             if(checklist.size() == 1) {
                 Toast.makeText(PopupActivity.this, "설정되었습니다.", Toast.LENGTH_SHORT).show();

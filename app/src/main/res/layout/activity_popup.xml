@@ -37,11 +37,12 @@
         android:padding="24dp"
         android:layout_below="@id/linear">
 
+
         <CheckBox
             android:id="@+id/checkBox1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="고양이 사진"
+            android:text="고양이 사진 + 글"
             android:textColor="#000"
             android:fontFamily="@font/bmjua" />
 
@@ -49,20 +50,12 @@
             android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="고양이 글"
-            android:textColor="#000"
-            android:fontFamily="@font/bmjua" />
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="새로운 고양이를 찾았다"
             android:textColor="#000"
             android:fontFamily="@font/bmjua" />
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="수정해주세요"
