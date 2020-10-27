@@ -8,12 +8,14 @@
     <TextView android:id="@+id/TextView01"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/bmjua"/>
 
     <EditText android:id="@+id/EditText01"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_below="@id/TextView01" />
+        android:layout_below="@id/TextView01"
+        android:fontFamily="@font/bmjua"/>
 
     <Button
         android:id="@+id/Button01"
@@ -21,12 +23,14 @@
         android:layout_height="58dp"
         android:text="Send"
         android:layout_below="@id/EditText01"
-        android:background="@drawable/button_design" />
+        android:background="@drawable/button_design"
+        android:fontFamily="@font/bmjua"/>
 
     <TextView android:id="@+id/chatting"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:layout_below="@id/Button01"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/bmjua"/>
 
 </RelativeLayout>

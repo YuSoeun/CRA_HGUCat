@@ -21,7 +21,8 @@
             android:gravity="center"
             android:text="Select Where to Post"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:fontFamily="@font/bmjua" />
 
     </LinearLayout>
     <!-- //end 타이틀바 -->
@@ -41,28 +42,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="고양이 사진"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:fontFamily="@font/bmjua" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="고양이 글"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:fontFamily="@font/bmjua" />
 
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="새로운 고양이를 찾았다"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:fontFamily="@font/bmjua" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="수정해주세요"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:fontFamily="@font/bmjua" />
 
     </LinearLayout>
     <!-- Notice -->
@@ -84,7 +89,8 @@
             android:padding="16dp"
             android:text="선택"
             android:textColor="#000000"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:fontFamily="@font/bmjua" />
 
     </LinearLayout>
     <!--// 닫기 버튼 -->

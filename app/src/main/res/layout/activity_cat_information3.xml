@@ -39,7 +39,8 @@
                 android:text="커뮤니티"
                 android:background="@drawable/button_design"
                 android:textColor="#000000"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:fontFamily="@font/bmjua" />
 
             <Button
                 android:id="@+id/btninf"
@@ -50,7 +51,8 @@
                 android:text="정보수정"
                 android:background="@drawable/button_design"
                 android:textColor="#666666"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:fontFamily="@font/bmjua"  />
 
         </LinearLayout>
     </LinearLayout>
@@ -60,9 +62,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:text="\n짬뽕이\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n중성화 수술 후 학교에 돌아오는 길에\n포획틀을 뛰쳐나가 도망\n\n\n출처: 한동냥"
+        android:text="\n짬뽕이\n\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n\n중성화 수술 후 학교에 돌아오는 길에\n\n포획틀을 뛰쳐나가 도망\n\n\n\n출처: 한동냥"
         android:textColor="#000000"
         android:textSize="20dp"
         android:gravity="center"
-        android:layout_below="@id/linear"/>
+        android:layout_below="@id/linear"
+        android:fontFamily="@font/bmjua" />
 </RelativeLayout>
