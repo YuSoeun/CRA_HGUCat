@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
@@ -8,6 +8,7 @@
 
     <!-- 타이틀바 -->
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -26,11 +27,13 @@
 
     <!-- Notice -->
     <LinearLayout
+        android:id="@+id/linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F1EFEF"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:layout_below="@id/linear">
 
         <CheckBox
             android:id="@+id/checkBox1"
@@ -69,7 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@id/linear2">
 
         <Button
             android:id="@+id/btn_choose"
@@ -85,4 +89,4 @@
 
     </LinearLayout>
     <!--// 닫기 버튼 -->
-</LinearLayout>
+</RelativeLayout>

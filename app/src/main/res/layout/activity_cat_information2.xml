@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,6 +8,7 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/linear"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,5 +58,6 @@
         android:text="깡패\n\n맘스 2,3세대 아빠\n\n수컷, 중성화 완료\n2019-1학기 종강 이후 안보임 ㅠㅠ\n 나비랑 친했음! 간식 줄 때 손조심\n\n\n출처: 한동냥"
         android:textColor="#000000"
         android:textSize="20dp"
-        android:gravity="center"/>
-</LinearLayout>
+        android:gravity="center"
+        android:layout_below="@id/linear"/>
+</RelativeLayout>
