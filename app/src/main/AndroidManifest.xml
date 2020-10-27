@@ -13,7 +13,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/baseline_pets_black_36dp"
+        android:icon="@drawable/cat1_36dp"
         android:label="Hannyangmanyo"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"

@@ -19,7 +19,7 @@
             android:layout_width="276dp"
             android:layout_height="242dp"
             android:layout_weight="1"
-            android:src="@drawable/cat2" />
+            android:src="@drawable/cat2_36dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
