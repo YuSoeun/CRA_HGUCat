@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -21,15 +22,19 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Size;
+import android.view.LayoutInflater;
 import android.view.OrientationEventListener;
 import android.view.Surface;
 import android.view.TextureView;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.view.View;
 
 import com.example.CRA_HGUCat.CatCommunity.CommunityAdd;
 import com.example.CRA_HGUCat.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -334,11 +339,21 @@ public class CaptureCat extends AppCompatActivity {
                 String Result = data.getStringExtra("saveSelect");
                 if(Result.equals("갤러리")) ;
                 else if(Result.equals("커뮤니티")) {
-                    while(!imgFile.exists());
+                    /*while(!imgFile.exists()) {
+                        Snackbar loadingBar = Snackbar.make(findViewById(R.id.capture_cat_activity_layout),
+                                "사진을 저장하고 있습니다.", Snackbar.LENGTH_INDEFINITE);
+                        ProgressBar loadingCircle = findViewById(R.id.loading_circle);
+                        loadingCircle.setVisibility(View.VISIBLE);
+                        loadingBar.show();
+                    }*/
+                    if((!imgFile.exists()))
+                        findViewById(R.id.loading_circle).setVisibility(View.VISIBLE);
+
                     // 이미지파일 생성이 생각보다 느려서 커뮤니티에 더 빠르게 들어가려고 하면 EOF 에러가 나옴(들어갈 당시에는 사진이 없었기 때문에).
                     Intent community = new Intent(getBaseContext(), CommunityAdd.class);
                     community.putExtra("captureData", imgFile.getPath());
                     startActivity(community);
+                    finish();
                 }
             }
         }

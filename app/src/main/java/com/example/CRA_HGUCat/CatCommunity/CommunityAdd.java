@@ -110,7 +110,7 @@ public class CommunityAdd extends AppCompatActivity {
                 if(sampleImg.getDrawable() != null) {
                     Bitmap bitmap = ((BitmapDrawable)sampleImg.getDrawable()).getBitmap();
                     ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.PNG,50,outputStream);
+                    bitmap.compress(Bitmap.CompressFormat.PNG,95,outputStream);
                     data = outputStream.toByteArray();
                     inputImgStream = new ByteArrayInputStream(data);
                     channelSftp.put(inputImgStream,"/home/cat/"+ AddBulletinDirectory +"/"+ TitleText.getText().toString() +".png");
@@ -143,20 +143,23 @@ public class CommunityAdd extends AppCompatActivity {
                 String result2 = data.getStringExtra("imageOk");
                 AddFileText.setText(result2);
                 String imgDir = data.getStringExtra("imgPath");
-                if(imgDir.indexOf(':') != -1)
-                    imgDir = imgDir.substring(imgDir.indexOf(':')+1);
-                ImageView SampleImg = findViewById(R.id.SampleImage);
-                try {
-                    File file = Environment.getExternalStoragePublicDirectory(imgDir);
-                    FileInputStream inputStream = new FileInputStream(file);
-                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                    SampleImg.setImageBitmap(bitmap);
-                    inputStream.close();
+                if(imgDir.indexOf("msf") != -1) {
+                    Toast.makeText(this, "바로가기 경로는 호환되지 않습니다\n직접 폴더로 이동하여 선택해주세요", Toast.LENGTH_LONG).show();
                 }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                    Toast.makeText(this, "오류가 발생하였습니다.\n다시 시도해 주세요.", Toast.LENGTH_SHORT);
+                else {
+                    if (imgDir.indexOf(':') != -1)
+                        imgDir = imgDir.substring(imgDir.indexOf(':') + 1);
+                    ImageView SampleImg = findViewById(R.id.SampleImage);
+                    try {
+                        File file = Environment.getExternalStoragePublicDirectory(imgDir);
+                        FileInputStream inputStream = new FileInputStream(file);
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        SampleImg.setImageBitmap(bitmap);
+                        inputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(this, "오류가 발생하였습니다.\n다시 시도해 주세요.", Toast.LENGTH_SHORT);
+                    }
                 }
             }
         }

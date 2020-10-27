@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/capture_cat_activity_layout"
     tools:context=".CameraCapture.CaptureCat">
 
     <FrameLayout
@@ -33,5 +34,12 @@
         android:background="@drawable/button_design"
         android:fontFamily="@font/bmjua"
         android:onClick="onClick"/>
+    
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loading_circle"
+        android:visibility="invisible"
+        android:indeterminateTint="#000"/>
 
 </RelativeLayout>
