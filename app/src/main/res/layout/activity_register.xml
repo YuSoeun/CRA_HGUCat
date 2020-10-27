@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/RegisterActivityLayout"
+    android:theme="@style/SpecialChar"
     tools:context=".AppLoginInterface.RegisterActivity" >
 
     <ScrollView
@@ -96,6 +97,7 @@
                     android:layout_height="wrap_content"
                     android:id = "@+id/loginRePassword"
                     android:hint = "  비밀번호 재입력"
+                    android:fontFamily="@font/bmjua"
                     app:errorEnabled="true"
                     android:inputType="textPassword"
                     android:enabled="false" />

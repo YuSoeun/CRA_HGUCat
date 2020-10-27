@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/SpecialChar"
     tools:context=".AppLoginInterface.LoginActivity">
 
 
@@ -26,6 +27,7 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:hint="  학번"
+            android:fontFamily="@font/bmjua"
             android:id="@+id/SignInID" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="로그인"
+            android:fontFamily="@font/bmjua"
             android:onClick="goLoginActivity"
             android:layout_marginHorizontal="25dp"
             android:background="@drawable/button_design"/>
@@ -70,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="회원가입"
+            android:fontFamily="@font/bmjua"
             android:onClick="goResisterActivity"
             android:layout_marginHorizontal="25dp"
             android:background="@drawable/button_design" />
@@ -80,6 +84,7 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text = "비밀번호 찾기"
+        android:fontFamily="@font/bmjua"
         android:layout_below="@id/SignInButtonLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"

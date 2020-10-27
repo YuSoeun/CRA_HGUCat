@@ -19,7 +19,7 @@
             android:layout_height="53dp"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="Select Where to Post"
+            android:text="게시할 주제를 선택하세요"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:fontFamily="@font/bmjua" />
