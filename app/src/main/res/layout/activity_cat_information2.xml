@@ -58,15 +58,21 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/Textview"
+    <ScrollView
+        android:id="@+id/ScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="10"
-        android:text="\n깡패\n\n\n맘스 2,3세대 아빠\n\n수컷, 중성화 완료\n\n2019-1학기 종강 이후 안보임 ㅠㅠ\n\n 나비랑 친했음! 간식 줄 때 손조심\n\n\n\n출처: 한동냥"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_below="@id/linear"
-        android:fontFamily="@font/bmjua" />
+        android:layout_below = "@id/linear">
+
+        <TextView
+            android:id="@+id/Textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\n깡패\n\n\n맘스 2,3세대 아빠\n\n수컷, 중성화 완료\n\n2019-1학기 종강 이후 안보임 ㅠㅠ\n\n 나비랑 친했음! 간식 줄 때 손조심\n\n\n\n출처: 한동냥\n"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:fontFamily="@font/bmjua" />
+
+    </ScrollView>
 </RelativeLayout>

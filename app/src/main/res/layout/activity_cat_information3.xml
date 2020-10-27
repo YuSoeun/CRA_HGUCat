@@ -57,15 +57,21 @@
         </LinearLayout>
     </LinearLayout>
 
+    <ScrollView
+        android:id="@+id/ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below = "@id/linear">
+
     <TextView
         android:id="@+id/Textview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="10"
-        android:text="\n짬뽕이\n\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n\n중성화 수술 후 학교에 돌아오는 길에\n\n포획틀을 뛰쳐나가 도망\n\n\n\n출처: 한동냥"
+        android:layout_height="wrap_content"
+        android:text="\n짬뽕이\n\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n\n중성화 수술 후 학교에 돌아오는 길에\n\n포획틀을 뛰쳐나가 도망\n\n\n\n출처: 한동냥\n"
         android:textColor="#000000"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:gravity="center"
-        android:layout_below="@id/linear"
         android:fontFamily="@font/bmjua" />
+
+    </ScrollView>
 </RelativeLayout>
