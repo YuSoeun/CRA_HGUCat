@@ -14,7 +14,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/baseline_pets_black_36dp"
-        android:label="@string/app_name"
+        android:label="Hannyangmanyo"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

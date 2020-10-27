@@ -59,7 +59,7 @@ public class CaptureCat extends AppCompatActivity {
 
         cameraView = findViewById(R.id.cameraView);
         assert cameraView != null;
-        cameraView.setRotation(90f);
+        cameraView.setRotation(-90f);
 
         cameraView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
@@ -111,11 +111,11 @@ public class CaptureCat extends AppCompatActivity {
         public void onOrientationChanged(int orientation) {
             if ((orientation < 35 || orientation > 325) && rotation != 0) {
                 rotation = 0;
-                cameraView.setRotation(90f);
+                cameraView.setRotation(-90f);
             }
             else if (orientation > 145 && orientation < 215 && rotation != 2) {
                 rotation = 2;
-                cameraView.setRotation(90f);
+                cameraView.setRotation(-90f);
             }
             else if (orientation > 55 && orientation < 125 && rotation != 3) {
                 rotation = 3;
@@ -150,7 +150,7 @@ public class CaptureCat extends AppCompatActivity {
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), rotation, false);
 
             try {
-                imgFile = new File(dir, new SimpleDateFormat("yyyyMMdd_hhmmss").format(new Date()) + ".png");
+                imgFile = new File(dir, new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()) + ".png");
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.PNG, 95, outputStream);
                 byte[] data = outputStream.toByteArray();
@@ -167,7 +167,6 @@ public class CaptureCat extends AppCompatActivity {
         }.start();
         // main Thread에서 모든 작업을 수행하면 폰이 버티지 못할 수 있으므로,
         // textureView와 관련된 UI작업은 새로이 Thread를 만들어서 처리한다.
-
         onPopup();
     }
 
@@ -333,9 +332,10 @@ public class CaptureCat extends AppCompatActivity {
         if(requestCode == 1) {
             if(resultCode==RESULT_OK) {
                 String Result = data.getStringExtra("saveSelect");
-                Toast.makeText(this, Result,Toast.LENGTH_SHORT).show();
                 if(Result.equals("갤러리")) ;
                 else if(Result.equals("커뮤니티")) {
+                    while(!imgFile.exists());
+                    // 이미지파일 생성이 생각보다 느려서 커뮤니티에 더 빠르게 들어가려고 하면 EOF 에러가 나옴(들어갈 당시에는 사진이 없었기 때문에).
                     Intent community = new Intent(getBaseContext(), CommunityAdd.class);
                     community.putExtra("captureData", imgFile.getPath());
                     startActivity(community);
