@@ -31,14 +31,16 @@
             android:layout_height="wrap_content"
             android:text="이미지 선택"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/button_design"  />
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/bmjua" />
 
         <Button android:id="@+id/btnImageSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="보내기"
             android:background="@drawable/button_design"
-            android:layout_toRightOf="@id/btnImageSelection" />
+            android:layout_toRightOf="@id/btnImageSelection"
+            android:fontFamily="@font/bmjua" />
 
     </RelativeLayout>
 </RelativeLayout>

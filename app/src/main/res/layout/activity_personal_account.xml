@@ -21,7 +21,7 @@
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:src="@drawable/nabi_36dp"
-            android:layout_marginLeft="0dp"/>
+            android:layout_marginLeft="0dp" />
 
         <TextView
             android:id="@+id/Textview"
@@ -30,7 +30,8 @@
             android:gravity="center"
             android:text="정보"
             android:textColor="#000000"
-            android:textSize="50dp" />
+            android:textSize="50dp"
+            android:fontFamily="@font/bmjua" />
 
     </LinearLayout>
 
@@ -47,12 +48,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:fontFamily="@font/bmjua" >
 
             <ListView
                 android:id="@+id/CatList"
                 android:layout_width="match_parent"
-                android:layout_height="500dp" />
+                android:layout_height="500dp"
+                android:fontFamily="@font/bmjua" />
 
 
         </LinearLayout>
@@ -75,7 +78,8 @@
             android:text="알람 설정"
             android:textColor="#000000"
             android:textSize="20dp"
-            android:layout_marginRight="50dp"/>
+            android:layout_marginRight="50dp"
+            android:fontFamily="@font/bmjua" />
 
         <Switch
             android:id="@+id/alarmSwitch"
@@ -97,6 +101,7 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="20dp"
         android:onClick="Logout"
-        android:background="@drawable/button_design" />
+        android:background="@drawable/button_design"
+        android:fontFamily="@font/bmjua" />
 
 </RelativeLayout>

@@ -38,7 +38,8 @@
                         android:id="@+id/HandongEmail"
                         app:errorEnabled="true"
                         android:inputType="textEmailAddress"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:fontFamily="@font/bmjua" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +50,8 @@
                     android:text = "중복확인"
                     android:onClick="callEmail"
                     android:textSize="13dp"
-                    android:background="@drawable/button_design" />
+                    android:background="@drawable/button_design"
+                    android:fontFamily="@font/bmjua" />
 
             </LinearLayout>
 
@@ -64,7 +66,8 @@
                 app:errorEnabled="true"
                 app:errorIconDrawable="@drawable/erroricon"
                 app:helperTextEnabled="true"
-                app:helperText = "숫자와 알파벳을 사용하여 6~15자를 만들어주세요.">
+                app:helperText = "숫자와 알파벳을 사용하여 6~15자를 만들어주세요."
+                android:fontFamily="@font/bmjua" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="320dp"
@@ -73,7 +76,8 @@
                     android:hint = "  비밀번호"
                     app:errorEnabled="true"
                     android:inputType="textPassword"
-                    android:enabled="false" />
+                    android:enabled="false"
+                    android:fontFamily="@font/bmjua" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -118,7 +122,8 @@
                     android:hint = "  별명 (회원가입 후 바꾸실 수 있습니다)"
                     android:textSize = "18sp"
                     app:errorEnabled="true"
-                    android:enabled="false" />
+                    android:enabled="false"
+                    android:fontFamily="@font/bmjua" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +138,8 @@
                 android:layout_marginVertical="20dp"
                 android:onClick = "AskRegister"
                 android:enabled="false"
-                android:background="@drawable/button_design" />
+                android:background="@drawable/button_design"
+                android:fontFamily="@font/bmjua" />
 
         </RelativeLayout>
 
@@ -149,6 +155,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"
+        android:fontFamily="@font/bmjua" />
 
 </RelativeLayout>

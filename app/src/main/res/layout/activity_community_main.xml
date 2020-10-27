@@ -25,7 +25,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:onClick="VisitCommunity"
-        android:background="@drawable/button_design" />
+        android:background="@drawable/button_design"
+        android:fontFamily="@font/bmjua" />
 
 
 </RelativeLayout>

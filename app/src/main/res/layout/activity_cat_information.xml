@@ -17,11 +17,11 @@
 
         <ImageView
             android:id="@+id/imageView1"
-
             android:layout_width="276dp"
             android:layout_height="242dp"
             android:layout_weight="1"
-            android:src="@drawable/cat1_36dp" />
+            android:src="@drawable/cat1_36dp"
+            android:fontFamily="@font/bmjua" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -41,7 +41,8 @@
                 android:text="커뮤니티"
                 android:textColor="#000000"
                 android:textSize="10dp"
-                android:onClick="StartCommunity"/>
+                android:onClick="StartCommunity"
+                android:fontFamily="@font/bmjua" />
 
             <Button
                 android:id="@+id/btninf"
@@ -52,7 +53,8 @@
                 android:text="정보수정"
                 android:background="@drawable/button_design"
                 android:textColor="#666666"
-                android:textSize="10dp" />
+                android:textSize="10dp"
+                android:fontFamily="@font/bmjua" />
 
         </LinearLayout>
     </LinearLayout>
@@ -62,9 +64,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:text="\n나비\n\n 한동냥 간판 담당\n\n8살, 수컷, 중성화 완료\n궁디팡팡 좋아함\n\n\n출처: 한동냥"
+        android:text="\n나비\n\n\n 한동냥 간판 담당\n\n8살, 수컷, 중성화 완료\n\n궁디팡팡 좋아함\n\n\n\n출처: 한동냥"
         android:textColor="#000000"
         android:textSize="20dp"
         android:gravity="center"
-        android:layout_below = "@id/linear"/>
+        android:layout_below = "@id/linear"
+        android:fontFamily="@font/bmjua" />
 </RelativeLayout>
