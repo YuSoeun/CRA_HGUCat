@@ -20,6 +20,7 @@ import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.util.Size;
 import android.view.OrientationEventListener;
 import android.view.Surface;
@@ -145,7 +146,7 @@ public class CaptureCat extends AppCompatActivity {
             @Override
             public void run() {
             Matrix rotation = new Matrix();
-            rotation.postRotate(90);
+            rotation.postRotate(-90);
             Bitmap bitmap = cameraView.getBitmap();
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), rotation, false);
 

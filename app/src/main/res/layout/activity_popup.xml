@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    android:layout_gravity="center"
-    android:orientation="vertical">
+    tools:context=".CatCommunity.PopupActivity">
 
     <!-- 타이틀바 -->
     <LinearLayout
@@ -39,33 +39,32 @@
             android:id="@+id/checkBox1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="고양이 사진" />
+            android:text="고양이 사진"
+            android:textColor="#000" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="고양이 글" />
+            android:text="고양이 글"
+            android:textColor="#000" />
 
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="새로운 고양이를 찾았다" />
+            android:text="새로운 고양이를 찾았다"
+            android:textColor="#000" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="수정해주세요" />
+            android:text="수정해주세요"
+            android:textColor="#000" />
 
     </LinearLayout>
     <!-- Notice -->
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#66bdbdbd" />
 
     <!-- 선택 버튼 -->
     <LinearLayout
@@ -81,7 +80,6 @@
             android:layout_height="53dp"
             android:background="#FFFFFF"
             android:gravity="center"
-            android:onClick="onClick"
             android:padding="16dp"
             android:text="선택"
             android:textColor="#000000"

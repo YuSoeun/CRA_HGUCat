@@ -30,6 +30,7 @@
         android:layout_centerHorizontal="true"
         android:text="Capture"
         android:textSize="20sp"
+        android:fontFamily="@font/bmjua"
         android:onClick="onClick"/>
 
 </RelativeLayout>
