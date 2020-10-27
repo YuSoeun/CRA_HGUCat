@@ -145,7 +145,7 @@ public class CaptureCat extends AppCompatActivity {
             @Override
             public void run() {
             Matrix rotation = new Matrix();
-            rotation.postRotate(90);
+            rotation.postRotate(-90);
             Bitmap bitmap = cameraView.getBitmap();
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), rotation, false);
 

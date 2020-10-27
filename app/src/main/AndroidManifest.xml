@@ -18,13 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".CameraCapture.SavePopup"
                   android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".CatCategory.CatInformation3" />
         <activity android:name=".CatCategory.CatInformation2" />
         <activity android:name=".CatCommunity.CommunityBulletinActivity" />
         <activity android:name=".CatCommunity.CommunityRead" />
-        <activity android:name=".CatCommunity.PopupActivity" />
+        <activity android:name=".CatCommunity.PopupActivity"
+                  android:theme="@android:style/Theme.Dialog"/>
         <activity android:name=".CatCommunity.GetFile" />
         <activity android:name=".CatCommunity.CommunityAdd" />
         <activity

@@ -30,7 +30,8 @@
         android:layout_centerHorizontal="true"
         android:text="Capture"
         android:textSize="17sp"
-        android:onClick="onClick"
-        android:background="@drawable/button_design" />
+        android:background="@drawable/button_design"
+        android:fontFamily="@font/bmjua"
+        android:onClick="onClick"/>
 
 </RelativeLayout>
