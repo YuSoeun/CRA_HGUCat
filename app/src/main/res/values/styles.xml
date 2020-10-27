@@ -5,8 +5,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/bmjua</item>
     </style>
 
     <style name = "RegisterTheme" parent="Theme.AppCompat.DayNight.NoActionBar"/>
+
+    <style name = "SpecialChar">
+        <item name="fontFamily">@font/godo_middle</item>
+    </style>
 
 </resources>
