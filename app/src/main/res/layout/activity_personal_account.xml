@@ -8,18 +8,19 @@
     android:layout_margin="5dp">
 
     <LinearLayout
+        android:id="@+id/MainAccount"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:gravity="center"
-        android:id="@+id/MainAccount">
+        android:layout_marginTop="20dp">
 
         <ImageView
             android:id="@+id/CatImage"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_account_nabi_36dp"
+            android:src="@drawable/nabi_36dp"
             android:layout_marginLeft="0dp"/>
 
         <TextView
@@ -94,7 +95,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
         android:onClick="Logout"
         android:background="@drawable/button_design" />
 

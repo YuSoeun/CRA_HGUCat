@@ -7,7 +7,8 @@
 
     <TextView android:id="@+id/TextView01"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"/>
+        android:layout_width="fill_parent"
+        android:layout_marginTop="20dp"/>
 
     <EditText android:id="@+id/EditText01"
         android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
     <TextView android:id="@+id/chatting"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
-        android:layout_below="@id/Button01"/>
+        android:layout_below="@id/Button01"
+        android:layout_marginBottom="20dp"/>
 
 </RelativeLayout>

@@ -30,9 +30,9 @@ public class CatList extends AppCompatActivity {
         listview.setAdapter(adapter);
 
         // 아이템 추가.
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.cat1), "나비", "Pet icon");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.cat2), "깡패", "Pet icon");
-        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.cat3), "짬뽕이", "Pet icon");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.cat1_36dp), " 나비", " 한동냥 간판담당");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.cat2_36dp), " 깡패", " 맘스 2, 3세대 아빠");
+        adapter.addItem(ContextCompat.getDrawable(this, R.drawable.cat3), " 짬뽕이", " 맘스 2, 3세대 엄마");
 
         // 위에서 생성한 listview에 클릭 이벤트 핸들러 정의.
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,17 +45,17 @@ public class CatList extends AppCompatActivity {
             String descStr = item.getDesc();
             Drawable iconDrawable = item.getIcon();
 
-            if(titleStr.equals("나비")) {
+            if(titleStr.equals(" 나비")) {
                 //LayoutInflater.from(activity_cat_list.this).inflate(Integer.parseInt(".nabi_information"), null);
                 Intent intent  = new Intent(CatList.this, CatInformation.class);
                 startActivity(intent);
             }
-            else if(titleStr.equals("깡패")) {
+            else if(titleStr.equals(" 깡패")) {
                 //LayoutInflater.from(activity_cat_list.this).inflate(Integer.parseInt(".nabi_information"), null);
                 Intent intent  = new Intent(CatList.this, CatInformation2.class);
                 startActivity(intent);
                 }
-            else if(titleStr.equals("짬뽕이")) {
+            else if(titleStr.equals(" 짬뽕이")) {
                 //LayoutInflater.from(activity_cat_list.this).inflate(Integer.parseInt(".nabi_information"), null);
                 Intent intent  = new Intent(CatList.this, CatInformation3.class);
                 startActivity(intent);

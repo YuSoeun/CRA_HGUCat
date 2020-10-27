@@ -332,8 +332,8 @@ public class CaptureCat extends AppCompatActivity {
         if(requestCode == 1) {
             if(resultCode==RESULT_OK) {
                 String Result = data.getStringExtra("saveSelect");
-                if(Result.equals("갤러리")) ;
-                else if(Result.equals("커뮤니티")) {
+                if(Result.equals("아니요.")) ;
+                else if(Result.equals("네")) {
                     while(!imgFile.exists());
                     // 이미지파일 생성이 생각보다 느려서 커뮤니티에 더 빠르게 들어가려고 하면 EOF 에러가 나옴(들어갈 당시에는 사진이 없었기 때문에).
                     Intent community = new Intent(getBaseContext(), CommunityAdd.class);

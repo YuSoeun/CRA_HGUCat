@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        >
+        android:layout_marginTop="20dp" >
 
         <ImageView
             android:id="@+id/imageView1"
@@ -24,14 +24,16 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="242dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="center"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/btncom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="커뮤니티"
@@ -41,8 +43,8 @@
 
             <Button
                 android:id="@+id/btninf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="정보수정"
@@ -58,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="10"
-        android:text="짬뽕이\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n중성화 수술 후 학교에 돌아오는 길에\n포획틀을 뛰쳐나가 도망\n\n\n출처: 한동냥"
+        android:text="\n짬뽕이\n\n맘스 2,3세대 엄마, 다산여왕\n\n암컷, 중성화 완료\n중성화 수술 후 학교에 돌아오는 길에\n포획틀을 뛰쳐나가 도망\n\n\n출처: 한동냥"
         android:textColor="#000000"
         android:textSize="20dp"
         android:gravity="center"
