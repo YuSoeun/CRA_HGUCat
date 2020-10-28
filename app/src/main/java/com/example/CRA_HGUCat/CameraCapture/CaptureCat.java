@@ -28,12 +28,14 @@ import android.view.TextureView;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import android.view.View;
 
 import com.example.CRA_HGUCat.CatCommunity.CommunityAdd;
 import com.example.CRA_HGUCat.R;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
@@ -305,13 +307,13 @@ public class CaptureCat extends AppCompatActivity {
 
         @Override
         public void onDisconnected(@NonNull CameraDevice cameraDevice) {
-            Toast.makeText(CaptureCat.this,"Disconnected", Toast.LENGTH_LONG).show();
+//            Toast.makeText(CaptureCat.this,"연결이 해제되었습니다", Toast.LENGTH_LONG).show();
             cameradevice.close();
         }
 
         @Override
         public void onError(@NonNull CameraDevice cameraDevice, int i) {
-            Toast.makeText(CaptureCat.this,"Error!! " + i, Toast.LENGTH_LONG).show();
+            Toast.makeText(CaptureCat.this,"오류!! " + i, Toast.LENGTH_LONG).show();
             cameradevice.close();
             cameradevice = null;
         }
@@ -340,20 +342,10 @@ public class CaptureCat extends AppCompatActivity {
                 String Result = data.getStringExtra("saveSelect");
                 if(Result.equals("아니요.")) ;
                 else if(Result.equals("네")) {
-                    /*while(!imgFile.exists()) {
-                        Snackbar loadingBar = Snackbar.make(findViewById(R.id.capture_cat_activity_layout),
-                                "사진을 저장하고 있습니다.", Snackbar.LENGTH_INDEFINITE);
-                        ProgressBar loadingCircle = findViewById(R.id.loading_circle);
-                        loadingCircle.setVisibility(View.VISIBLE);
-                        loadingBar.show();
-                    }*/
-                    if((!imgFile.exists())) {
-                        Snackbar loadingBar = Snackbar.make(findViewById(R.id.capture_cat_activity_layout),
-                                "사진을 저장하고 있습니다.", Snackbar.LENGTH_INDEFINITE);
-                        findViewById(R.id.loading_circle).setVisibility(View.VISIBLE);
-                        loadingBar.show();
-                    }
+                    ProgressBar loadingCircle = findViewById(R.id.loading_circle);
+                    loadingCircle.setVisibility(View.VISIBLE);
 
+                    while(!imgFile.exists());
                     // 이미지파일 생성이 생각보다 느려서 커뮤니티에 더 빠르게 들어가려고 하면 EOF 에러가 나옴(들어갈 당시에는 사진이 없었기 때문에).
                     Intent community = new Intent(getBaseContext(), CommunityAdd.class);
                     community.putExtra("captureData", imgFile.getPath());

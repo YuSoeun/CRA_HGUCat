@@ -134,7 +134,12 @@ public class CommunityAdd extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("checked");
                 PostSelectText.setText(result);
-                AddBulletinDirectory = result.equals("새로운 고양이를 찾았다")?"NewCat":result.equals("수정해주세요")?"RequestFix":"CatCommunity";
+                if(result.equals("고양이 커뮤니티"))
+                    AddBulletinDirectory = "CatCommunity";
+                else if(result.equals("새로운 고양이를 찾았다"))
+                    AddBulletinDirectory = "NewCatFound";
+                else if(result.equals("수정해주세요"))
+                    AddBulletinDirectory = "RequestFix";
             }
         }
 
