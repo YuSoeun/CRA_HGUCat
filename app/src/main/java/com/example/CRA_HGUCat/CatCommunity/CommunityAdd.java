@@ -103,7 +103,7 @@ public class CommunityAdd extends AppCompatActivity {
                 ByteArrayInputStream inputTextStream = new ByteArrayInputStream(data);
 
                 channelSftp.put(inputTextStream,"/home/""/hdd/"+ AddBulletinDirectory +"/" + TitleText.getText().toString() +  ".txt");
-                // 현재 날짜를 이름으로 저장
+                // 현재 Title을 이름으로 저장
                 ByteArrayInputStream inputImgStream = null;
 
                 ImageView sampleImg = findViewById(R.id.SampleImage);
