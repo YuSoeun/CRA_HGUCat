@@ -38,10 +38,11 @@
         android:onClick="onClick"/>
     
     <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/loading_circle"
+        android:layout_centerInParent="true"
         android:visibility="invisible"
-        android:indeterminateTint="#000"/>
+        android:indeterminateTint="#777777"/>
 
 </RelativeLayout>
