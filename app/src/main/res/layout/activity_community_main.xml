@@ -23,40 +23,41 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/btn_add"
+        android:layout_alignLeft="@id/btn_add"
+        android:layout_marginRight="20dp"
         android:layout_centerInParent="true" >
 
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/btn_cat_community"
-        android:text="냥뮤니티"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:onClick="VisitCommunity"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/bmjua" />
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/btn_cat_community"
+            android:text="냥뮤니티"
+            android:layout_marginTop="30dp"
+            android:onClick="VisitCommunity"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/bmjua" />
 
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/btn_new_cat"
-        android:text="새냥찾"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:onClick="VisitNewCat"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/bmjua" />
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/btn_new_cat"
+            android:text="새냥찾"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:onClick="VisitNewCat"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/bmjua" />
 
-    <Button
-        android:layout_width="80dp"
-        android:layout_height="wrap_content"
-        android:id = "@+id/btn_request_fix"
-        android:text="수정하라냥"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:onClick="VisitReqFix"
-        android:background="@drawable/button_design"
-        android:fontFamily="@font/bmjua" />
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:id = "@+id/btn_request_fix"
+            android:text="수정하라냥"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:onClick="VisitReqFix"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/bmjua" />
 
     </LinearLayout>
 
