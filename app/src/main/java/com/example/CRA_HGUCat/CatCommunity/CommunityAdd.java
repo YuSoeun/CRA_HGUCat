@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.CRA_HGUCat.R;
+import com.example.CRA_HGUCat.SecureFromGit;
+
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -29,6 +31,7 @@ public class CommunityAdd extends AppCompatActivity {
     TextView TitleText, BulletinText, PostSelectText, AddFileText;
     String AddBulletinDirectory;
     Button btn_post;
+    SecureFromGit sshSvr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,9 +90,9 @@ public class CommunityAdd extends AppCompatActivity {
             try {
                 //서버 연결
                 JSch jsch = new JSch();
-                Session session = jsch.getSession("", "", 0);
+                Session session = jsch.getSession(sshSvr.username, sshSvr.host, sshSvr.port);
                 // TODO - 2(보안문제 해결)
-                session.setPassword("");
+                session.setPassword(sshSvr.password);
                 java.util.Properties config = new java.util.Properties();
                 config.put("StrictHostKeyChecking", "no");
                 session.setConfig(config);
@@ -102,7 +105,7 @@ public class CommunityAdd extends AppCompatActivity {
                 byte[] data = BulletinText.getText().toString().getBytes();
                 ByteArrayInputStream inputTextStream = new ByteArrayInputStream(data);
 
-                channelSftp.put(inputTextStream,"/home/cat/"+ AddBulletinDirectory +"/" + TitleText.getText().toString() +  ".txt");
+                channelSftp.put(inputTextStream,sshSvr.dirPath+ AddBulletinDirectory +"/" + TitleText.getText().toString() +  ".txt");
                 // 현재 Title을 이름으로 저장
                 ByteArrayInputStream inputImgStream = null;
 
@@ -113,7 +116,7 @@ public class CommunityAdd extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.PNG,95,outputStream);
                     data = outputStream.toByteArray();
                     inputImgStream = new ByteArrayInputStream(data);
-                    channelSftp.put(inputImgStream,"/home/"+"/"+ AddBulletinDirectory +"/"+ TitleText.getText().toString() +".png");
+                    channelSftp.put(inputImgStream,sshSvr.dirPath+ AddBulletinDirectory +"/"+ TitleText.getText().toString() +".png");
                 }
                 session.disconnect();
             }
@@ -134,7 +137,12 @@ public class CommunityAdd extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("checked");
                 PostSelectText.setText(result);
-                AddBulletinDirectory = result.equals("새로운 고양이를 찾았다")?"NewCat":result.equals("수정해주세요")?"RequestFix":"CatCommunity";
+                if(result.equals("고양이 커뮤니티"))
+                    AddBulletinDirectory = "CatCommunity";
+                else if(result.equals("새로운 고양이를 찾았다"))
+                    AddBulletinDirectory = "NewCatFound";
+                else if(result.equals("수정해주세요"))
+                    AddBulletinDirectory = "RequestFix";
             }
         }
 
@@ -143,7 +151,7 @@ public class CommunityAdd extends AppCompatActivity {
                 String result2 = data.getStringExtra("imageOk");
                 AddFileText.setText(result2);
                 String imgDir = data.getStringExtra("imgPath");
-                if(imgDir.indexOf("msf") != -1) {
+                if(imgDir.contains("msf")) {
                     Toast.makeText(this, "바로가기 경로는 호환되지 않습니다\n직접 폴더로 이동하여 선택해주세요", Toast.LENGTH_LONG).show();
                 }
                 else {

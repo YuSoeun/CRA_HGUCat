@@ -17,8 +17,9 @@ public class CommunityMain extends AppCompatActivity {
     }
 
     public void AddCommunity(View v) {
-        Intent postIntent = new Intent(this, CommunityAdd.class);
-        startActivity(postIntent);
+        Intent getIntent = new Intent(this, CommunityAdd.class);
+        getIntent.putExtra("ReadContent", "CatCommunity");
+        startActivity(getIntent);
         // 커뮤니티 글 추가 창으로 이동
     }
 

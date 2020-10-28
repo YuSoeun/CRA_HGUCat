@@ -1,13 +1,14 @@
 package com.example.CRA_HGUCat.CatCommunity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.CRA_HGUCat.R;
+import com.example.CRA_HGUCat.SecureFromGit;
+
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -23,6 +24,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
     String BulletinFileName;
     Boolean BulletinHasPNG;
     String contentsDir;
+    SecureFromGit sshSvr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,8 @@ public class CommunityBulletinActivity extends AppCompatActivity {
             public void run() {
             try {
                 JSch jsch = new JSch();
-                Session session = jsch.getSession("", "", 0);
-                session.setPassword("");
+                Session session = jsch.getSession(sshSvr.username, sshSvr.host, sshSvr.port);
+                session.setPassword(sshSvr.password);
                 Properties config = new Properties();
                 config.put("StrictHostKeyChecking", "no");
                 session.setConfig(config);
@@ -47,7 +49,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
                 final Channel channel = session.openChannel("sftp");
                 channel.connect();
                 ChannelSftp channelSftp = (ChannelSftp)channel;
-                channelSftp.cd("/home"+"/hdd/" + contentsDir);
+                channelSftp.cd(sshSvr.dirPath + contentsDir);
                 InputStream getFileStream = channelSftp.get(BulletinFileName);
                 BufferedReader Stream2Line = new BufferedReader(new InputStreamReader(getFileStream));
                 final StringBuilder Line2String = new StringBuilder();

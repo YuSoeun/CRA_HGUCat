@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.CRA_HGUCat.R;
+import com.example.CRA_HGUCat.SecureFromGit;
+
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
@@ -25,6 +27,7 @@ public class CommunityRead extends AppCompatActivity {
     ArrayList<String> Bulletin;
     ArrayAdapter<String> BulletinAdapter;
     Vector<ChannelSftp.LsEntry> fileLsEntry;
+    SecureFromGit sshSvr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +46,9 @@ public class CommunityRead extends AppCompatActivity {
             public void run() {
             try {
                 JSch jsch = new JSch();
-                Session session = jsch.getSession("", "...", 0);
+                Session session = jsch.getSession(sshSvr.username, sshSvr.host, sshSvr.port);
                 // 이름과 ip, port를 입력
-                session.setPassword("");
+                session.setPassword(sshSvr.password);
                 // 로그인을 위해 비밀번호를 입력
                 Properties config = new Properties();
                 config.put("StrictHostKeyChecking", "no");
@@ -60,7 +63,7 @@ public class CommunityRead extends AppCompatActivity {
 
                 Intent readContents = getIntent();
                 final String contentsDir = readContents.getStringExtra("ReadContent");
-                fileLsEntry = channelSftp.ls("/home/"+"hdd/"+contentsDir);
+                fileLsEntry = channelSftp.ls(sshSvr.dirPath+contentsDir);
 
                 runOnUiThread(new Runnable() {
                     @Override
