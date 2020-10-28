@@ -24,7 +24,22 @@ public class CommunityMain extends AppCompatActivity {
 
     public void VisitCommunity(View v) {
         Intent getIntent = new Intent(this,CommunityRead.class);
+        getIntent.putExtra("ReadContent", "CatCommunity");
         startActivity(getIntent);
         // 커뮤니티 글 읽기 창으로 이동
+    }
+
+    public void VisitNewCat(View v) {
+        Intent getIntent = new Intent(this,CommunityRead.class);
+        getIntent.putExtra("ReadContent", "NewCatFound");
+        startActivity(getIntent);
+        // 새로운 고양이 글 읽기 창으로 이동
+    }
+
+    public void VisitReqFix(View v) {
+        Intent getIntent = new Intent(this,CommunityRead.class);
+        getIntent.putExtra("ReadContent", "RequestFix");
+        startActivity(getIntent);
+        // 건의사항 글 읽기 창으로 이동
     }
 }

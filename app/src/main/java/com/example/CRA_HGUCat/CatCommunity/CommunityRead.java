@@ -43,7 +43,7 @@ public class CommunityRead extends AppCompatActivity {
             public void run() {
             try {
                 JSch jsch = new JSch();
-                Session session = jsch.getSession("", "", 0);
+                Session session = jsch.getSession("", "...", 0);
                 // 이름과 ip, port를 입력
                 session.setPassword("");
                 // 로그인을 위해 비밀번호를 입력
@@ -57,7 +57,10 @@ public class CommunityRead extends AppCompatActivity {
                 channel.connect();
 
                 final ChannelSftp channelSftp = (ChannelSftp)channel;
-                fileLsEntry = channelSftp.ls("/home/cat/RequestFix");
+
+                Intent readContents = getIntent();
+                final String contentsDir = readContents.getStringExtra("ReadContent");
+                fileLsEntry = channelSftp.ls("/home/""/hdd/"+contentsDir);
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -67,7 +70,7 @@ public class CommunityRead extends AppCompatActivity {
                         if(!lsEntry.getAttrs().isDir()) {
                             String FileName = lsEntry.getFilename();
                             if(FileName.substring(FileName.length()-4).equals(".txt")) {
-                                BulletinAdapter.add(FileName);
+                                BulletinAdapter.add(FileName.substring(0,FileName.length() - 4));
                                 // 파일 인덱스에서 txt파일을 발견한 경우 리스트뷰에 추가
                             }
                         }
@@ -77,8 +80,9 @@ public class CommunityRead extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent ReadBulletin = new Intent(CommunityRead.this,CommunityBulletinActivity.class);
-                        String FileName = Bulletin.get(i);
+                        String FileName = Bulletin.get(i) + ".txt";
                         ReadBulletin.putExtra("FileName", FileName);
+                        ReadBulletin.putExtra("ReadContent", contentsDir);
                         // .txt 파일만 전송하므로 서버 파일 인덱스 대신 ArrayList 인덱스로 대체
                         String FileNamePNGExtension = FileName.substring(0,FileName.length()-4) + ".png";
                         for(int fileIndex = 0; fileIndex < fileLsEntry.size(); fileIndex++) {

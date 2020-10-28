@@ -22,6 +22,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
 
     String BulletinFileName;
     Boolean BulletinHasPNG;
+    String contentsDir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_community_bulletin);
         BulletinFileName = getIntent().getStringExtra("FileName");
         BulletinHasPNG = getIntent().getStringExtra("hasPNG") != null;
+        contentsDir = getIntent().getStringExtra("ReadContent");
         // txt파일명과 파일명이 같은 png 파일이 있는지에 대해 입력 받음
         new Thread() {
             @Override
@@ -45,7 +47,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
                 final Channel channel = session.openChannel("sftp");
                 channel.connect();
                 ChannelSftp channelSftp = (ChannelSftp)channel;
-                channelSftp.cd("/home/cat/RequestFix/");
+                channelSftp.cd("/home/""/hdd/" + contentsDir);
                 InputStream getFileStream = channelSftp.get(BulletinFileName);
                 BufferedReader Stream2Line = new BufferedReader(new InputStreamReader(getFileStream));
                 final StringBuilder Line2String = new StringBuilder();
