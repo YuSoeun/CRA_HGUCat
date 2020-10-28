@@ -24,7 +24,8 @@
         android:gravity="center"
         android:layout_below="@id/imgViewSelected"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background">
 
         <Button android:id="@+id/btnImageSelection"
             android:layout_width="wrap_content"

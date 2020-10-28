@@ -47,7 +47,7 @@ public class CommunityBulletinActivity extends AppCompatActivity {
                 final Channel channel = session.openChannel("sftp");
                 channel.connect();
                 ChannelSftp channelSftp = (ChannelSftp)channel;
-                channelSftp.cd("/home/""/hdd/" + contentsDir);
+                channelSftp.cd("/home"+"/hdd/" + contentsDir);
                 InputStream getFileStream = channelSftp.get(BulletinFileName);
                 BufferedReader Stream2Line = new BufferedReader(new InputStreamReader(getFileStream));
                 final StringBuilder Line2String = new StringBuilder();

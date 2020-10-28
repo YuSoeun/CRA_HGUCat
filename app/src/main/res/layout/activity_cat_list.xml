@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.CRA_HGUCat.CatCategory.CatList"
-    tools:showIn="@layout/activity_cat_list">
+    tools:showIn="@layout/activity_cat_list"
+    android:background="@drawable/background">
 
     <ListView
         android:id="@+id/listview2"

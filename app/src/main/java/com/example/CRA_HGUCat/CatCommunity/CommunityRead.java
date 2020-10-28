@@ -60,7 +60,7 @@ public class CommunityRead extends AppCompatActivity {
 
                 Intent readContents = getIntent();
                 final String contentsDir = readContents.getStringExtra("ReadContent");
-                fileLsEntry = channelSftp.ls("/home/""/hdd/"+contentsDir);
+                fileLsEntry = channelSftp.ls("/home/"+"hdd/"+contentsDir);
 
                 runOnUiThread(new Runnable() {
                     @Override

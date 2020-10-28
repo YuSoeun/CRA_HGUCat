@@ -87,7 +87,7 @@ public class CommunityAdd extends AppCompatActivity {
             try {
                 //서버 연결
                 JSch jsch = new JSch();
-                Session session = jsch.getSession("", "...", 0);
+                Session session = jsch.getSession("", "", 0);
                 // TODO - 2(보안문제 해결)
                 session.setPassword("");
                 java.util.Properties config = new java.util.Properties();
@@ -102,7 +102,7 @@ public class CommunityAdd extends AppCompatActivity {
                 byte[] data = BulletinText.getText().toString().getBytes();
                 ByteArrayInputStream inputTextStream = new ByteArrayInputStream(data);
 
-                channelSftp.put(inputTextStream,"/home/""/hdd/"+ AddBulletinDirectory +"/" + TitleText.getText().toString() +  ".txt");
+                channelSftp.put(inputTextStream,"/home/cat/"+ AddBulletinDirectory +"/" + TitleText.getText().toString() +  ".txt");
                 // 현재 Title을 이름으로 저장
                 ByteArrayInputStream inputImgStream = null;
 
@@ -113,7 +113,7 @@ public class CommunityAdd extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.PNG,95,outputStream);
                     data = outputStream.toByteArray();
                     inputImgStream = new ByteArrayInputStream(data);
-                    channelSftp.put(inputImgStream,"/home/""/hdd/"+ AddBulletinDirectory +"/"+ TitleText.getText().toString() +".png");
+                    channelSftp.put(inputImgStream,"/home/"+"/"+ AddBulletinDirectory +"/"+ TitleText.getText().toString() +".png");
                 }
                 session.disconnect();
             }
@@ -134,12 +134,7 @@ public class CommunityAdd extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("checked");
                 PostSelectText.setText(result);
-                if(result.equals("고양이 커뮤니티"))
-                    AddBulletinDirectory = "CatCommunity";
-                else if(result.equals("새로운 고양이를 찾았다"))
-                    AddBulletinDirectory = "NewCatFound";
-                else if(result.equals("수정해주세요"))
-                    AddBulletinDirectory = "RequestFix";
+                AddBulletinDirectory = result.equals("새로운 고양이를 찾았다")?"NewCat":result.equals("수정해주세요")?"RequestFix":"CatCommunity";
             }
         }
 
@@ -148,7 +143,7 @@ public class CommunityAdd extends AppCompatActivity {
                 String result2 = data.getStringExtra("imageOk");
                 AddFileText.setText(result2);
                 String imgDir = data.getStringExtra("imgPath");
-                if(imgDir.contains("msf")) {
+                if(imgDir.indexOf("msf") != -1) {
                     Toast.makeText(this, "바로가기 경로는 호환되지 않습니다\n직접 폴더로 이동하여 선택해주세요", Toast.LENGTH_LONG).show();
                 }
                 else {
